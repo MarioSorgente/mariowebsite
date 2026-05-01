@@ -77,25 +77,25 @@ export const capabilitiesConfig: CapabilitiesConfig = {
       title: "Zero-to-Demo Sprints",
       slug: "zero-to-demo",
       description: "Build working product demos in 48-72 hours at zero cost. Validate your idea with real users before spending a dime on development.",
-      image: "images/capability-1.jpg",
+      image: "/images/capability-1.jpg",
     },
     {
       title: "AI Product Architecture",
       slug: "ai-architecture",
       description: "Design intelligent product workflows that leverage AI to create 10x user experiences. Not chatbot wrappers — deeply integrated intelligence.",
-      image: "images/capability-2.jpg",
+      image: "/images/capability-2.jpg",
     },
     {
       title: "Founder Coaching",
       slug: "founder-coaching",
       description: "Weekly hands-on sessions to structure your MVP, prioritize features, and find the fastest path to product-market fit. Hands-on support or coaching.",
-      image: "images/capability-3.jpg",
+      image: "/images/capability-3.jpg",
     },
     {
       title: "Technical Due Diligence",
       slug: "due-diligence",
       description: "Pre-fundraising product reviews to identify risks, strengthen your technical narrative, and prepare compelling demos for investor meetings.",
-      image: "images/capability-4.jpg",
+      image: "/images/capability-4.jpg",
     },
   ],
 };
@@ -182,7 +182,7 @@ export interface ArchitectureConfig {
 
 export const architectureConfig: ArchitectureConfig = {
   sectionLabel: "Process",
-  videoPath: "videos/cinematic-vision.mp4",
+  videoPath: "/videos/cinematic-vision.mp4",
   title: "Define. Structure. Execute. Fast.",
   description: "We will define your MVP, structure your product and identify the fastest path to execution whether you need hands-on support or coaching. My process combines physics-engineering rigor with creative intuition — analyzing the problem space systematically, then building with the urgency of someone who knows ideas are cheap and execution is everything.",
 };
@@ -210,25 +210,25 @@ export const researchConfig: ResearchConfig = {
       title: "Binderly",
       year: "2023",
       discipline: "Smart Organization",
-      image: "images/research-1.jpg",
+      image: "/images/research-1.jpg",
     },
     {
       title: "yourwai.tech",
       year: "2024",
       discipline: "AI Creative Tools",
-      image: "images/research-2.jpg",
+      image: "/images/research-2.jpg",
     },
     {
       title: "ADES",
       year: "2022",
       discipline: "Sustainable Energy",
-      image: "images/research-3.jpg",
+      image: "/images/research-3.jpg",
     },
     {
-      title: " stealth advisory",
+      title: "Stealth advisory",
       year: "2025",
       discipline: "Founder Support",
-      image: "images/research-4.jpg",
+      image: "/images/research-4.jpg",
     },
   ],
 };
