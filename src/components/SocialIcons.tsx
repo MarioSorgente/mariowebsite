@@ -49,7 +49,7 @@ export default function SocialIcons() {
     >
       {/* LinkedIn */}
       <a
-        href="https://linkedin.com"
+        href="https://www.linkedin.com/in/mario-sorgente/"
         target="_blank"
         rel="noopener noreferrer"
         style={iconStyle}
@@ -65,7 +65,7 @@ export default function SocialIcons() {
 
       {/* GitHub */}
       <a
-        href="https://github.com"
+        href="https://github.com/MarioSorgente"
         target="_blank"
         rel="noopener noreferrer"
         style={iconStyle}
