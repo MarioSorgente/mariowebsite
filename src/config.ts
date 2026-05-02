@@ -278,7 +278,7 @@ export const footerConfig: FooterConfig = {
   ],
   copyright: "© 2026 Mario Sorgente. All rights reserved.",
   bottomLinks: [
-    { label: "Download AI Product Guide", href: "#" },
+    { label: "Download AI Product Guide", href: "https://drive.google.com/file/d/1gg7k9FqsffFs76-sqRhtFPANLHX0sU5Y/view?usp=sharing" },
     { label: "Privacy", href: "#" },
   ],
 };
