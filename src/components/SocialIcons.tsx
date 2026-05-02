@@ -95,7 +95,9 @@ export default function SocialIcons() {
 
       {/* Download */}
       <a
-        href="#"
+        href="https://drive.google.com/file/d/1gg7k9FqsffFs76-sqRhtFPANLHX0sU5Y/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
         style={iconStyle}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
