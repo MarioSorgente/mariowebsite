@@ -32,6 +32,8 @@ export default function Hero() {
       <RetroGrid />
       <SocialIcons />
 
+      <div className="absolute inset-0 z-[2] pointer-events-none" style={{background: 'linear-gradient(90deg, rgba(10,18,33,0.68) 0%, rgba(10,18,33,0.52) 34%, rgba(10,18,33,0.16) 64%, rgba(10,18,33,0.06) 100%)'}} />
+
       <div
         className="relative z-10 flex flex-col justify-between pointer-events-none"
         style={{
@@ -48,7 +50,7 @@ export default function Hero() {
               fontSize: 'clamp(48px, 6vw, 96px)',
               lineHeight: 1.0,
               letterSpacing: '-3px',
-              color: '#e6edff',
+              color: '#ecf3ff',
               textShadow: '0 4px 24px rgba(0,0,0,0.35)',
               marginBottom: 'clamp(16px, 2vw, 24px)',
               width: 'fit-content',
@@ -65,8 +67,8 @@ export default function Hero() {
               fontWeight: 500,
               letterSpacing: '4px',
               textTransform: 'uppercase',
-              color: '#3f6fd8',
-              opacity: 0.9,
+              color: '#7fb4ff',
+              opacity: 1,
               width: titleWidth || 'auto',
               maxWidth: '100%',
               textShadow: '0 2px 12px rgba(0,0,0,0.6)',
@@ -83,7 +85,7 @@ export default function Hero() {
                 fontSize: 'clamp(14px, 1.4vw, 20px)',
                 lineHeight: 1.8,
                 letterSpacing: '-0.3px',
-                color: '#2e4069',
+                color: '#c0d1ee',
                 margin: '0 0 16px 0',
                 width: titleWidth || 'auto',
                 maxWidth: '100%',
@@ -101,7 +103,7 @@ export default function Hero() {
                 fontSize: 'clamp(15px, 1.5vw, 22px)',
                 lineHeight: 1.7,
                 letterSpacing: '-0.3px',
-                color: '#12264d',
+                color: '#d7e6ff',
                 margin: 0,
                 width: titleWidth || 'auto',
                 maxWidth: '100%',
