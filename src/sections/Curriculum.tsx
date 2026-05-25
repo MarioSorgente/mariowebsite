@@ -123,7 +123,7 @@ export default function Curriculum() {
                   transition: 'min-height 0.4s ease',
                 }}
               >
-                {/* Description text — fades out on hover */}
+                {/* Description text - fades out on hover */}
                 <p
                   style={{
                     fontFamily: "'Inter', sans-serif",
@@ -140,7 +140,7 @@ export default function Curriculum() {
                   {discipline.description}
                 </p>
 
-                {/* Image — fades in on hover */}
+                {/* Image - fades in on hover */}
                 {discipline.image && (
                   <img
                     src={discipline.image}

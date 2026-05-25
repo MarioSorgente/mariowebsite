@@ -4,10 +4,10 @@ import { researchConfig } from '../config';
 
 export default function AlumniArchives() {
   const gridRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useEffect(() => {
-    const items = itemRefs.current.filter(Boolean) as HTMLDivElement[];
+    const items = itemRefs.current.filter(Boolean) as HTMLAnchorElement[];
 
     items.forEach((item) => {
       gsap.set(item, { opacity: 0, y: 30 });
@@ -17,7 +17,7 @@ export default function AlumniArchives() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const idx = items.indexOf(entry.target as HTMLDivElement);
+            const idx = items.indexOf(entry.target as HTMLAnchorElement);
             gsap.to(entry.target, {
               opacity: 1,
               y: 0,
@@ -46,7 +46,7 @@ export default function AlumniArchives() {
       id="alumni"
       style={{
         padding: '150px 5vw',
-        background: '#0a0a0a',
+        background: '#f1f4f8',
         position: 'relative',
         zIndex: 2,
       }}
@@ -61,7 +61,7 @@ export default function AlumniArchives() {
               fontWeight: 300,
               letterSpacing: '3px',
               textTransform: 'uppercase',
-              color: '#dadada',
+              color: '#3b4f78',
               opacity: 0.6,
             }}
           >
@@ -73,7 +73,7 @@ export default function AlumniArchives() {
           style={{
             width: '100%',
             height: 1,
-            background: 'rgba(255, 255, 255, 0.1)',
+            background: 'rgba(18, 33, 63, 0.15)',
           }}
         />
 
@@ -83,14 +83,19 @@ export default function AlumniArchives() {
           style={{ gap: 0 }}
         >
           {researchConfig.projects.map((project, i) => (
-            <div
+            <a
               key={`${project.title}-${i}`}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
               ref={(el) => { itemRefs.current[i] = el; }}
               className="group cursor-pointer"
               style={{
-                borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-                borderRight: (i + 1) % 4 !== 0 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+                display: 'block',
+                borderBottom: '1px solid rgba(18, 33, 63, 0.12)',
+                borderRight: (i + 1) % 4 !== 0 ? '1px solid rgba(18, 33, 63, 0.12)' : 'none',
                 padding: '24px 20px',
+                textDecoration: 'none',
               }}
             >
               <div
@@ -103,8 +108,8 @@ export default function AlumniArchives() {
                     alt={project.title}
                     className="w-full h-full object-cover transition-all duration-700"
                     style={{
-                      opacity: 0.5,
-                      filter: 'grayscale(100%)',
+                      opacity: 0.8,
+                      filter: 'grayscale(20%)',
                     }}
                     onMouseEnter={(e) => {
                       (e.target as HTMLImageElement).style.opacity = '1';
@@ -125,7 +130,7 @@ export default function AlumniArchives() {
                   fontFamily: "'EB Garamond', serif",
                   fontWeight: 400,
                   fontSize: 18,
-                  color: '#ffffff',
+                  color: '#0f2248',
                   margin: '0 0 6px 0',
                   lineHeight: 1.3,
                 }}
@@ -140,7 +145,7 @@ export default function AlumniArchives() {
                     fontFamily: "'Inter', sans-serif",
                     fontWeight: 200,
                     fontSize: 12,
-                    color: '#dadada',
+                    color: '#3b4f78',
                     opacity: 0.6,
                   }}
                 >
@@ -151,14 +156,14 @@ export default function AlumniArchives() {
                     fontFamily: "'Fira Code', monospace",
                     fontWeight: 400,
                     fontSize: 11,
-                    color: '#dadada',
+                    color: '#3b4f78',
                     opacity: 0.4,
                   }}
                 >
                   {project.year}
                 </span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

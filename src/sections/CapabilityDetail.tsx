@@ -23,7 +23,7 @@ export default function CapabilityDetail() {
 
   return (
     <div style={{ background: '#0a0a0a', minHeight: '100vh', position: 'relative', overflowX: 'hidden' }}>
-      {/* Digital rain background — constrained to top hero area */}
+      {/* Digital rain background - constrained to top hero area */}
       <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 0, opacity: 0.4 }}>
         <AmberCascades />
       </div>
