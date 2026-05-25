@@ -88,7 +88,7 @@ export const capabilitiesConfig: CapabilitiesConfig = {
     {
       title: "Founder Coaching",
       slug: "founder-coaching",
-      description: "Weekly hands-on sessions to structure your MVP, prioritize features, and find the fastest path to product-market fit. Hands-on support or coaching.",
+      description: "Sessions at your pace to structure your MVP, prioritize features and find the fastest path to product-market fit. Hands-on support or coaching.",
       image: "/images/capability-3.jpg",
     },
     {
@@ -130,10 +130,10 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
       title: "Zero-to-Demo Sprints",
       subtitle: "From concept to clickable prototype in 48-72 hours.",
       paragraphs: [
-        "Most founders spend months and thousands of dollars building products nobody wants. The Zero-to-Demo Sprint flips this script - we build a working, clickable demo in 48-72 hours using no-code tools, AI code generation, and rapid prototyping techniques.",
+        "Most founders spend months and thousands of dollars building products nobody wants. The Zero-to-Demo Sprint flips this script: we build a working, clickable demo in 48-72 hours using no-code tools, AI code generation and rapid prototyping techniques.",
         "During the sprint, we define your core user story, map the critical user journey, and build just enough to get meaningful feedback. The demo isn't a pitch deck - it's a real product surface that users can interact with.",
-        "This approach has helped founders secure pre-seed meetings, validate demand before hiring engineers, and pivot early when the data suggests a different direction. The cost is zero - my time is invested in founders who are committed to building something meaningful.",
-        "After the sprint, you receive the demo, a product requirements document, and a clear roadmap for turning the prototype into a production-ready MVP.",
+        "This approach has helped founders secure pre-seed meetings, validate demand before hiring engineers and pivot early when the data suggests a different direction. The cost is zero - my time is invested in founders who are committed to building something meaningful.",
+        "After the sprint, you receive the demo, a product requirements document and a clear roadmap for turning the prototype into a production-ready MVP.",
       ],
     },
     "ai-architecture": {
@@ -141,8 +141,8 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
       subtitle: "Design products where AI is the core, not a bolt-on.",
       paragraphs: [
         "The next generation of iconic products will be AI-native - not existing software with a chatbot attached. AI Product Architecture is about designing systems where intelligence flows through every layer of the user experience.",
-        "I help founders identify which user problems are genuinely suited for AI, select the right model architecture (whether frontier LLMs, fine-tuned open weights, or classical ML), and design interaction patterns that feel magical rather than mechanical.",
-        "This includes prompt engineering frameworks, retrieval architecture design, agent orchestration, and evaluation systems. The goal is a product that gets smarter with every user interaction, creating compounding value over time.",
+        "I help founders identify which user problems are genuinely suited for AI, select the right model architecture (whether frontier LLMs, fine-tuned open weights, or classical ML) and design interaction patterns that feel magical rather than mechanical.",
+        "This includes prompt engineering frameworks, retrieval architecture design, agent orchestration and evaluation systems. The goal is a product that gets smarter with every user interaction, creating compounding value over time.",
         "Whether you're building a creative tool, an analytics platform, or a vertical-specific assistant, the architecture decisions you make in the first 90 days determine your technical moat for years.",
       ],
     },
@@ -150,9 +150,9 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
       title: "Founder Coaching",
       subtitle: "Hands-on product strategy for early-stage founders.",
       paragraphs: [
-        "Building a product as a founder is lonely. You're making high-stakes decisions about scope, timing, and positioning with limited data and constant pressure. Founder Coaching provides a structured sounding board and hands-on support.",
-        "We meet weekly to review progress, untangle prioritization conflicts, and refine your product narrative. I bring the perspective of someone who has built two companies and led product at AI scaleups - I've made the mistakes so you don't have to.",
-        "Coaching covers MVP scoping, user research tactics, metrics that matter pre-revenue, fundraising narrative alignment, and team hiring for product and engineering. When needed, I roll up my sleeves and contribute directly to design and prototyping.",
+        "Building a product as a founder is lonely. You're making high-stakes decisions about scope, timing and positioning with limited data and constant pressure. Founder Coaching provides a structured sounding board and hands-on support.",
+        "We meet online at your pace to review progress, untangle prioritization conflicts and refine your product narrative. I bring the perspective of someone who has built two companies and led product at AI scaleups - I've made the mistakes so you don't have to.",
+        "Coaching covers MVP scoping, user research tactics, metrics that matter and team hiring for product and engineering. When needed, I roll up my sleeves and contribute directly to design and prototyping.",
         "This is for founders who want to move fast without breaking things - who value strategic clarity as much as execution speed. The relationship adapts to your stage and challenges.",
       ],
     },
