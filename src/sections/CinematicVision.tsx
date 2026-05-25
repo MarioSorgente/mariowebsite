@@ -130,7 +130,7 @@ export default function CinematicVision() {
                   fontWeight: 200,
                   fontSize: 17,
                   lineHeight: 1.85,
-                  color: '#34486f',
+                  color: '#e7f0ff',
                   margin: 0,
                   flex: '1 1 50%',
                   textWrap: 'pretty',

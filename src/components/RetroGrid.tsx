@@ -10,12 +10,13 @@ export default function RetroGrid() {
     if (!ctx) return;
 
     let animationId: number;
-    let time = 0;
+    let phase = 0;
 
     const resize = () => {
-      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = canvas.offsetWidth * dpr;
+      canvas.height = canvas.offsetHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
     resize();
@@ -24,56 +25,53 @@ export default function RetroGrid() {
     const draw = () => {
       const width = canvas.offsetWidth;
       const height = canvas.offsetHeight;
-      const horizonY = height * 0.55;
+      const horizonY = height * 0.12;
+      const centerX = width / 2;
 
       ctx.clearRect(0, 0, width, height);
 
-      // Grid parameters
-      const gridSize = 60;
-      const speed = 0.02;
-      time += speed;
+      // Subtle one-direction motion loop: phase only increases and wraps.
+      phase = (phase + 0.0035) % 1;
 
-      // Draw vertical lines with perspective
-      const centerX = width / 2;
-      const vanishingPointY = horizonY - height * 0.15;
-
-      ctx.strokeStyle = 'rgba(96, 165, 250, 0.15)';
+      ctx.strokeStyle = 'rgba(96, 165, 250, 0.14)';
       ctx.lineWidth = 1;
 
-      // Vertical perspective lines
-      for (let i = -20; i <= 20; i++) {
-        const xBase = centerX + i * gridSize;
-        const xFar = centerX + i * gridSize * 0.15;
+      // Perspective verticals.
+      const columns = 36;
+      const spread = width * 0.95;
+      for (let i = -columns; i <= columns; i++) {
+        const xNorm = i / columns;
+        const xBase = centerX + xNorm * spread;
+        const xFar = centerX + xNorm * spread * 0.06;
 
         ctx.beginPath();
         ctx.moveTo(xBase, height);
-        ctx.lineTo(xFar, vanishingPointY);
+        ctx.lineTo(xFar, horizonY);
         ctx.stroke();
       }
 
-      // Horizontal lines with perspective spacing
-      const horizontalLines = 25;
-      for (let i = 0; i < horizontalLines; i++) {
-        const t = i / horizontalLines;
-        const y = height - (height - vanishingPointY) * (t * t);
-        const offset = ((time * 2) % 1) * ((height - vanishingPointY) / horizontalLines);
-        const yWithOffset = y - offset;
+      // Infinite forward-moving horizontals (never reverse).
+      const rows = 34;
+      for (let i = 0; i <= rows; i++) {
+        const depth = ((i / rows) + phase) % 1;
+        const eased = depth * depth;
+        const y = horizonY + (height - horizonY) * eased;
+        if (y <= horizonY + 1 || y >= height) continue;
 
-        if (yWithOffset > vanishingPointY && yWithOffset < height) {
-          ctx.beginPath();
-          ctx.moveTo(0, yWithOffset);
-          ctx.lineTo(width, yWithOffset);
-          ctx.stroke();
-        }
+        const alpha = 0.03 + depth * 0.12;
+        ctx.strokeStyle = `rgba(96, 165, 250, ${alpha})`;
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
       }
 
-      // Draw horizon glow
-      const gradient = ctx.createLinearGradient(0, vanishingPointY, 0, height);
-      gradient.addColorStop(0, 'rgba(96, 165, 250, 0.05)');
-      gradient.addColorStop(0.5, 'rgba(96, 165, 250, 0.02)');
+      const gradient = ctx.createLinearGradient(0, horizonY, 0, height);
+      gradient.addColorStop(0, 'rgba(96, 165, 250, 0.03)');
+      gradient.addColorStop(0.45, 'rgba(96, 165, 250, 0.05)');
       gradient.addColorStop(1, 'rgba(96, 165, 250, 0)');
       ctx.fillStyle = gradient;
-      ctx.fillRect(0, vanishingPointY, width, height - vanishingPointY);
+      ctx.fillRect(0, horizonY, width, height - horizonY);
 
       animationId = requestAnimationFrame(draw);
     };

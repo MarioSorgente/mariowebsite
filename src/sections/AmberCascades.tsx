@@ -101,6 +101,24 @@ export default function AmberCascades() {
         ctx.fillStyle = `rgba(151, 223, 255, ${glow})`;
         ctx.fill();
       }
+      ctx.shadowBlur = 0;
+    };
+
+
+      // Keep a subtle horizontal animated line near grid horizon for continuity.
+      const lineYBase = height * 0.78;
+      ctx.beginPath();
+      for (let x = 0; x <= width; x += 6) {
+        const y = lineYBase + Math.sin(x * 0.012 + time * 0.45) * 1.6 + Math.sin(x * 0.026 + time * 0.28) * 0.9;
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = 'rgba(138, 205, 255, 0.24)';
+      ctx.lineWidth = 1.2;
+      ctx.shadowColor = 'rgba(104, 194, 255, 0.24)';
+      ctx.shadowBlur = 8;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
 
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
