@@ -89,11 +89,10 @@ export default function AlumniArchives() {
               target="_blank"
               rel="noopener noreferrer"
               ref={(el) => { itemRefs.current[i] = el; }}
-              className="group cursor-pointer"
+              className="group cursor-pointer border-b border-r [&:nth-child(2n)]:border-r-0 md:[&:nth-child(2n)]:border-r md:[&:nth-child(4n)]:border-r-0"
               style={{
                 display: 'block',
-                borderBottom: '1px solid rgba(167, 186, 223, 0.18)',
-                borderRight: (i + 1) % 4 !== 0 ? '1px solid rgba(167, 186, 223, 0.18)' : 'none',
+                borderColor: 'rgba(167, 186, 223, 0.18)',
                 padding: '24px 20px',
                 textDecoration: 'none',
               }}
