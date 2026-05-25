@@ -91,12 +91,6 @@ export const capabilitiesConfig: CapabilitiesConfig = {
       description: "Weekly hands-on sessions to structure your MVP, prioritize features, and find the fastest path to product-market fit. Hands-on support or coaching.",
       image: "/images/capability-3.jpg",
     },
-    {
-      title: "Technical Due Diligence",
-      slug: "due-diligence",
-      description: "Pre-fundraising product reviews to identify risks, strengthen your technical narrative, and prepare compelling demos for investor meetings.",
-      image: "/images/capability-4.jpg",
-    },
   ],
 };
 
@@ -154,16 +148,6 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
         "We meet weekly to review progress, untangle prioritization conflicts, and refine your product narrative. I bring the perspective of someone who has built two companies and led product at AI scaleups - I've made the mistakes so you don't have to.",
         "Coaching covers MVP scoping, user research tactics, metrics that matter pre-revenue, fundraising narrative alignment, and team hiring for product and engineering. When needed, I roll up my sleeves and contribute directly to design and prototyping.",
         "This is for founders who want to move fast without breaking things - who value strategic clarity as much as execution speed. The relationship adapts to your stage and challenges.",
-      ],
-    },
-    "due-diligence": {
-      title: "Technical Due Diligence",
-      subtitle: "Strengthen your technical narrative before fundraising.",
-      paragraphs: [
-        "Investors are getting sharper about technical due diligence. A weak architecture story can derail an otherwise strong round. I conduct pre-fundraising technical reviews that identify risks and turn them into compelling narratives.",
-        "The review covers system architecture, scalability roadmap, AI/ML pipeline robustness, security posture, and team composition. I produce a clear report with red, yellow, and green ratings across dimensions that investors actually care about.",
-        "More importantly, I help you prepare live demos that withstand scrutiny. There's nothing more powerful in a pitch than showing a working product and being able to explain exactly how it scales to millions of users.",
-        "This service is designed for founders raising pre-seed to Series A who want to enter investor conversations with confidence and preparation. The best time to fix technical narrative gaps is before you're in the room.",
       ],
     },
   },
@@ -268,7 +252,6 @@ export const footerConfig: FooterConfig = {
         "Zero-to-Demo Sprints",
         "AI Product Architecture",
         "Founder Coaching",
-        "Technical Due Diligence",
       ],
     },
     {
