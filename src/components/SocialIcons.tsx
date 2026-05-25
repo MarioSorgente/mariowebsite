@@ -1,7 +1,7 @@
 export default function SocialIcons() {
   const iconStyle: React.CSSProperties = {
-    width: 48,
-    height: 48,
+    width: 55,
+    height: 55,
     borderRadius: '50%',
     background: 'rgba(255, 255, 255, 0.08)',
     border: '1px solid rgba(255, 255, 255, 0.15)',
@@ -13,8 +13,8 @@ export default function SocialIcons() {
   };
 
   const svgStyle: React.CSSProperties = {
-    width: 22,
-    height: 22,
+    width: 25,
+    height: 25,
     fill: 'none',
     stroke: '#8fb7c0',
     strokeWidth: 1.5,
