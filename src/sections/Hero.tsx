@@ -26,7 +26,7 @@ export default function Hero() {
     <section
       id="hero"
       className="relative w-full overflow-hidden"
-      style={{ height: '100vh' }}
+      style={{ minHeight: '100vh' }}
     >
       <AmberCascades />
       <RetroGrid />
@@ -38,7 +38,7 @@ export default function Hero() {
         className="relative z-10 flex flex-col justify-between pointer-events-none"
         style={{
           height: '100%',
-          padding: '22vh 5vw 8vh',
+          padding: 'max(110px, 16vh) 5vw 8vh',
         }}
       >
         <div>
@@ -49,7 +49,7 @@ export default function Hero() {
               fontWeight: 400,
               fontSize: 'clamp(48px, 6vw, 96px)',
               lineHeight: 1.0,
-              letterSpacing: '-3px',
+              letterSpacing: 'clamp(-1px, -0.25vw, -3px)',
               color: '#ecf3ff',
               textShadow: '0 4px 24px rgba(0,0,0,0.35)',
               marginBottom: 'clamp(16px, 2vw, 24px)',
