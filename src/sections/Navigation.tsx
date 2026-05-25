@@ -30,9 +30,9 @@ export default function Navigation() {
       style={{
         height: 80,
         padding: '0 5vw',
-        backgroundColor: scrolled ? 'rgba(14, 19, 27, 0.84)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(8px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(167, 186, 223, 0.16)' : 'none',
+        backgroundColor: scrolled ? 'rgba(8, 15, 28, 0.78)' : 'rgba(8, 15, 28, 0.42)',
+        backdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(167, 186, 223, 0.18)',
       }}
     >
       <a
@@ -44,7 +44,7 @@ export default function Navigation() {
           fontSize: 18,
           fontWeight: 400,
           letterSpacing: '-0.5px',
-          color: '#dbe5fb',
+          color: '#f0f6ff',
         }}
       >
         {siteConfig.brandName}
@@ -67,7 +67,7 @@ export default function Navigation() {
         <a
           href="#footer"
           onClick={(e) => handleClick(e, '#footer')}
-          className="nav-link hidden md:inline-block"
+          className="nav-cta hidden md:inline-flex"
         >
           {navigationConfig.ctaText}
         </a>
