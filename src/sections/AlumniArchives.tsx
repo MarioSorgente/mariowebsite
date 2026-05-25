@@ -4,10 +4,10 @@ import { researchConfig } from '../config';
 
 export default function AlumniArchives() {
   const gridRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
 
   useEffect(() => {
-    const items = itemRefs.current.filter(Boolean) as HTMLDivElement[];
+    const items = itemRefs.current.filter(Boolean) as HTMLAnchorElement[];
 
     items.forEach((item) => {
       gsap.set(item, { opacity: 0, y: 30 });
@@ -17,7 +17,7 @@ export default function AlumniArchives() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const idx = items.indexOf(entry.target as HTMLDivElement);
+            const idx = items.indexOf(entry.target as HTMLAnchorElement);
             gsap.to(entry.target, {
               opacity: 1,
               y: 0,
@@ -83,14 +83,19 @@ export default function AlumniArchives() {
           style={{ gap: 0 }}
         >
           {researchConfig.projects.map((project, i) => (
-            <div
+            <a
               key={`${project.title}-${i}`}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
               ref={(el) => { itemRefs.current[i] = el; }}
               className="group cursor-pointer"
               style={{
+                display: 'block',
                 borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRight: (i + 1) % 4 !== 0 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
                 padding: '24px 20px',
+                textDecoration: 'none',
               }}
             >
               <div
@@ -158,7 +163,7 @@ export default function AlumniArchives() {
                   {project.year}
                 </span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
