@@ -41,7 +41,7 @@ export default function Hero() {
           padding: 'max(110px, 16vh) 5vw 8vh',
         }}
       >
-        <div style={{ maxWidth: 'min(92vw, 760px)' }}>
+        <div style={{ maxWidth: 'min(92vw, 760px)', paddingRight: 'clamp(0px, 8vw, 120px)' }}>
           <h1
             ref={titleRef}
             style={{

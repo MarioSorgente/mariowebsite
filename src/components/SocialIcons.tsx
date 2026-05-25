@@ -41,11 +41,12 @@ export default function SocialIcons() {
         flexDirection: 'column',
         gap: 12,
         position: 'absolute',
-        right: '2.5vw',
-        top: '34vh',
+        right: '1.5rem',
+        top: '50%',
+        transform: 'translateY(-50%)',
         zIndex: 20,
       }}
-      className="hidden xl:flex"
+      className="hidden 2xl:flex"
     >
       {/* LinkedIn */}
       <a
