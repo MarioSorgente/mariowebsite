@@ -101,6 +101,8 @@ export default function AmberCascades() {
         ctx.fillStyle = `rgba(151, 223, 255, ${glow})`;
         ctx.fill();
       }
+      ctx.shadowBlur = 0;
+    };
 
 
       // Keep a subtle horizontal animated line near grid horizon for continuity.
