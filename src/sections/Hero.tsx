@@ -36,13 +36,13 @@ export default function Hero() {
       <div
         className="relative z-10 flex min-h-screen flex-col justify-between px-6 pt-10 pb-16 md:px-[5vw] md:pt-[max(110px,16vh)] md:pb-[8vh] pointer-events-none"
       >
-        <div className="w-full md:max-w-[min(92vw,760px)] md:pr-[clamp(0px,8vw,120px)]">
+        <div className="w-full max-w-full md:max-w-[min(92vw,760px)] md:pr-[clamp(0px,8vw,120px)]">
           <h1
             ref={titleRef}
             style={{
               fontFamily: "'GeistMono', monospace",
               fontWeight: 400,
-              fontSize: 'clamp(34px, 10vw, 96px)',
+              fontSize: 'clamp(30px, 10vw, 96px)',
               lineHeight: 1.0,
               letterSpacing: 'clamp(-1px, -0.25vw, -3px)',
               color: '#ecf3ff',
@@ -77,7 +77,7 @@ export default function Hero() {
               style={{
                 fontFamily: "'GeistMono', monospace",
                 fontWeight: 200,
-                fontSize: 'clamp(14px, 1.4vw, 20px)',
+                fontSize: 'clamp(14px, 4vw, 20px)',
                 lineHeight: 1.6,
                 letterSpacing: '-0.3px',
                 color: '#c0d1ee',
@@ -95,8 +95,8 @@ export default function Hero() {
               style={{
                 fontFamily: "'GeistMono', monospace",
                 fontWeight: 300,
-                fontSize: 'clamp(14px, 4.2vw, 22px)',
-                lineHeight: 1.55,
+                fontSize: 'clamp(14px, 3.9vw, 22px)',
+                lineHeight: 1.5,
                 letterSpacing: '-0.3px',
                 color: '#d7e6ff',
                 margin: 0,

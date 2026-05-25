@@ -109,22 +109,12 @@ export default function SocialIcons() {
   return (
     <>
       <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 12,
-          position: 'absolute',
-          right: '1.5rem',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          zIndex: 20,
-        }}
-        className="hidden 2xl:flex"
+        className="pointer-events-auto absolute right-6 top-1/2 z-20 hidden -translate-y-1/2 flex-col gap-3 2xl:flex"
       >
         {renderIcons()}
       </div>
 
-      <div className="mt-8 flex flex-wrap items-center gap-3 md:hidden pointer-events-auto">
+      <div className="pointer-events-auto mt-8 flex flex-wrap items-center gap-3 md:hidden">
         {renderIcons()}
       </div>
     </>
