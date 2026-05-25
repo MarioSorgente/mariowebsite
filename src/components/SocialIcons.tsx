@@ -1,7 +1,7 @@
 export default function SocialIcons() {
   const iconStyle: React.CSSProperties = {
-    width: 55,
-    height: 55,
+    width: 50,
+    height: 50,
     borderRadius: '50%',
     background: 'rgba(255, 255, 255, 0.08)',
     border: '1px solid rgba(255, 255, 255, 0.15)',
@@ -13,8 +13,8 @@ export default function SocialIcons() {
   };
 
   const svgStyle: React.CSSProperties = {
-    width: 25,
-    height: 25,
+    width: 22,
+    height: 22,
     fill: 'none',
     stroke: '#8fb7c0',
     strokeWidth: 1.5,
@@ -39,13 +39,14 @@ export default function SocialIcons() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 16,
+        gap: 12,
         position: 'absolute',
-        right: '5vw',
-        top: '28vh',
+        right: '1.5rem',
+        top: '50%',
+        transform: 'translateY(-50%)',
         zIndex: 20,
       }}
-      className="hidden md:flex"
+      className="hidden 2xl:flex"
     >
       {/* LinkedIn */}
       <a
