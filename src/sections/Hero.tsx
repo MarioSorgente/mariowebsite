@@ -42,14 +42,14 @@ export default function Hero() {
         <div>
           <h1
             ref={titleRef}
-            className="text-white"
             style={{
               fontFamily: "'GeistMono', monospace",
               fontWeight: 400,
               fontSize: 'clamp(48px, 6vw, 96px)',
               lineHeight: 1.0,
               letterSpacing: '-3px',
-              textShadow: '0 4px 24px rgba(0,0,0,0.8)',
+              color: '#e6edff',
+              textShadow: '0 4px 24px rgba(0,0,0,0.35)',
               marginBottom: 'clamp(16px, 2vw, 24px)',
               width: 'fit-content',
             }}
@@ -65,7 +65,7 @@ export default function Hero() {
               fontWeight: 500,
               letterSpacing: '4px',
               textTransform: 'uppercase',
-              color: '#60a5fa',
+              color: '#3f6fd8',
               opacity: 0.9,
               width: titleWidth || 'auto',
               maxWidth: '100%',
@@ -83,7 +83,7 @@ export default function Hero() {
                 fontSize: 'clamp(14px, 1.4vw, 20px)',
                 lineHeight: 1.8,
                 letterSpacing: '-0.3px',
-                color: '#e5e5e5',
+                color: '#2e4069',
                 margin: '0 0 16px 0',
                 width: titleWidth || 'auto',
                 maxWidth: '100%',
@@ -101,14 +101,14 @@ export default function Hero() {
                 fontSize: 'clamp(15px, 1.5vw, 22px)',
                 lineHeight: 1.7,
                 letterSpacing: '-0.3px',
-                color: '#ffffff',
+                color: '#12264d',
                 margin: 0,
                 width: titleWidth || 'auto',
                 maxWidth: '100%',
                 textShadow: '0 2px 12px rgba(0,0,0,0.6)',
               }}
             >
-              <span style={{ textDecoration: 'underline', textDecorationColor: 'rgba(96, 165, 250, 0.5)', textUnderlineOffset: '4px' }}>
+              <span style={{ textDecoration: 'underline', textDecorationColor: 'rgba(143, 176, 244, 0.55)', textUnderlineOffset: '4px' }}>
                 {heroConfig.subtitleLine2.split('.')[0]}.
               </span>
               {heroConfig.subtitleLine2.split('.').slice(1).join('.')}

@@ -16,15 +16,15 @@ export default function SocialIcons() {
     width: 22,
     height: 22,
     fill: 'none',
-    stroke: '#60a5fa',
+    stroke: '#8fb7c0',
     strokeWidth: 1.5,
     strokeLinecap: 'round',
     strokeLinejoin: 'round',
   };
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(96, 165, 250, 0.15)';
-    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(96, 165, 250, 0.4)';
+    (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(143, 183, 192, 0.16)';
+    (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(143, 183, 192, 0.45)';
     (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)';
   };
 
@@ -79,7 +79,7 @@ export default function SocialIcons() {
 
       {/* Instagram */}
       <a
-        href="https://instagram.com"
+        href="https://www.instagram.com/extravag.art/"
         target="_blank"
         rel="noopener noreferrer"
         style={iconStyle}
@@ -111,7 +111,7 @@ export default function SocialIcons() {
 
       {/* Email */}
       <a
-        href="mailto:ms.sorgente@gmail.com"
+        href="mailto:mario.sorgente@gmail.com"
         style={iconStyle}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
