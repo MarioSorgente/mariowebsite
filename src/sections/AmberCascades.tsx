@@ -102,8 +102,6 @@ export default function AmberCascades() {
         ctx.fill();
       }
       ctx.shadowBlur = 0;
-    };
-
 
       // Keep a subtle horizontal animated line near grid horizon for continuity.
       const lineYBase = height * 0.78;
