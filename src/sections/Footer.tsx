@@ -1,6 +1,10 @@
-import { footerConfig } from '../config';
+import { capabilitiesConfig, footerConfig } from '../config';
 
 export default function Footer() {
+  const capabilityLinksByTitle = new Map(
+    capabilitiesConfig.items.map((item) => [item.title, `/capability/${item.slug}`])
+  );
+
   if (!footerConfig.heading && footerConfig.columns.length === 0) {
     return null;
   }
@@ -56,16 +60,19 @@ export default function Footer() {
                     {column.title}
                   </span>
                 )}
-                {column.links.map((link) => (
-                  <a
-                    key={link}
-                    href="#"
-                    className="nav-link"
-                    style={{ width: 'fit-content' }}
-                  >
-                    {link}
-                  </a>
-                ))}
+                {column.links.map((link) => {
+                  const href = capabilityLinksByTitle.get(link) || '#';
+                  return (
+                    <a
+                      key={link}
+                      href={href}
+                      className="nav-link"
+                      style={{ width: 'fit-content' }}
+                    >
+                      {link}
+                    </a>
+                  );
+                })}
               </div>
             ))}
           </div>
