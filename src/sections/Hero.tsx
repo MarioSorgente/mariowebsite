@@ -30,24 +30,19 @@ export default function Hero() {
     >
       <AmberCascades />
       <RetroGrid />
-      <SocialIcons />
 
       <div className="absolute inset-0 z-[2] pointer-events-none" style={{background: 'linear-gradient(90deg, rgba(10,18,33,0.68) 0%, rgba(10,18,33,0.52) 34%, rgba(10,18,33,0.16) 64%, rgba(10,18,33,0.06) 100%)'}} />
 
       <div
-        className="relative z-10 flex flex-col justify-between pointer-events-none"
-        style={{
-          height: '100%',
-          padding: 'max(110px, 16vh) 5vw 8vh',
-        }}
+        className="relative z-10 flex min-h-screen flex-col justify-between px-6 pt-10 pb-16 md:px-[5vw] md:pt-[max(110px,16vh)] md:pb-[8vh] pointer-events-none"
       >
-        <div style={{ maxWidth: 'min(92vw, 760px)', paddingRight: 'clamp(0px, 8vw, 120px)' }}>
+        <div className="w-full md:max-w-[min(92vw,760px)] md:pr-[clamp(0px,8vw,120px)]">
           <h1
             ref={titleRef}
             style={{
               fontFamily: "'GeistMono', monospace",
               fontWeight: 400,
-              fontSize: 'clamp(42px, 11vw, 96px)',
+              fontSize: 'clamp(34px, 10vw, 96px)',
               lineHeight: 1.0,
               letterSpacing: 'clamp(-1px, -0.25vw, -3px)',
               color: '#ecf3ff',
@@ -83,7 +78,7 @@ export default function Hero() {
                 fontFamily: "'GeistMono', monospace",
                 fontWeight: 200,
                 fontSize: 'clamp(14px, 1.4vw, 20px)',
-                lineHeight: 1.8,
+                lineHeight: 1.6,
                 letterSpacing: '-0.3px',
                 color: '#c0d1ee',
                 margin: '0 0 16px 0',
@@ -100,8 +95,8 @@ export default function Hero() {
               style={{
                 fontFamily: "'GeistMono', monospace",
                 fontWeight: 300,
-                fontSize: 'clamp(15px, 1.5vw, 22px)',
-                lineHeight: 1.7,
+                fontSize: 'clamp(14px, 4.2vw, 22px)',
+                lineHeight: 1.55,
                 letterSpacing: '-0.3px',
                 color: '#d7e6ff',
                 margin: 0,
@@ -119,7 +114,7 @@ export default function Hero() {
         </div>
 
         {heroConfig.ctaText && (
-          <div style={{ display: 'flex', justifyContent: 'center' }} className="pointer-events-auto">
+          <div style={{ display: 'flex', justifyContent: 'center' }} className="pointer-events-auto mt-8 md:mt-0">
             <LiquidGlassButton
               onClick={() => {
                 document.querySelector('#curriculum')?.scrollIntoView({ behavior: 'smooth' });
@@ -129,6 +124,8 @@ export default function Hero() {
             </LiquidGlassButton>
           </div>
         )}
+
+        <SocialIcons />
       </div>
     </section>
   );
