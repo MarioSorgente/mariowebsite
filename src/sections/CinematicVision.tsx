@@ -46,7 +46,7 @@ export default function CinematicVision() {
       ref={sectionRef}
       style={{
         padding: '150px 5vw 80px',
-        background: '#f1f4f8',
+        background: '#0e131b',
         position: 'relative',
         zIndex: 2,
       }}
@@ -61,7 +61,7 @@ export default function CinematicVision() {
               fontWeight: 300,
               letterSpacing: '3px',
               textTransform: 'uppercase',
-              color: '#3b4f78',
+              color: '#a5b3cc',
               opacity: 0.6,
             }}
           >
@@ -73,7 +73,7 @@ export default function CinematicVision() {
           style={{
             width: '100%',
             height: 1,
-            background: 'rgba(18, 33, 63, 0.15)',
+            background: 'rgba(167, 186, 223, 0.20)',
           }}
         />
 
@@ -114,7 +114,7 @@ export default function CinematicVision() {
                   fontSize: 'clamp(32px, 4vw, 64px)',
                   lineHeight: 1.15,
                   letterSpacing: '-1px',
-                  color: '#0f2248',
+                  color: '#e6edff',
                   margin: 0,
                   flex: '0 0 50%',
                   textWrap: 'balance',

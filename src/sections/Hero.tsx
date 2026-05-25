@@ -48,8 +48,8 @@ export default function Hero() {
               fontSize: 'clamp(48px, 6vw, 96px)',
               lineHeight: 1.0,
               letterSpacing: '-3px',
-              color: '#0f2248',
-              textShadow: '0 4px 24px rgba(255,255,255,0.55)',
+              color: '#e6edff',
+              textShadow: '0 4px 24px rgba(0,0,0,0.35)',
               marginBottom: 'clamp(16px, 2vw, 24px)',
               width: 'fit-content',
             }}
@@ -108,7 +108,7 @@ export default function Hero() {
                 textShadow: '0 2px 12px rgba(0,0,0,0.6)',
               }}
             >
-              <span style={{ textDecoration: 'underline', textDecorationColor: 'rgba(63, 111, 216, 0.45)', textUnderlineOffset: '4px' }}>
+              <span style={{ textDecoration: 'underline', textDecorationColor: 'rgba(143, 176, 244, 0.55)', textUnderlineOffset: '4px' }}>
                 {heroConfig.subtitleLine2.split('.')[0]}.
               </span>
               {heroConfig.subtitleLine2.split('.').slice(1).join('.')}

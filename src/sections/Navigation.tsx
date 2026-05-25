@@ -30,9 +30,9 @@ export default function Navigation() {
       style={{
         height: 80,
         padding: '0 5vw',
-        backgroundColor: scrolled ? 'rgba(241, 244, 248, 0.9)' : 'transparent',
+        backgroundColor: scrolled ? 'rgba(14, 19, 27, 0.84)' : 'transparent',
         backdropFilter: scrolled ? 'blur(8px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(18, 33, 63, 0.08)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(167, 186, 223, 0.16)' : 'none',
       }}
     >
       <a
@@ -44,7 +44,7 @@ export default function Navigation() {
           fontSize: 18,
           fontWeight: 400,
           letterSpacing: '-0.5px',
-          color: '#10254f',
+          color: '#dbe5fb',
         }}
       >
         {siteConfig.brandName}

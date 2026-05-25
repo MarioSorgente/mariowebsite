@@ -46,7 +46,7 @@ export default function AlumniArchives() {
       id="alumni"
       style={{
         padding: '150px 5vw',
-        background: '#f1f4f8',
+        background: '#0e131b',
         position: 'relative',
         zIndex: 2,
       }}
@@ -61,7 +61,7 @@ export default function AlumniArchives() {
               fontWeight: 300,
               letterSpacing: '3px',
               textTransform: 'uppercase',
-              color: '#3b4f78',
+              color: '#a5b3cc',
               opacity: 0.6,
             }}
           >
@@ -73,7 +73,7 @@ export default function AlumniArchives() {
           style={{
             width: '100%',
             height: 1,
-            background: 'rgba(18, 33, 63, 0.15)',
+            background: 'rgba(167, 186, 223, 0.20)',
           }}
         />
 
@@ -92,8 +92,8 @@ export default function AlumniArchives() {
               className="group cursor-pointer"
               style={{
                 display: 'block',
-                borderBottom: '1px solid rgba(18, 33, 63, 0.12)',
-                borderRight: (i + 1) % 4 !== 0 ? '1px solid rgba(18, 33, 63, 0.12)' : 'none',
+                borderBottom: '1px solid rgba(167, 186, 223, 0.18)',
+                borderRight: (i + 1) % 4 !== 0 ? '1px solid rgba(167, 186, 223, 0.18)' : 'none',
                 padding: '24px 20px',
                 textDecoration: 'none',
               }}
@@ -130,7 +130,7 @@ export default function AlumniArchives() {
                   fontFamily: "'EB Garamond', serif",
                   fontWeight: 400,
                   fontSize: 18,
-                  color: '#0f2248',
+                  color: '#e6edff',
                   margin: '0 0 6px 0',
                   lineHeight: 1.3,
                 }}
@@ -145,7 +145,7 @@ export default function AlumniArchives() {
                     fontFamily: "'Inter', sans-serif",
                     fontWeight: 200,
                     fontSize: 12,
-                    color: '#3b4f78',
+                    color: '#a5b3cc',
                     opacity: 0.6,
                   }}
                 >
@@ -156,7 +156,7 @@ export default function AlumniArchives() {
                     fontFamily: "'Fira Code', monospace",
                     fontWeight: 400,
                     fontSize: 11,
-                    color: '#3b4f78',
+                    color: '#a5b3cc',
                     opacity: 0.4,
                   }}
                 >
