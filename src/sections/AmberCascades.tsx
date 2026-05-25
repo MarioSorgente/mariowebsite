@@ -141,7 +141,7 @@ function initAmberCascades(canvas: HTMLCanvasElement) {
     const time = timestamp / 1000;
 
     ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = '#0a0a0a';
+    ctx.fillStyle = '#f1f4f8';
     ctx.fillRect(0, 0, width, height);
 
     if (!prefersReduced) {
@@ -237,13 +237,13 @@ function initAmberCascades(canvas: HTMLCanvasElement) {
         if (brightness < 0.02) continue;
 
         let r: number, g: number, b: number;
-        if (j === 0) { r = 255; g = 245; b = 220; }
-        else if (j < 3) { r = 240; g = 200; b = 140; }
-        else { r = 200; g = 149; b = 108; }
+        if (j === 0) { r = 58; g = 102; b = 201; }
+        else if (j < 3) { r = 76; g = 124; b = 226; }
+        else { r = 129; g = 157; b = 222; }
 
         ctx.fillStyle = `rgba(${r},${g},${b},${brightness})`;
         if (j === 0) {
-          ctx.shadowColor = 'rgba(255, 220, 160, 0.6)';
+          ctx.shadowColor = 'rgba(63, 111, 216, 0.35)';
           ctx.shadowBlur = 8;
         }
         ctx.fillText(col.chars[j % col.chars.length].char, col.x + FONT_SIZE * 0.5, charY);
@@ -255,8 +255,8 @@ function initAmberCascades(canvas: HTMLCanvasElement) {
 
     // Draw water surface
     const waterGrad = ctx.createLinearGradient(0, waterSurface, 0, height);
-    waterGrad.addColorStop(0, 'rgba(15, 13, 11, 0.6)');
-    waterGrad.addColorStop(1, 'rgba(10, 10, 10, 0.95)');
+    waterGrad.addColorStop(0, 'rgba(219, 228, 246, 0.72)');
+    waterGrad.addColorStop(1, 'rgba(232, 237, 248, 0.95)');
     ctx.fillStyle = waterGrad;
     ctx.fillRect(0, waterSurface - 2, width, height - waterSurface + 2);
 
@@ -270,7 +270,7 @@ function initAmberCascades(canvas: HTMLCanvasElement) {
       if (x === 0) ctx.moveTo(x, py);
       else ctx.lineTo(x, py);
     }
-    ctx.strokeStyle = 'rgba(200, 170, 130, 0.25)';
+    ctx.strokeStyle = 'rgba(63, 111, 216, 0.25)';
     ctx.lineWidth = 1.5;
     ctx.stroke();
 
@@ -282,7 +282,7 @@ function initAmberCascades(canvas: HTMLCanvasElement) {
         if (ringRadius <= 0) continue;
         ctx.beginPath();
         ctx.ellipse(r.x, r.y + ring * 2, ringRadius, ringRadius * 0.3, 0, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(200, 170, 130, ${alpha * (1 - ring * 0.3)})`;
+        ctx.strokeStyle = `rgba(63, 111, 216, ${alpha * (1 - ring * 0.3)})`;
         ctx.lineWidth = 1 - ring * 0.2;
         ctx.stroke();
       }

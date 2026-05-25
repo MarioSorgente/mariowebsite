@@ -30,20 +30,21 @@ export default function Navigation() {
       style={{
         height: 80,
         padding: '0 5vw',
-        backgroundColor: scrolled ? 'rgba(10, 10, 10, 0.95)' : 'transparent',
+        backgroundColor: scrolled ? 'rgba(241, 244, 248, 0.9)' : 'transparent',
         backdropFilter: scrolled ? 'blur(8px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.05)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(18, 33, 63, 0.08)' : 'none',
       }}
     >
       <a
         href="#hero"
         onClick={(e) => handleClick(e, '#hero')}
-        className="text-white no-underline"
+        className="no-underline"
         style={{
           fontFamily: "'GeistMono', monospace",
           fontSize: 18,
           fontWeight: 400,
           letterSpacing: '-0.5px',
+          color: '#10254f',
         }}
       >
         {siteConfig.brandName}

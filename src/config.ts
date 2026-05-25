@@ -208,18 +208,18 @@ export const researchConfig: ResearchConfig = {
   sectionLabel: "Companies Founded",
   projects: [
     {
-      title: "Binderly",
-      year: "2025",
-      discipline: "Smart Organization",
-      image: "/images/research-1.jpg",
-      href: "https://www.binderly-lca.com/intro",
-    },
-    {
       title: "yourwai.tech",
       year: "2023",
       discipline: "AI Creative Tools",
       image: "/images/research-2.jpg",
       href: "https://yourwai.tech/",
+    },
+    {
+      title: "Binderly",
+      year: "2025",
+      discipline: "Smart Organization",
+      image: "/images/research-1.jpg",
+      href: "https://www.binderly-lca.com/intro",
     },
     {
       title: "ADES",

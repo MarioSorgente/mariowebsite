@@ -10,10 +10,10 @@ export default function Footer() {
       id="footer"
       style={{
         padding: '150px 5vw 60px',
-        background: '#0a0a0a',
+        background: '#f1f4f8',
         position: 'relative',
         zIndex: 2,
-        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        borderTop: '1px solid rgba(18, 33, 63, 0.1)',
       }}
     >
       <div style={{ maxWidth: 1400, margin: '0 auto' }}>
@@ -25,7 +25,7 @@ export default function Footer() {
               fontSize: 'clamp(40px, 5vw, 80px)',
               lineHeight: 1.1,
               letterSpacing: '-1.44px',
-              color: '#ffffff',
+              color: '#0f2248',
               marginBottom: 80,
             }}
           >
@@ -48,7 +48,7 @@ export default function Footer() {
                       fontWeight: 300,
                       letterSpacing: '3px',
                       textTransform: 'uppercase',
-                      color: '#dadada',
+                      color: '#3b4f78',
                       opacity: 0.4,
                       marginBottom: 8,
                     }}
@@ -75,7 +75,7 @@ export default function Footer() {
           className="flex flex-col md:flex-row items-start md:items-center justify-between"
           style={{
             paddingTop: 24,
-            borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+            borderTop: '1px solid rgba(18, 33, 63, 0.1)',
             gap: 16,
           }}
         >
@@ -85,7 +85,7 @@ export default function Footer() {
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 200,
                 fontSize: 12,
-                color: '#dadada',
+                color: '#3b4f78',
                 opacity: 0.4,
               }}
             >
@@ -102,7 +102,7 @@ export default function Footer() {
                     fontFamily: "'Inter', sans-serif",
                     fontWeight: 200,
                     fontSize: 12,
-                    color: '#dadada',
+                    color: '#3b4f78',
                     opacity: 0.4,
                     textDecoration: 'none',
                     transition: 'opacity 0.3s',
