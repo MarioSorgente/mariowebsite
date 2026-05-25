@@ -41,13 +41,13 @@ export default function Hero() {
           padding: 'max(110px, 16vh) 5vw 8vh',
         }}
       >
-        <div>
+        <div style={{ maxWidth: 'min(92vw, 760px)' }}>
           <h1
             ref={titleRef}
             style={{
               fontFamily: "'GeistMono', monospace",
               fontWeight: 400,
-              fontSize: 'clamp(48px, 6vw, 96px)',
+              fontSize: 'clamp(42px, 11vw, 96px)',
               lineHeight: 1.0,
               letterSpacing: 'clamp(-1px, -0.25vw, -3px)',
               color: '#ecf3ff',
@@ -63,7 +63,7 @@ export default function Hero() {
             className="mb-6"
             style={{
               fontFamily: "'Inter', sans-serif",
-              fontSize: 13,
+              fontSize: 12,
               fontWeight: 500,
               letterSpacing: '4px',
               textTransform: 'uppercase',
