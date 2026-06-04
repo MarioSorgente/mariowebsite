@@ -6,6 +6,7 @@ import CinematicVision from './sections/CinematicVision';
 import AlumniArchives from './sections/AlumniArchives';
 import Footer from './sections/Footer';
 import CapabilityDetail from './sections/CapabilityDetail';
+import Blog from './sections/Blog';
 
 function HomePage() {
   return (
@@ -23,6 +24,7 @@ function HomePage() {
         <Curriculum />
         <CinematicVision />
         <AlumniArchives />
+        <Blog />
         <Footer />
       </main>
     </div>
