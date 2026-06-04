@@ -180,10 +180,6 @@
   }
 
   .blog-intro {
-    align-items: end;
-    display: grid;
-    gap: 28px;
-    grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.65fr);
     margin-bottom: 28px;
   }
 
@@ -260,13 +256,18 @@
     padding: 14px;
   }
 
-  .blog-card-image-wrap img {
+  .blog-card-image-wrap img,
+  .blog-card-image-wrap video {
     display: block;
     height: 100%;
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
     width: 100%;
+  }
+
+  .blog-card-image-wrap video {
+    object-fit: cover;
   }
 
   .blog-card-body {
@@ -354,7 +355,8 @@
     min-width: 0;
   }
 
-  .blog-hero-figure img {
+  .blog-hero-figure img,
+  .blog-hero-figure video {
     display: block;
     flex: 1;
     height: auto;
@@ -362,6 +364,11 @@
     object-fit: contain;
     padding: clamp(14px, 2vw, 28px);
     width: 100%;
+  }
+
+  .blog-hero-figure video {
+    min-height: 360px;
+    object-fit: cover;
   }
 
   .blog-hero-figure figcaption {
