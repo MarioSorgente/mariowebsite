@@ -130,7 +130,7 @@ const techStack = ['Vercel', 'GitHub', 'Claude Code', 'Codex', 'Firebase'];
 const differentiators = ['Pre-build agent design', 'Workflow decomposition', 'Step-level evals', 'Reflection logic', 'Safeguards', 'Readiness review'];
 
 export default function Blog() {
-  const [selectedArticle, setSelectedArticle] = useState(articles[0].slug);
+  const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
   const articleRef = useRef<HTMLElement>(null);
   const revealRefs = useRef<(HTMLElement | null)[]>([]);
 
@@ -161,15 +161,19 @@ export default function Blog() {
     return () => observer.disconnect();
   }, []);
 
-  const openArticle = (article: ArticleCard) => {
+  const toggleArticle = (article: ArticleCard) => {
     if (article.status === 'soon') {
       return;
     }
 
-    setSelectedArticle(article.slug);
-    window.setTimeout(() => {
-      articleRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 40);
+    const isOpen = selectedArticle === article.slug;
+    setSelectedArticle(isOpen ? null : article.slug);
+
+    if (!isOpen) {
+      window.setTimeout(() => {
+        articleRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 40);
+    }
   };
 
   return (
@@ -210,8 +214,9 @@ export default function Blog() {
                 key={article.slug}
                 type="button"
                 className={`blog-article-card ${isActive ? 'is-active' : ''}`}
-                onClick={() => openArticle(article)}
+                onClick={() => toggleArticle(article)}
                 disabled={!isReady}
+                aria-expanded={isActive}
                 aria-pressed={isActive}
               >
                 <span className="blog-card-image-wrap">
@@ -223,7 +228,7 @@ export default function Blog() {
                   <span className="blog-card-summary">{article.summary}</span>
                   <span className="blog-card-meta">
                     <span>{article.date}</span>
-                    <span>{article.readTime}</span>
+                    <span>{isActive ? 'Close article' : article.readTime}</span>
                   </span>
                 </span>
               </button>
