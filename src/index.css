@@ -146,3 +146,102 @@
     transform: scaleX(1);
   }
 }
+
+@layer components {
+  .blog-kicker {
+    color: #8fd8ff;
+    font-family: 'GeistMono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin: 0 0 14px;
+    text-transform: uppercase;
+  }
+
+  .blog-heading {
+    color: #edf5ff;
+    font-size: clamp(30px, 4vw, 54px);
+    line-height: 0.98;
+    letter-spacing: -1.6px;
+    margin: 0;
+  }
+
+  .blog-copy {
+    color: #b8c7df;
+    font-size: 17px;
+    font-weight: 200;
+    line-height: 1.8;
+  }
+
+  .blog-copy p {
+    margin: 0 0 22px;
+  }
+
+  .blog-sources {
+    color: rgba(184, 199, 223, 0.78);
+    font-family: 'GeistMono', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .blog-sources a {
+    color: #9edcff;
+    text-decoration: none;
+  }
+
+  .blog-sources a:hover {
+    text-decoration: underline;
+  }
+
+  .blog-pill-card {
+    border: 1px solid rgba(167, 186, 223, 0.18);
+    background: rgba(13, 24, 39, 0.72);
+    color: #dceaff;
+    font-family: 'GeistMono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    padding: 18px 20px;
+    text-transform: uppercase;
+  }
+
+  .blog-stack-chip {
+    border: 1px solid rgba(143, 216, 255, 0.26);
+    background: rgba(107, 179, 255, 0.08);
+    color: #d6ecff;
+    font-family: 'GeistMono', monospace;
+    font-size: 12px;
+    padding: 9px 12px;
+  }
+
+  .blog-figure {
+    border: 1px solid rgba(167, 186, 223, 0.18);
+    background: rgba(8, 13, 22, 0.82);
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .blog-figure img {
+    aspect-ratio: 16 / 10;
+    display: block;
+    filter: saturate(0.88) contrast(1.03);
+    height: auto;
+    object-fit: cover;
+    opacity: 0.88;
+    transition: opacity 0.4s ease, transform 0.7s ease, filter 0.4s ease;
+    width: 100%;
+  }
+
+  .blog-figure:hover img {
+    filter: saturate(1) contrast(1.05);
+    opacity: 1;
+    transform: scale(1.02);
+  }
+
+  .blog-figure figcaption {
+    border-top: 1px solid rgba(167, 186, 223, 0.14);
+    color: rgba(213, 227, 247, 0.74);
+    font-size: 13px;
+    line-height: 1.6;
+    padding: 16px 18px 18px;
+  }
+}

@@ -31,6 +31,7 @@ export const navigationConfig: NavigationConfig = {
     { label: "Services", href: "#curriculum" },
     { label: "Process", href: "#cinematic" },
     { label: "Portfolio", href: "#alumni" },
+    { label: "Blog", href: "#blog" },
     { label: "Contact", href: "#footer" },
   ],
   ctaText: "Get in touch",
