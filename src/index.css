@@ -180,10 +180,6 @@
   }
 
   .blog-intro {
-    align-items: end;
-    display: grid;
-    gap: 28px;
-    grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.65fr);
     margin-bottom: 28px;
   }
 

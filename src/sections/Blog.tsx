@@ -200,9 +200,6 @@ export default function Blog() {
             <p className="blog-kicker">Window shopper</p>
             <h2>Read the build notes</h2>
           </div>
-          <p>
-            Browse the latest articles from the studio. Click an available card to open the full story below; upcoming essays stay visible in the horizontal shelf without interrupting the reading flow.
-          </p>
         </div>
 
         <div
