@@ -13,6 +13,7 @@ import gradersGenerationImage from '../../pics/gradersgeneration.png';
 import evalsReviewImage from '../../pics/evalsreview.png';
 import reflectionLoopImage from '../../pics/reflectionloop.png';
 import allergyPanelVideo from '../../pics/Video Project.mp4';
+import airshieldImage from '../../public/images/airshield-case-study.svg';
 
 interface BlogImage {
   src: string;
@@ -29,10 +30,18 @@ interface ArticleCard {
   readTime: string;
   image: string;
   mediaType?: 'image' | 'video';
-  status: 'ready' | 'soon';
 }
 
 const articles: ArticleCard[] = [
+  {
+    slug: 'how-i-built-airshield',
+    title: 'How I built Airshield',
+    eyebrow: 'Founder case study',
+    summary: 'From a founder\'s helmet innovation to an investor-ready business, brand, website, and fundraising story.',
+    date: '2026',
+    readTime: '9 min read',
+    image: airshieldImage,
+  },
   {
     slug: 'how-did-i-build-ades',
     title: 'How I built ADES',
@@ -41,7 +50,6 @@ const articles: ArticleCard[] = [
     date: '2026',
     readTime: '8 min read',
     image: landingImage,
-    status: 'ready',
   },
   {
     slug: 'multi-agent-panel-nutrition-allergy',
@@ -52,17 +60,6 @@ const articles: ArticleCard[] = [
     readTime: '10 min read',
     image: allergyPanelVideo,
     mediaType: 'video',
-    status: 'ready',
-  },
-  {
-    slug: 'from-prompt-to-product-artifact',
-    title: 'From prompt to product artifact',
-    eyebrow: 'Coming soon',
-    summary: 'How product teams can move from chat output to shared, reviewable design systems.',
-    date: 'Next',
-    readTime: 'Draft',
-    image: canvasImage,
-    status: 'soon',
   },
 ];
 
@@ -133,6 +130,7 @@ const techStack = ['Vercel', 'GitHub', 'Claude Code', 'Codex', 'Firebase'];
 const differentiators = ['Pre-build agent design', 'Workflow decomposition', 'Step-level evals', 'Reflection logic', 'Safeguards', 'Readiness review'];
 const allergyPanelStack = ['Claude Code', 'Codex', 'ADES', 'Anthropic Claude', 'Kimi / Moonshot AI', 'Vercel', 'GitHub'];
 const allergyPanelPrinciples = ['Evidence intake first', 'Independent expert review', 'Structured debate', 'Moderator synthesis', 'Doctor-ready questions', 'Human medical oversight'];
+const airshieldWork = ['Founder discovery', 'Business Model Canvas', 'Brand narrative', 'Website strategy', 'Investor story', 'Fundraising deck'];
 
 export default function Blog() {
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
@@ -167,10 +165,6 @@ export default function Blog() {
   }, []);
 
   const toggleArticle = (article: ArticleCard) => {
-    if (article.status === 'soon') {
-      return;
-    }
-
     const isOpen = selectedArticle === article.slug;
     setSelectedArticle(isOpen ? null : article.slug);
 
@@ -197,7 +191,7 @@ export default function Blog() {
           className="blog-intro"
         >
           <div>
-            <p className="blog-kicker">Window shopper</p>
+            <p className="blog-kicker">Case studies</p>
             <h2>Read the build notes</h2>
           </div>
         </div>
@@ -209,15 +203,12 @@ export default function Blog() {
         >
           {articles.map((article) => {
             const isActive = article.slug === selectedArticle;
-            const isReady = article.status === 'ready';
-
             return (
               <button
                 key={article.slug}
                 type="button"
                 className={`blog-article-card ${isActive ? 'is-active' : ''}`}
                 onClick={() => toggleArticle(article)}
-                disabled={!isReady}
                 aria-expanded={isActive}
                 aria-pressed={isActive}
               >
@@ -241,6 +232,77 @@ export default function Blog() {
             );
           })}
         </div>
+
+        {selectedArticle === 'how-i-built-airshield' && (
+          <article ref={articleRef} className="blog-reader" aria-labelledby="airshield-blog-title">
+            <header ref={(el) => { revealRefs.current[20] = el; }} className="blog-reader-header">
+              <div className="blog-reader-copy">
+                <p className="blog-kicker">Case study · Strategy, product &amp; fundraising</p>
+                <h2 id="airshield-blog-title">How I built Airshield</h2>
+                <p>
+                  Airshield began with a founder who had a meaningful product idea: a new approach to helmet protection. But an invention alone is not yet a fundable business. I helped turn the founder's expertise into a clear company story, a credible website, a complete business model, and an investor strategy designed to open fundraising conversations.
+                </p>
+                <div className="blog-cta-row">
+                  <a className="blog-cta" href="https://www.airshieldhelmets.com/" target="_blank" rel="noopener noreferrer">Visit Airshield ↗</a>
+                  <a className="blog-cta blog-cta-secondary" href="https://drive.google.com/uc?export=download&amp;id=1B04BjaRXttfZucYs8SqomcD6iCCKYqsO" target="_blank" rel="noopener noreferrer">Download strategy deck ↓</a>
+                </div>
+              </div>
+              <figure className="blog-hero-figure">
+                <img src={airshieldImage} alt="Airshield case study cover featuring a protective helmet" />
+                <figcaption>One connected foundation: product positioning, digital presence, business model, and investor narrative.</figcaption>
+              </figure>
+            </header>
+
+            <div className="blog-reader-body">
+              <section className="blog-two-column">
+                <div>
+                  <p className="blog-kicker">The founder's problem</p>
+                  <h3 className="blog-heading">A strong product needed a business that investors could understand.</h3>
+                </div>
+                <div className="blog-copy">
+                  <p>The founder understood the protection problem and believed deeply in the solution. The gap was not passion or technical ambition; it was translation. Prospective customers needed to grasp the value quickly, partners needed to see a route to market, and investors needed evidence that the idea could become a scalable company.</p>
+                  <p>The early story had to answer difficult questions in plain language: Who is the first customer? What pain is urgent enough to change buying behavior? Why is Airshield different from established helmet options? How will the company reach buyers, make money, prove demand, and use investment responsibly? Without those connections, the website would be decoration and the pitch would feel like a product presentation rather than an investment case.</p>
+                </div>
+              </section>
+
+              <section className="blog-pill-grid" aria-label="Airshield project deliverables">
+                {airshieldWork.map((item) => <div key={item} className="blog-pill-card">{item}</div>)}
+              </section>
+
+              <section className="blog-copy blog-block">
+                <p className="blog-kicker">The business foundation</p>
+                <h3 className="blog-heading">Before designing pages, I designed the company logic.</h3>
+                <p>I worked from the founder's knowledge outward, turning conversations and assumptions into a Business Model Canvas. We defined customer segments, the value proposition for each audience, channels, customer relationships, key activities, resources, partners, costs, and revenue streams. This made hidden assumptions visible and gave us a practical list of what needed validation.</p>
+                <p>The canvas became our decision system. It kept the website from trying to speak to everyone, connected product benefits to commercial outcomes, and gave the fundraising narrative a believable path from today's concept to tomorrow's company. Instead of promising a giant market without a route into it, we could show a focused entry point, the partnerships required, and the milestones capital would unlock.</p>
+              </section>
+
+              <section className="blog-copy blog-block">
+                <p className="blog-kicker">The website</p>
+                <h3 className="blog-heading">I turned technical innovation into a clear, confident digital story.</h3>
+                <p>I structured and built the Airshield website around the questions a visitor asks in sequence: what is the problem, what is different about this solution, why should I believe it, and what should I do next? The visual system balances safety, performance, and innovation while the copy translates the founder's technical insight into benefits that customers, strategic partners, and investors can understand.</p>
+                <p>The site also became a credibility asset for outreach. It gives every introduction, pitch email, and investor conversation a consistent home. That consistency matters at an early stage: the founder no longer has to rebuild the explanation from scratch in every meeting, and every stakeholder encounters the same focused proposition.</p>
+                <p><a href="https://www.airshieldhelmets.com/" target="_blank" rel="noopener noreferrer">Explore the live Airshield website ↗</a></p>
+              </section>
+
+              <section className="blog-copy blog-block">
+                <p className="blog-kicker">The investor strategy</p>
+                <h3 className="blog-heading">The deck connects the vision to a credible use of capital.</h3>
+                <p>I developed the strategy deck as a fundraising tool, not a brochure. It frames the founder's problem, the market opportunity, the solution, differentiation, business model, go-to-market logic, and investment roadmap as one connected argument. Each section earns the next: the problem creates urgency, the solution creates interest, the model demonstrates commercial thinking, and the roadmap shows how funding reduces risk.</p>
+                <p>The result gives the founder a repeatable narrative for investor meetings and a foundation that can evolve as customer evidence, partnerships, testing, and traction grow. Most importantly, it changes the ask from “believe in my invention” to “help fund a clearly staged plan for building this company.”</p>
+                <div className="blog-cta-row">
+                  <a className="blog-cta" href="https://drive.google.com/uc?export=download&amp;id=1B04BjaRXttfZucYs8SqomcD6iCCKYqsO" target="_blank" rel="noopener noreferrer">Download the investor strategy deck ↓</a>
+                  <a className="blog-text-link" href="https://drive.google.com/file/d/1B04BjaRXttfZucYs8SqomcD6iCCKYqsO/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Preview on Google Drive ↗</a>
+                </div>
+              </section>
+
+              <section className="blog-copy blog-block">
+                <p className="blog-kicker">The outcome</p>
+                <h3 className="blog-heading">One founder story, built to work across product, web, and fundraising.</h3>
+                <p>Airshield now has more than an idea and a logo. The founder has a coherent business foundation, a public website that communicates the opportunity, and an investor-ready story for raising capital. The work demonstrates how I partner with founders: I do not begin with isolated deliverables. I find the strategic thread that connects the customer problem, the business model, the product experience, and the case for investment—then build every artifact around it.</p>
+              </section>
+            </div>
+          </article>
+        )}
 
         {selectedArticle === 'how-did-i-build-ades' && (
           <article

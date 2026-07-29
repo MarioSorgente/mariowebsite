@@ -476,6 +476,52 @@
     padding: 9px 12px;
   }
 
+  .blog-cta-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.6rem;
+  }
+
+  .blog-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0.75rem 1.1rem;
+    border: 1px solid #73d3ff;
+    background: #73d3ff;
+    color: #07111f;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 180ms ease, color 180ms ease;
+  }
+
+  .blog-cta:hover {
+    background: transparent;
+    color: #73d3ff;
+  }
+
+  .blog-cta-secondary {
+    background: transparent;
+    color: #73d3ff;
+  }
+
+  .blog-cta-secondary:hover {
+    background: #73d3ff;
+    color: #07111f;
+  }
+
+  .blog-text-link {
+    color: #9edfff;
+    font-size: 0.85rem;
+    text-underline-offset: 0.25rem;
+  }
+
   .blog-image-grid {
     display: grid;
     gap: 20px;
