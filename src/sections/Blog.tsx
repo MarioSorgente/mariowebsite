@@ -130,7 +130,7 @@ const techStack = ['Vercel', 'GitHub', 'Claude Code', 'Codex', 'Firebase'];
 const differentiators = ['Pre-build agent design', 'Workflow decomposition', 'Step-level evals', 'Reflection logic', 'Safeguards', 'Readiness review'];
 const allergyPanelStack = ['Claude Code', 'Codex', 'ADES', 'Anthropic Claude', 'Kimi / Moonshot AI', 'Vercel', 'GitHub'];
 const allergyPanelPrinciples = ['Evidence intake first', 'Independent expert review', 'Structured debate', 'Moderator synthesis', 'Doctor-ready questions', 'Human medical oversight'];
-const airshieldWork = ['Founder discovery', 'Business Model Canvas', 'Brand narrative', 'Website strategy', 'Investor story', 'Fundraising deck'];
+const airshieldWork = ['Founder discovery', 'Business Model Canvas', 'Website design & build', 'Higgsfield marketing', 'Investor story', 'Fundraising deck'];
 
 export default function Blog() {
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
@@ -278,10 +278,38 @@ export default function Blog() {
 
               <section className="blog-copy blog-block">
                 <p className="blog-kicker">The website</p>
-                <h3 className="blog-heading">I turned technical innovation into a clear, confident digital story.</h3>
+                <h3 className="blog-heading">The website became Airshield's digital front door.</h3>
                 <p>I structured and built the Airshield website around the questions a visitor asks in sequence: what is the problem, what is different about this solution, why should I believe it, and what should I do next? The visual system balances safety, performance, and innovation while the copy translates the founder's technical insight into benefits that customers, strategic partners, and investors can understand.</p>
                 <p>The site also became a credibility asset for outreach. It gives every introduction, pitch email, and investor conversation a consistent home. That consistency matters at an early stage: the founder no longer has to rebuild the explanation from scratch in every meeting, and every stakeholder encounters the same focused proposition.</p>
-                <p><a href="https://www.airshieldhelmets.com/" target="_blank" rel="noopener noreferrer">Explore the live Airshield website ↗</a></p>
+                <a className="blog-website-feature" href="https://www.airshieldhelmets.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit the live Airshield Helmets website">
+                  <span className="blog-browser-bar" aria-hidden="true">
+                    <span className="blog-browser-dots"><i /><i /><i /></span>
+                    <span className="blog-browser-url">airshieldhelmets.com</span>
+                  </span>
+                  <span className="blog-website-feature-body">
+                    <span className="blog-kicker">Live website</span>
+                    <strong>See how the Airshield story comes to life.</strong>
+                    <span>Explore the product positioning, brand, and founder vision on the website I built.</span>
+                    <b>Visit Airshield ↗</b>
+                  </span>
+                </a>
+              </section>
+
+              <section className="blog-two-column blog-block">
+                <div>
+                  <p className="blog-kicker">The marketing engine</p>
+                  <h3 className="blog-heading">I created the marketing material with Higgsfield.</h3>
+                </div>
+                <div className="blog-copy">
+                  <p>A new physical product needs to feel real before a full-scale production shoot is practical. I used Higgsfield as an AI creative-production tool to develop Airshield's marketing imagery and translate the brand direction into polished campaign material. This gave the founder a coherent visual world for the website, investor conversations, presentations, and social communication—not a collection of disconnected mockups.</p>
+                  <p>I established the visual direction first: premium protection, engineered performance, movement, and confidence. I then built and refined Higgsfield prompts around that system, controlling composition, environment, lighting, camera language, product emphasis, and brand tone. Iteration was essential. I selected the strongest generations, corrected inconsistencies, and shaped the final assets so they felt like one campaign.</p>
+                  <p>The resulting material helped show Airshield in context and communicate an ambition that technical diagrams alone could not. It also made the launch system efficient: one creative direction could support hero imagery, campaign concepts, social assets, pitch-deck visuals, and partner outreach while keeping the story recognizably Airshield.</p>
+                  <div className="blog-stack-list" aria-label="Marketing materials created with Higgsfield">
+                    {['Campaign art direction', 'Product visuals', 'Website imagery', 'Social content', 'Pitch-deck visuals'].map((item) => (
+                      <span key={item} className="blog-stack-chip">{item}</span>
+                    ))}
+                  </div>
+                </div>
               </section>
 
               <section className="blog-copy blog-block">
