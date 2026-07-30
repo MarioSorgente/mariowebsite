@@ -248,8 +248,8 @@ export default function Blog() {
                 </div>
               </div>
               <figure className="blog-hero-figure">
-                <img src={airshieldImage} alt="Airshield case study cover featuring a protective helmet" />
-                <figcaption>One connected foundation: product positioning, digital presence, business model, and investor narrative.</figcaption>
+                <img className="airshield-feature-image" src={airshieldImage} alt="Airshield case study cover featuring a protective helmet" />
+                <figcaption>Airshield presents the helmet as protection for riders who breathe exhaust, dust, and PM2.5 in traffic every day.</figcaption>
               </figure>
             </header>
 
@@ -274,6 +274,35 @@ export default function Blog() {
                 <h3 className="blog-heading">Before designing pages, I designed the company logic.</h3>
                 <p>I worked from the founder's knowledge outward, turning conversations and assumptions into a Business Model Canvas. We defined customer segments, the value proposition for each audience, channels, customer relationships, key activities, resources, partners, costs, and revenue streams. This made hidden assumptions visible and gave us a practical list of what needed validation.</p>
                 <p>The canvas became our decision system. It kept the website from trying to speak to everyone, connected product benefits to commercial outcomes, and gave the fundraising narrative a believable path from today's concept to tomorrow's company. Instead of promising a giant market without a route into it, we could show a focused entry point, the partnerships required, and the milestones capital would unlock.</p>
+              </section>
+
+              <section className="blog-two-column blog-block">
+                <div>
+                  <p className="blog-kicker">The product promise</p>
+                  <h3 className="blog-heading">Protection should not stop at the skull.</h3>
+                </div>
+                <div className="blog-copy">
+                  <p>Airshield's proposition starts with a daily reality for Indonesian riders: sitting inches from exhaust, road dust, and PM2.5. The product extends the familiar safety role of a helmet to the air a rider breathes, pairing premium filtration with a replaceable filter cartridge and a USB-C rechargeable battery.</p>
+                  <p>That makes the story tangible rather than abstract. The helmet is the durable product; the cartridge makes maintenance and repeat use visible; and recharging fits a routine customers already understand. The initial launch focus—Jakarta, Bali, and major cities across Java—also gave the commercial plan a specific place to learn before expanding.</p>
+                  <p className="blog-sources">Product details and launch positioning: <a href="https://www.airshieldhelmets.com/" target="_blank" rel="noopener noreferrer">Airshield Helmets</a>.</p>
+                </div>
+              </section>
+
+              <section className="blog-copy blog-block blog-economics-block">
+                <p className="blog-kicker">The unit economics</p>
+                <h3 className="blog-heading">A credible price begins by separating every cost—including CAC.</h3>
+                <p>A blended “cost per helmet” hides the decisions that determine whether growth creates value or consumes cash. We needed to separate the bill of materials and assembly from freight, duties, warehousing, payment fees, warranty and returns, customer support, and ongoing cartridge fulfilment. That produces a contribution margin we can actually manage instead of a gross-margin headline built on incomplete inputs.</p>
+                <div className="blog-cost-grid" aria-label="Airshield cost model components">
+                  <div><strong>Product</strong><span>Components, filtration system, battery, assembly, packaging and quality control.</span></div>
+                  <div><strong>Landed</strong><span>Freight, insurance, duties, local handling and inventory storage.</span></div>
+                  <div><strong>Transaction</strong><span>Payment fees, fulfilment, delivery, returns, warranty and customer care.</span></div>
+                  <div><strong>Acquisition</strong><span>Creative, paid media, partnerships, sales effort and promotions—the full CAC.</span></div>
+                </div>
+                <p>CAC plays a decisive role because a premium new category must first educate the market, build trust, and convert attention into a reservation or purchase. It is not just ad spend: a useful blended CAC divides all sales and marketing costs by the new customers acquired in the same period. We then compare that figure with first-order contribution margin, cartridge repeat margin, payback time, and customer lifetime value.</p>
+                <div className="blog-economics-formula" aria-label="Contribution economics formula">
+                  <span>Net revenue</span><b>−</b><span>landed product cost</span><b>−</b><span>variable service costs</span><b>−</b><span>CAC</span><b>=</b><strong>customer contribution</strong>
+                </div>
+                <p>This breakdown changes strategy. If CAC is too high, the answer may be sharper city targeting, partnerships with rider communities or employers, better referral loops, or stronger conversion—not simply a higher price. And because replaceable cartridges can create recurring revenue, cohort retention matters: repeat purchases can improve lifetime value, but they should never be used to excuse an acquisition model with an unrealistic payback period.</p>
               </section>
 
               <section className="blog-copy blog-block">
