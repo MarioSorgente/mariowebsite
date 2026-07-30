@@ -366,6 +366,10 @@
     width: 100%;
   }
 
+  .blog-hero-figure .airshield-feature-image {
+    object-fit: contain;
+  }
+
   .blog-hero-figure video {
     min-height: 360px;
     object-fit: cover;
@@ -458,6 +462,70 @@
   .blog-block {
     margin-bottom: 64px;
     max-width: 930px;
+  }
+
+  .blog-economics-block {
+    max-width: 1100px;
+  }
+
+  .blog-cost-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 32px 0;
+  }
+
+  .blog-cost-grid > div {
+    background: rgba(13, 24, 39, 0.72);
+    border: 1px solid rgba(143, 216, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 22px;
+  }
+
+  .blog-cost-grid strong {
+    color: #8fd8ff;
+    font-family: 'GeistMono', monospace;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+
+  .blog-cost-grid span {
+    color: #c4d2e7;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .blog-economics-formula {
+    align-items: center;
+    background: linear-gradient(90deg, rgba(56, 151, 199, 0.12), rgba(13, 24, 39, 0.76));
+    border-bottom: 1px solid rgba(143, 216, 255, 0.32);
+    border-top: 1px solid rgba(143, 216, 255, 0.32);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+    margin: 32px 0;
+    padding: 22px;
+  }
+
+  .blog-economics-formula span,
+  .blog-economics-formula strong {
+    color: #e4f2ff;
+    font-family: 'GeistMono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .blog-economics-formula b {
+    color: #8fd8ff;
+    font-weight: 400;
+  }
+
+  .blog-economics-formula strong {
+    color: #8fd8ff;
   }
 
   .blog-stack-list {
@@ -663,7 +731,8 @@
     }
 
     .blog-pill-grid,
-    .blog-image-grid {
+    .blog-image-grid,
+    .blog-cost-grid {
       grid-template-columns: 1fr;
     }
   }
