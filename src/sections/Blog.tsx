@@ -13,7 +13,7 @@ import gradersGenerationImage from '../../pics/gradersgeneration.png';
 import evalsReviewImage from '../../pics/evalsreview.png';
 import reflectionLoopImage from '../../pics/reflectionloop.png';
 import allergyPanelVideo from '../../pics/Video Project.mp4';
-import airshieldImage from '../../public/images/airshield-case-study.svg';
+import airshieldImage from '../../public/images/airshield-photo.svg';
 
 interface BlogImage {
   src: string;
@@ -248,7 +248,7 @@ export default function Blog() {
                 </div>
               </div>
               <figure className="blog-hero-figure">
-                <img className="airshield-feature-image" src={airshieldImage} alt="Airshield case study cover featuring a protective helmet" />
+                <img className="airshield-feature-image" src={airshieldImage} alt="Airshield rider wearing a filtration helmet with replaceable filter cartridge and USB-C rechargeable battery callouts" />
                 <figcaption>Airshield presents the helmet as protection for riders who breathe exhaust, dust, and PM2.5 in traffic every day.</figcaption>
               </figure>
             </header>
