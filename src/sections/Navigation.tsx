@@ -1,9 +1,22 @@
 import { useEffect, useState } from 'react';
 import { siteConfig, navigationConfig } from '../config';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const onBackground = location.pathname === '/background';
+  const links = onBackground
+    ? [
+        { label: 'Profile', href: '#profile' },
+        { label: 'Experience', href: '#experience' },
+        { label: 'Expertise', href: '#expertise' },
+        { label: 'Education', href: '#education' },
+        { label: 'Contact', href: '#contact' },
+      ]
+    : navigationConfig.links;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +28,16 @@ export default function Navigation() {
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    if (href.startsWith('/')) {
+      navigate(href);
+      setMobileMenuOpen(false);
+      return;
+    }
+    if (location.pathname !== '/') {
+      navigate(`/${href}`);
+      setMobileMenuOpen(false);
+      return;
+    }
     const el = document.querySelector(href);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
@@ -22,7 +45,7 @@ export default function Navigation() {
     }
   };
 
-  if (!siteConfig.brandName && navigationConfig.links.length === 0) {
+  if (!siteConfig.brandName && links.length === 0) {
     return null;
   }
 
@@ -37,8 +60,8 @@ export default function Navigation() {
     >
       <div className="flex items-center justify-between" style={{ minHeight: 80, padding: '0 5vw' }}>
         <a
-          href="#hero"
-          onClick={(e) => handleClick(e, '#hero')}
+          href={onBackground ? '/' : '#hero'}
+          onClick={(e) => handleClick(e, onBackground ? '/' : '#hero')}
           className="no-underline"
           style={{
             fontFamily: "'GeistMono', monospace",
@@ -52,7 +75,7 @@ export default function Navigation() {
         </a>
 
         <div className="hidden md:flex items-center" style={{ gap: 40 }}>
-          {navigationConfig.links.map((link) => (
+          {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
@@ -66,11 +89,11 @@ export default function Navigation() {
 
         {navigationConfig.ctaText && (
           <a
-            href="#footer"
-            onClick={(e) => handleClick(e, '#footer')}
+            href={onBackground ? 'https://www.linkedin.com/in/mario-sorgente' : '#footer'}
+            onClick={onBackground ? undefined : (e) => handleClick(e, '#footer')}
             className="nav-cta hidden md:inline-flex"
           >
-            {navigationConfig.ctaText}
+            {onBackground ? 'Connect on LinkedIn' : navigationConfig.ctaText}
           </a>
         )}
 
@@ -87,7 +110,7 @@ export default function Navigation() {
 
       {mobileMenuOpen && (
         <div className="md:hidden flex flex-col" style={{ padding: '0 5vw 20px', gap: 14 }}>
-          {navigationConfig.links.map((link) => (
+          {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
@@ -100,12 +123,12 @@ export default function Navigation() {
           ))}
           {navigationConfig.ctaText && (
             <a
-              href="#footer"
-              onClick={(e) => handleClick(e, '#footer')}
+              href={onBackground ? 'https://www.linkedin.com/in/mario-sorgente' : '#footer'}
+              onClick={onBackground ? undefined : (e) => handleClick(e, '#footer')}
               className="nav-cta inline-flex"
               style={{ width: 'fit-content', marginTop: 4 }}
             >
-              {navigationConfig.ctaText}
+              {onBackground ? 'Connect on LinkedIn' : navigationConfig.ctaText}
             </a>
           )}
         </div>
