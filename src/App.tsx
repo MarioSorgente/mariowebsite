@@ -1,41 +1,21 @@
-import { Routes, Route } from 'react-router-dom';
-import Navigation from './sections/Navigation';
-import Hero from './sections/Hero';
-import Curriculum from './sections/Curriculum';
-import CinematicVision from './sections/CinematicVision';
-import AlumniArchives from './sections/AlumniArchives';
-import Footer from './sections/Footer';
-import CapabilityDetail from './sections/CapabilityDetail';
-import Blog from './sections/Blog';
+import { useEffect, useState } from 'react';
+import { ArrowDown, ArrowUpRight, Check, Copy, Menu, X } from 'lucide-react';
+import { chapters, certifications, education, expertise, languages, metrics, pillars, profile, publications, type Company, type Role } from './data';
 
-function HomePage() {
-  return (
-    <div
-      style={{
-        background: '#0a0a0a',
-        minHeight: '100vh',
-        overflowX: 'hidden',
-      }}
-    >
-      <Navigation />
+const nav = [['Background','#background'],['Experience','#experience'],['Expertise','#expertise'],['Education','#education'],['Contact','#contact']];
+const metricPattern = /(120%|125%|99\.8%|95%|30%|28%|20%|1,000|170|TRL 8|15\+|1 to 7)/g;
 
-      <main>
-        <Hero />
-        <Curriculum />
-        <CinematicVision />
-        <AlumniArchives />
-        <Blog />
-        <Footer />
-      </main>
-    </div>
-  );
-}
-
-export default function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/capability/:slug" element={<CapabilityDetail />} />
-    </Routes>
-  );
-}
+function Header(){const [scrolled,setScrolled]=useState(false);const [open,setOpen]=useState(false);useEffect(()=>{const fn=()=>setScrolled(scrollY>30);addEventListener('scroll',fn,{passive:true});return()=>removeEventListener('scroll',fn)},[]);return <header className={`header ${scrolled?'compact':''}`}><div className="shell nav"><a className="brand" href="#top">Mario Sorgente<span>.</span></a><nav className={open?'navlinks open':'navlinks'} aria-label="Primary navigation">{nav.map(([label,href])=><a key={label} href={href} onClick={()=>setOpen(false)}>{label}</a>)}<a className="nav-cta" href={profile.linkedin} target="_blank" rel="noreferrer">Connect on LinkedIn <ArrowUpRight size={14}/></a></nav><button className="menu" onClick={()=>setOpen(!open)} aria-expanded={open} aria-label="Toggle navigation">{open?<X/>:<Menu/>}</button></div></header>}
+function SectionHeading({label,title}:{label:string,title:string}){return <div className="section-heading"><p className="eyebrow">{label}</p><h2>{title}</h2></div>}
+function Hero(){return <section id="top" className="hero shell"><div><p className="eyebrow">Senior Product Manager · AI Product Builder</p><h1>Building AI, platform and SaaS products <em>from ambiguity to scale.</em></h1><p className="hero-copy">Senior Product Manager with 6+ years of experience building B2B and B2C products across AI systems, LLM-powered workflows, agent design, SaaS platforms, energy and deep-tech.</p><div className="actions"><a className="button primary" href="#experience">View experience <ArrowDown size={16}/></a><a className="button secondary" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn profile <ArrowUpRight size={16}/></a></div></div><aside className="hero-aside"><p>I turn complex technical and commercial problems into focused product strategies, intuitive experiences and scalable products.</p><dl><div><dt>Based in</dt><dd>{profile.location}</dd></div><div><dt>Contact</dt><dd><a href={`mailto:${profile.email}`}>{profile.email}</a><br/><a href={`tel:${profile.phone.replaceAll(' ','')}`}>{profile.phone}</a></dd></div></dl><div className="status"><i/> Product leadership · AI products · Platform strategy</div></aside></section>}
+function ImpactMetrics(){return <section className="metrics-wrap" aria-label="Selected impact"><div className="metrics shell">{metrics.map(([value,label])=><div className="metric" key={value}><strong>{value}</strong><span>{label}</span></div>)}</div></section>}
+function ProfileStatement(){return <section id="background" className="section shell"><SectionHeading label="Background" title="Product direction where technology, users and business meet."/><div className="profile-grid"><div className="profile-copy"><p>Mario is a Senior Product Manager and product builder with experience across AI, SaaS, platform products, energy systems, deep-tech hardware and B2C digital products.</p><p>He specialises in turning ambiguous opportunities into clear product direction, leading cross-functional teams and taking products from discovery and validation through launch and scale.</p><p>His work includes public APIs, LLM-powered workflows, AI agents, platform architecture, product packaging, onboarding, access control, sustainability software and hardware-software systems.</p><p>He combines product strategy, technical understanding, UX thinking and commercial awareness to create products that are useful, explainable and viable in real operating environments.</p></div><div className="pillars">{pillars.map(([title,text],i)=><article key={title}><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>}
+function Highlight({text}:{text:string}){return <>{text.split(metricPattern).map((part,i)=>part.match(metricPattern)?<strong key={i}>{part}</strong>:part)}</>}
+function RoleBlock({role}:{role:Role}){const [expanded,setExpanded]=useState(false);const visible=expanded?role.achievements:role.achievements.slice(0,4);return <div className="role"><div className="role-head"><h4>{role.title}</h4><p>{role.dates}{role.location&&<><br/><span>{role.location}</span></>}</p></div>{role.summary&&<p className="role-summary">{role.summary}</p>}<ul>{visible.map((a,i)=><li key={i}><Highlight text={a}/></li>)}</ul>{role.achievements.length>4&&<button className="expand no-print" onClick={()=>setExpanded(!expanded)} aria-expanded={expanded}>{expanded?'Show less':'View full contribution'} <ArrowDown size={14}/></button>}<ul className="print-only">{role.achievements.slice(4).map((a,i)=><li key={i}><Highlight text={a}/></li>)}</ul>{role.technologies&&<div className="tags">{role.technologies.map(t=><span key={t}>{t}</span>)}</div>}</div>}
+function CompanyBlock({company}:{company:Company}){return <article className="company"><header className="company-head"><div><h3>{company.name}</h3>{company.description&&<p>{company.description}</p>}</div>{company.totalTenure&&<time>{company.totalTenure}</time>}</header><div className="roles">{company.roles.map((r,i)=><RoleBlock role={r} key={i}/>)}</div>{company.tags&&<div className="tags">{company.tags.map(t=><span key={t}>{t}</span>)}</div>}</article>}
+function Experience(){return <section id="experience" className="section experience shell"><SectionHeading label="Experience" title="Four chapters. One product-building practice."/>{chapters.map(ch=><div className="chapter" key={ch.id}><aside><span>{ch.number}</span><h3>{ch.title}</h3><p>{ch.introduction}</p></aside><div>{ch.companies.map(c=><CompanyBlock key={c.name} company={c}/>)}</div></div>)}</section>}
+function Expertise(){return <section id="expertise" className="section tonal"><div className="shell"><SectionHeading label="Core expertise" title="Strategy grounded in technical delivery."/><div className="expertise-grid">{expertise.map(([name,items],i)=><article key={name}><span>0{i+1}</span><h3>{name}</h3><ul>{items.map(x=><li key={x}>{x}</li>)}</ul></article>)}</div></div></section>}
+function Credentials(){return <section id="education" className="section shell"><SectionHeading label="Education & credentials" title="Engineering depth. Product breadth."/><div className="credentials"><div className="education">{education.map(([school,degree,field,dates])=><article key={degree}><div><p>{school}</p><h3>{degree}</h3><span>{field}</span></div><time>{dates}</time></article>)}</div><aside><h3>Languages</h3>{languages.map(([l,v])=><p key={l}><strong>{l}</strong><span>{v}</span></p>)}<h3 className="cert-title">Certifications</h3><ul>{certifications.map(c=><li key={c}>{c}</li>)}</ul></aside></div></section>}
+function Publications(){return <section className="section publications shell"><SectionHeading label="Selected writing & research" title="Publications"/><ol>{publications.map((p,i)=><li key={p}><span>0{i+1}</span><p>{p}</p></li>)}</ol></section>}
+function Contact(){const [copied,setCopied]=useState(false);async function copy(){await navigator.clipboard.writeText(profile.email);setCopied(true);setTimeout(()=>setCopied(false),2000)}return <footer id="contact" className="contact"><div className="shell"><p className="eyebrow">Start a conversation</p><div className="contact-grid"><div><h2>Let’s build something people can understand, use and scale.</h2><p>Open to senior product leadership, fractional product work and collaborations involving AI products, SaaS platforms and technically complex systems.</p></div><address><strong>{profile.name}</strong><a href={`mailto:${profile.email}`}>{profile.email}</a><a href={`tel:${profile.phone.replaceAll(' ','')}`}>{profile.phone}</a><span>{profile.location}</span><div className="actions"><a className="button light" href={profile.linkedin} target="_blank" rel="noreferrer">Connect on LinkedIn <ArrowUpRight size={16}/></a><button className="button outline" onClick={copy}>{copied?<Check size={16}/>:<Copy size={16}/>} {copied?'Email copied':'Copy email address'}</button></div></address></div><div className="footer-line"><span>© 2026 Mario Sorgente</span><a href="#top">Back to top ↑</a></div></div></footer>}
+export default function App(){return <><Header/><main><Hero/><ImpactMetrics/><ProfileStatement/><Experience/><Expertise/><Credentials/><Publications/></main><Contact/></>}
