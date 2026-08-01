@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowDownRight, ArrowUpRight, Check, Copy, MapPin } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, MapPin } from 'lucide-react';
 import Navigation from './Navigation';
 import { chapters, certifications, education, expertise, languages, metrics, publications, type Company, type Role } from '../data/backgroundData';
 import './background.css';
@@ -34,13 +34,11 @@ function CompanyBlock({ company }: { company: Company }) {
 }
 
 export default function Background() {
-  const [copied, setCopied] = useState(false);
-  const copyEmail = async () => { await navigator.clipboard.writeText('ms.sorgente@gmail.com'); setCopied(true); window.setTimeout(() => setCopied(false), 2200); };
   return <div className="background-page">
     <Navigation />
     <main>
       <section className="background-hero" aria-labelledby="background-title">
-        <div className="bg-container hero-grid"><div><p className="eyebrow">Senior Product Manager · AI Product Builder</p><h1 id="background-title">Mario Sorgente</h1><h2>Building AI, platform and SaaS products from ambiguity to scale.</h2></div><div className="hero-copy"><p>Senior Product Manager with 6+ years of experience building B2B and B2C products across AI systems, LLM-powered workflows, agent design, SaaS platforms, energy and deep-tech.</p><p>I turn complex technical and commercial problems into focused product strategies, intuitive experiences and scalable products.</p><div className="hero-actions"><a className="primary-action" href="#experience">View experience <ArrowDownRight size={17}/></a><a className="text-action" href={linkedIn}>LinkedIn profile <ArrowUpRight size={16}/></a></div><address><span><MapPin size={15}/>The Randstad, Netherlands</span><a href="mailto:ms.sorgente@gmail.com">ms.sorgente@gmail.com</a><a href="tel:+31687206252">+31 687206252</a></address></div></div>
+        <div className="bg-container hero-grid"><div><p className="eyebrow">Senior Product Manager · AI Product Builder</p><h1 id="background-title">Mario Sorgente</h1><h2>Building AI, platform and SaaS products from ambiguity to scale.</h2></div><div className="hero-copy"><p>Senior Product Manager with 6+ years of experience building B2B and B2C products across AI systems, LLM-powered workflows, agent design, SaaS platforms, energy and deep-tech.</p><p>I turn complex technical and commercial problems into focused product strategies, intuitive experiences and scalable products.</p><div className="hero-actions"><a className="primary-action" href="#experience">View experience <ArrowDownRight size={17}/></a><a className="text-action" href={linkedIn}>LinkedIn profile <ArrowUpRight size={16}/></a></div><address><span><MapPin size={15}/>Working remotely</span></address></div></div>
         <div className="bg-container status-line"><span /><p>Product leadership · AI products · Platform strategy</p></div>
       </section>
 
@@ -56,6 +54,6 @@ export default function Background() {
 
       <section className="bg-section publications-section"><div className="bg-container"><SectionHeading label="Publications" title="Selected writing and research."/><ol>{publications.map((title,i)=><li key={title}><span>{String(i+1).padStart(2,'0')}</span><p>{title}</p></li>)}</ol></div></section>
     </main>
-    <footer id="contact" className="background-contact"><div className="bg-container contact-grid"><div><p className="eyebrow">Start a conversation</p><h2>Let’s build something people can understand, use and scale.</h2><p>Open to senior product leadership, fractional product work and collaborations involving AI products, SaaS platforms and technically complex systems.</p></div><address><strong>Mario Sorgente</strong><a href="mailto:ms.sorgente@gmail.com">ms.sorgente@gmail.com</a><a href="tel:+31687206252">+31 687206252</a><span>The Randstad, Netherlands</span><div><a className="contact-cta" href={linkedIn}>Connect on LinkedIn <ArrowUpRight size={17}/></a><button type="button" onClick={copyEmail}>{copied ? <Check size={17}/> : <Copy size={17}/>} {copied ? 'Email copied' : 'Copy email address'}</button></div></address></div><div className="bg-container footer-line"><span>© 2026 Mario Sorgente</span><a href="/">Return to main website</a></div></footer>
+    <footer id="contact" className="background-contact"><div className="bg-container contact-grid"><div><p className="eyebrow">Start a conversation</p><h2>Let’s build something people can understand, use and scale.</h2><p>Open to senior product leadership, fractional product work and collaborations involving AI products, SaaS platforms and technically complex systems.</p></div><address><strong>Working remotely</strong><div><a className="contact-cta" href={linkedIn}>Connect on LinkedIn <ArrowUpRight size={17}/></a></div></address></div><div className="bg-container footer-line"><span>© 2026 Mario Sorgente</span><a href="/">Return to main website</a></div></footer>
   </div>;
 }
