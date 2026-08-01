@@ -32,6 +32,7 @@ export const navigationConfig: NavigationConfig = {
     { label: "Process", href: "#cinematic" },
     { label: "Portfolio", href: "#alumni" },
     { label: "Blog", href: "#blog" },
+    { label: "Background", href: "/background" },
     { label: "Contact", href: "#footer" },
   ],
   ctaText: "Get in touch",

@@ -7,6 +7,7 @@ import AlumniArchives from './sections/AlumniArchives';
 import Footer from './sections/Footer';
 import CapabilityDetail from './sections/CapabilityDetail';
 import Blog from './sections/Blog';
+import Background from './sections/Background';
 
 function HomePage() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/capability/:slug" element={<CapabilityDetail />} />
+      <Route path="/background" element={<Background />} />
     </Routes>
   );
 }
