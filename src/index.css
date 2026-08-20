@@ -43,6 +43,45 @@
 }
 
 @layer components {
+  @keyframes hero-title-shimmer {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes hero-title-enter {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-company-title {
+    background: linear-gradient(105deg, #f7fbff 8%, #83dcff 38%, #9ca9ff 62%, #f7fbff 92%);
+    background-clip: text;
+    background-size: 220% 100%;
+    color: transparent;
+    filter: drop-shadow(0 6px 22px rgba(72, 168, 255, 0.32));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: hero-title-enter 900ms cubic-bezier(0.22, 1, 0.36, 1) both,
+      hero-title-shimmer 7s ease-in-out 900ms infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-company-title {
+      animation: none;
+      background-position: 50% 50%;
+    }
+  }
+
   @keyframes blur-text {
     0% {
       filter: blur(0px);
