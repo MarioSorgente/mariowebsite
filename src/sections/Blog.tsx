@@ -192,7 +192,7 @@ export default function Blog() {
         >
           <div>
             <p className="blog-kicker">Case studies</p>
-            <h2>Read the build notes</h2>
+            <h2>Clients</h2>
           </div>
         </div>
 
