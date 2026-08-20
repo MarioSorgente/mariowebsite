@@ -50,8 +50,8 @@ export interface HeroConfig {
 }
 
 export const heroConfig: HeroConfig = {
-  title: "Mario Sorgente",
-  subtitleLine1: "Founder, artist and product lead in AI and software scaleups, with a background in physics engineering, business and a creative approach to building products.",
+  title: "Zero2Hero: Product Management",
+  subtitleLine1: "I'm Mario Sorgente, a founder, artist and product lead in AI and software scaleups, with a background in physics engineering, business and a creative approach to building products.",
   subtitleLine2: "I help founders turn ideas into real products. I can build product demo at zero cost in days.",
   ctaText: "Explore services",
 };

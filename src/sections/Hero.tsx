@@ -39,14 +39,13 @@ export default function Hero() {
         <div className="w-full max-w-full md:max-w-[min(92vw,760px)] md:pr-[clamp(0px,8vw,120px)]">
           <h1
             ref={titleRef}
+            className="hero-company-title"
             style={{
               fontFamily: "'GeistMono', monospace",
               fontWeight: 400,
               fontSize: 'clamp(30px, 10vw, 96px)',
               lineHeight: 1.0,
               letterSpacing: 'clamp(-1px, -0.25vw, -3px)',
-              color: '#ecf3ff',
-              textShadow: '0 4px 24px rgba(0,0,0,0.35)',
               marginBottom: 'clamp(16px, 2vw, 24px)',
               width: 'fit-content',
             }}
