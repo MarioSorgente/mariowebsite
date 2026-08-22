@@ -10,14 +10,14 @@ export default function MammaCaloriesCaseStudy({ readerRef }: Props) {
               <div className="blog-reader-copy">
                 <p className="blog-kicker">Case study · Nutrition-aware meal planning</p>
                 <h2 id="mamma-calories-blog-title">Mamma Calories: from nutrition targets to a week the kitchen can make</h2>
-                <p>Mamma Calories is a product prototype for turning a restaurant's real dishes into repeatable weekly meal plans with calories, macros, and prices visible before a client orders.</p>
+                <p>Mamma Calories is a production-ready product for turning a restaurant's real dishes into repeatable weekly meal plans with calories, macros, and prices visible before a client orders.</p>
                 <div className="blog-cta-row">
                   <a className="blog-cta" href="https://macronutrient.vercel.app/" target="_blank" rel="noopener noreferrer">Visit Mamma Calories ↗</a>
                 </div>
               </div>
               <figure className="blog-hero-figure mamma-calories-feature-figure">
                 <img loading="lazy" src={mammaCaloriesImage} alt="Mamma Calories restaurant meal-planning screen with Plan and Build navigation, nutrition-data guidance, a weekly planner, meal macro totals, and visible prices" />
-                <figcaption>The Mamma Calories prototype brings restaurant-branded meals, nutrition information, weekly planning, and price review into one Plan &amp; Build journey.</figcaption>
+                <figcaption>Mamma Calories brings restaurant-branded meals, nutrition information, weekly planning, and price review into one working Plan &amp; Build journey.</figcaption>
               </figure>
             </header>
 
@@ -25,8 +25,8 @@ export default function MammaCaloriesCaseStudy({ readerRef }: Props) {
               <section className="blog-two-column">
                 <div><p className="blog-kicker">The opportunity</p><h3 className="blog-heading">The ingredients already exist. The planning connection does not.</h3></div>
                 <div className="blog-copy">
-                  <p>Restaurants already know the dishes their kitchens can prepare, the ingredients those dishes use, and what each portion costs. Coaches and clients work from a different set of inputs: daily calories, protein, carbohydrate and fat targets, dietary preferences, and the need for a routine that can be repeated.</p>
-                  <p>The opportunity is to connect those realities. Instead of suggesting an idealized meal that is unavailable or asking a client to calculate every order manually, the product can make restaurant food plan-able: transparent enough to compare, practical enough to prepare, and priced before commitment.</p>
+                  <p>Interviews with the founders and coaches repeatedly surfaced a coordination problem: coaches needed to prepare meal plans for clients, while restaurant dishes, nutrition targets, availability, and prices lived in separate workflows.</p>
+                  <p>That observed need established the problem. The product hypothesis was that connecting those inputs would make restaurant food easier to plan, compare, prepare, and price before commitment.</p>
                 </div>
               </section>
 
@@ -59,7 +59,7 @@ export default function MammaCaloriesCaseStudy({ readerRef }: Props) {
               <section className="blog-two-column blog-block">
                 <div><p className="blog-kicker">Visible product decisions</p><h3 className="blog-heading">Reduce the distance between curiosity and a useful first plan.</h3></div>
                 <div className="blog-copy">
-                  <p>The supplied screen puts nutrition-data messaging near the start of the experience so users can understand what the numbers represent. That language must remain precise: data can be sourced and calculated consistently, but it should not be described as clinically verified unless the source, reviewer, method, and review date are confirmed.</p>
+                  <p>The product puts nutrition-data messaging near the start of the experience so users can understand what the numbers represent. The figures support planning and comparison; they are not presented as medical advice.</p>
                   <p>People can begin planning without creating an account, while the simple “Plan &amp; Build” navigation keeps the core job prominent. The weekly ordering frame matches how meal prep is actually organized, and restaurant-specific branding makes it clear which kitchen, menu, prices, and fulfilment constraints apply.</p>
                 </div>
               </section>
@@ -73,10 +73,10 @@ export default function MammaCaloriesCaseStudy({ readerRef }: Props) {
               </section>
 
               <section className="blog-two-column blog-block">
-                <div><p className="blog-kicker">Mario's role &amp; prototype scope</p><h3 className="blog-heading">Build the smallest complete loop, not an imaginary platform.</h3></div>
+                <div><p className="blog-kicker">Mario's role &amp; build scope</p><h3 className="blog-heading">Product lead from demand research through production build.</h3></div>
                 <div className="blog-copy">
-                  <p>Mario framed the opportunity, mapped the restaurant–coach–client service model, designed the planning journey and information hierarchy, and built the responsive prototype. The scope demonstrates menu discovery, nutrition visibility, weekly plan assembly, target comparison, cost review, and a preparation-request handoff.</p>
-                  <p>The technical approach uses a structured menu and recipe model behind a responsive web interface, with calculations derived from ingredient quantities and serving yields. The prototype does not claim completed restaurant, point-of-sale, delivery, payment, or clinical-data integrations, and it does not demonstrate traction.</p>
+                  <p>As product lead working with the founders, Mario took Mamma Calories from zero to one. He analyzed demand, validated the problem with the founders, the market, and early leads, then researched and designed the restaurant–coach–client journey and information hierarchy.</p>
+                  <p>Mario built the responsive, database-backed product, including menu discovery, nutrition visibility, weekly plan assembly, target comparison, cost review, and the preparation-request handoff. These features work today and are not illustrative.</p>
                 </div>
               </section>
 
@@ -88,11 +88,11 @@ export default function MammaCaloriesCaseStudy({ readerRef }: Props) {
               </section>
 
               <section className="blog-outcome" aria-labelledby="mamma-validation-title">
-                <p className="blog-kicker">Next validation steps</p>
-                <h3 id="mamma-validation-title" className="blog-heading">Test the service loop before scaling the feature set.</h3>
+                <p className="blog-kicker">Evidence &amp; ongoing learning</p>
+                <h3 id="mamma-validation-title" className="blog-heading">A working service loop, tested continuously.</h3>
                 <div className="blog-outcome-grid">
-                  <div><strong>Qualitative evidence</strong><p>Interview coaches about target setting and plan review, then run restaurant onboarding trials to test recipe entry, staff effort, substitutions, fulfilment, and preparation accuracy.</p></div>
-                  <div><strong>Behavioral evidence</strong><p>Measure plan completion, submitted requests, repeat ordering, target comprehension, preparation discrepancies, and restaurant and client willingness to pay—without claiming these outcomes before trials are complete.</p></div>
+                  <div><strong>Observed evidence</strong><p>Founders and coaches described the recurring work of preparing meals for clients. Restaurants, coaches, and clients continue to participate in product testing.</p></div>
+                  <div><strong>What remains a hypothesis</strong><p>Testing continues to examine how the workflow fits day-to-day planning and preparation. No claim is made here about repeat ordering, preparation accuracy, or willingness to pay.</p></div>
                 </div>
               </section>
             </div>

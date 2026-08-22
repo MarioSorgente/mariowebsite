@@ -11,7 +11,7 @@ export default function GoJobCaseStudy({ readerRef }: Props) {
                 <p className="blog-kicker">Case study · Hospitality hiring</p>
                 <h2 id="gojob-blog-title">GoJob: from application noise to a useful shortlist</h2>
                 <p>
-                  GoJob explores a focused hiring experience for Bali's restaurants, cafés, bars, hotels, and beach clubs: start with the role, surface relevant local candidates, show why each person may fit, and make the next conversation easy.
+                  GoJob is a production-ready hiring product for Bali's restaurants, cafés, bars, hotels, and beach clubs: start with the role, surface relevant local candidates, show why each person may fit, and make the next conversation easy.
                 </p>
                 <div className="blog-cta-row">
                   <a className="blog-cta" href="https://gojob-xi.vercel.app/" target="_blank" rel="noopener noreferrer">Visit GoJob ↗</a>
@@ -30,8 +30,8 @@ export default function GoJobCaseStudy({ readerRef }: Props) {
                   <h3 className="blog-heading">A full inbox is not the same as a credible candidate pipeline.</h3>
                 </div>
                 <div className="blog-copy">
-                  <p>Bali hospitality operators often need to hire against the clock. A restaurant, café, bar, hotel, or beach club can attract a noisy mix of messages and applications, but the employer still has to work out who is legitimate, relevant to the role, nearby, and actually available.</p>
-                  <p>The problem is not simply application volume. It is the lack of comparable information. Experience may be buried in a message, availability may be missing, and role fit may depend on language or location. Manual filtering turns the owner's inbox into an improvised applicant-tracking system.</p>
+                  <p>Conversations with the founders and early customers repeatedly surfaced the same problem: hospitality employers needed to hire new people, but applications arrived without enough consistent information to compare candidates efficiently.</p>
+                  <p>Employers described experience buried in messages, missing availability, and role fit that depended on language or location. That observed evidence established the need for a clearer first-pass workflow; it did not, by itself, prove that ranked matching would solve it.</p>
                 </div>
               </section>
 
@@ -61,7 +61,7 @@ export default function GoJobCaseStudy({ readerRef }: Props) {
                 </div>
                 <div className="blog-copy">
                   <p>A useful filter should weigh signals that matter in Bali hospitality: stated availability, relevant role experience, working languages, location, profile completeness, and overall fit with the role requirements. Employers should be able to see which signals contributed instead of trusting an unexplained score.</p>
-                  <p>Identity and profile completeness can also help employers assess whether to start a conversation, but they are not interchangeable. A complete profile is not proof of identity, and a match score is not proof that someone is available or suitable. <strong>Confirmation before publication:</strong> confirm which signals GoJob currently collects, which it actively checks, and whether any identity-verification flow exists. Until confirmed, these are product principles and proposed ranking inputs—not claims about live verification capabilities.</p>
+                  <p>Profile completeness can help an employer decide whether to start a conversation, but it is not proof that someone is available or suitable. Match signals support review rather than replace the employer's judgment.</p>
                 </div>
               </section>
 
@@ -74,28 +74,28 @@ export default function GoJobCaseStudy({ readerRef }: Props) {
 
               <section className="blog-copy blog-block">
                 <p className="blog-kicker">Mario's role &amp; build process</p>
-                <h3 className="blog-heading">I turned a local operating problem into a testable product flow.</h3>
-                <p>My role spanned product framing, journey design, information hierarchy, interface decisions, and prototype delivery. I started with the employer's decision—not the database—and worked backward: what must an owner know before inviting someone to talk, what evidence can be shown concisely, and which details should remain available in the full profile?</p>
-                <p>I translated that reasoning into the role-first flow, a ranked candidate-card system, bilingual entry points, and a responsive working experience. The build is deliberately narrow: enough of the end-to-end journey to test whether structured matching is more useful than manual inbox filtering, without pretending that the ranking model or trust layer is finished.</p>
+                <h3 className="blog-heading">Product lead from demand research through production build.</h3>
+                <p>As product lead working with the founders, I took GoJob from zero to one. I analyzed demand, validated the problem with the founders, the market, and early leads, then shaped the journey, information hierarchy, interface, and technical build.</p>
+                <p>I built the role-first workflow, ranked candidate cards, bilingual entry points, responsive experience, and database-backed product. The features shown are working product features, not illustrative screens.</p>
               </section>
 
               <section className="blog-two-column blog-block">
                 <div>
-                  <p className="blog-kicker">Validation &amp; next experiments</p>
-                  <h3 className="blog-heading">The next evidence must come from hiring behavior, not interface polish.</h3>
+                  <p className="blog-kicker">Validation &amp; ongoing learning</p>
+                  <h3 className="blog-heading">Observed demand informs the product; outcomes still require evidence.</h3>
                 </div>
                 <div className="blog-copy">
-                  <p>The prototype validates that the core journey can be expressed as one coherent experience. It does not yet establish candidate quality, employer demand, ranking accuracy, trust, or commercial willingness to pay. <strong>Confirmation before publication:</strong> add any completed employer interviews, candidate research, or live hiring trials only after the evidence and wording have been reviewed.</p>
-                  <p>Next experiments should test whether employers understand the match evidence, which criteria they actually use, whether the ranking changes whom they contact, and where candidates abandon profile completion. A small role-by-role pilot could compare a GoJob shortlist with the operator's existing process, while interviews probe language preferences, freshness of availability, location radius, and the minimum trust signals required before chat.</p>
+                  <p>Founder and early-customer interviews established the recurring hiring problem and informed the product direction. Recruiters and clients are involved in ongoing testing of the working product.</p>
+                  <p>The remaining hypotheses concern behavior and results: whether employers understand and use the match evidence, whether ranking changes whom they contact, and whether the workflow supports repeat hiring. Those outcomes are not claimed here.</p>
                 </div>
               </section>
 
               <section className="blog-outcome" aria-labelledby="gojob-outcome-title">
                 <p className="blog-kicker">Outcome</p>
-                <h3 id="gojob-outcome-title" className="blog-heading">Built is not the same as commercially validated.</h3>
+                <h3 id="gojob-outcome-title" className="blog-heading">A working product, with commercial outcomes still to establish.</h3>
                 <div className="blog-outcome-grid">
-                  <div><strong>What was built</strong><p>A Bali-specific, bilingual product prototype with role setup, ranked local matches, concise fit evidence, live-role context, candidate review, and an invite-to-chat action.</p></div>
-                  <div><strong>What remains unvalidated</strong><p>Repeat employer use, successful hires, candidate supply and quality, ranking performance, willingness to pay, and any verification or integration capability. These should not be claimed without evidence.</p></div>
+                  <div><strong>What was built</strong><p>A production-ready, database-backed product with role setup, ranked local matches, concise fit evidence, live-role context, candidate review, and an invite-to-chat action.</p></div>
+                  <div><strong>What is not claimed</strong><p>No claim is made here about repeat use, successful hires, ranking performance, or willingness to pay. Ongoing testing is intended to establish those outcomes.</p></div>
                 </div>
               </section>
             </div>
