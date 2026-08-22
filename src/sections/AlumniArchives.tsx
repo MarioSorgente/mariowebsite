@@ -53,29 +53,17 @@ export default function AlumniArchives() {
     >
       <div style={{ maxWidth: 1400, margin: '0 auto' }}>
         {researchConfig.sectionLabel && (
-          <div
-            className="mb-6"
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 12,
-              fontWeight: 300,
-              letterSpacing: '3px',
-              textTransform: 'uppercase',
-              color: '#a5b3cc',
-              opacity: 0.6,
-            }}
-          >
-            {researchConfig.sectionLabel}
-          </div>
+          <header className="portfolio-intro">
+            <div className="portfolio-section-label">Founder-led ventures</div>
+            <h2 className="portfolio-heading">
+              Portfolio <span aria-hidden="true">·</span> {researchConfig.sectionLabel}
+            </h2>
+            <p className="portfolio-description">
+              Companies Mario founded and led from the first idea—shaping the product, design, and path to market rather than simply contributing to a project gallery.
+            </p>
+          </header>
         )}
-        <div
-          className="mb-16"
-          style={{
-            width: '100%',
-            height: 1,
-            background: 'rgba(167, 186, 223, 0.20)',
-          }}
-        />
+        <div className="portfolio-divider" />
 
         <div
           ref={gridRef}

@@ -217,6 +217,53 @@
     text-transform: uppercase;
   }
 
+  .portfolio-section-label {
+    color: #8fd8ff;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+
+  .portfolio-intro,
+  .blog-intro {
+    margin-bottom: clamp(34px, 5vw, 64px);
+  }
+
+  .portfolio-heading,
+  .blog-intro .portfolio-heading {
+    color: #f0f6ff;
+    font-size: clamp(44px, 7vw, 86px);
+    letter-spacing: -3px;
+    line-height: 0.98;
+    margin: 0;
+    max-width: 1050px;
+    text-wrap: balance;
+  }
+
+  .portfolio-heading span {
+    color: #8fd8ff;
+  }
+
+  .portfolio-description,
+  .blog-intro .portfolio-description {
+    color: #b8c7df;
+    font-size: clamp(16px, 1.5vw, 19px);
+    font-weight: 200;
+    line-height: 1.7;
+    margin: 24px 0 0;
+    max-width: 720px;
+  }
+
+  .portfolio-divider {
+    background: rgba(167, 186, 223, 0.20);
+    height: 1px;
+    margin-bottom: clamp(42px, 6vw, 80px);
+    width: 100%;
+  }
+
   .blog-divider {
     background: rgba(167, 186, 223, 0.20);
     height: 1px;
@@ -224,26 +271,6 @@
     width: 100%;
   }
 
-  .blog-intro {
-    margin-bottom: 28px;
-  }
-
-  .blog-intro h2 {
-    color: #f0f6ff;
-    font-size: clamp(42px, 7vw, 86px);
-    letter-spacing: -3px;
-    line-height: 0.98;
-    margin: 0;
-  }
-
-  .blog-intro p:last-child {
-    color: #b8c7df;
-    font-size: 17px;
-    font-weight: 200;
-    line-height: 1.7;
-    margin: 0;
-    max-width: 560px;
-  }
 
   .blog-article-rail {
     display: grid;
@@ -785,6 +812,18 @@
   @media (max-width: 640px) {
     .blog-section {
       padding: 120px 5vw;
+    }
+
+    .portfolio-heading,
+    .blog-intro .portfolio-heading {
+      font-size: clamp(36px, 11vw, 52px);
+      letter-spacing: -1.5px;
+      line-height: 1.02;
+    }
+
+    .portfolio-description,
+    .blog-intro .portfolio-description {
+      margin-top: 18px;
     }
 
     .blog-article-rail {
