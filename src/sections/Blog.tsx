@@ -182,7 +182,7 @@ export default function Blog() {
           ref={(el) => { revealRefs.current[0] = el; }}
           className="blog-section-label"
         >
-          Blog
+          Selected work
         </div>
         <div className="blog-divider" />
 
@@ -190,16 +190,16 @@ export default function Blog() {
           ref={(el) => { revealRefs.current[1] = el; }}
           className="blog-intro"
         >
-          <div>
-            <p className="blog-kicker">Case studies</p>
-            <h2>Clients</h2>
-          </div>
+          <h2 className="portfolio-heading">Portfolio <span aria-hidden="true">·</span> Case Studies</h2>
+          <p className="portfolio-description">
+            Products and companies Mario has helped define, design, and build—from early strategy through working experiences.
+          </p>
         </div>
 
         <div
           ref={(el) => { revealRefs.current[2] = el; }}
           className="blog-article-rail"
-          aria-label="Blog article list"
+          aria-label="Portfolio case studies"
         >
           {articles.map((article) => {
             const isActive = article.slug === selectedArticle;

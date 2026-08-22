@@ -30,8 +30,8 @@ export const navigationConfig: NavigationConfig = {
   links: [
     { label: "Services", href: "#curriculum" },
     { label: "Process", href: "#cinematic" },
-    { label: "Portfolio", href: "#alumni" },
-    { label: "Blog", href: "#blog" },
+    { label: "Companies Founded", href: "#alumni" },
+    { label: "Case Studies", href: "#blog" },
     { label: "Background", href: "/background" },
     { label: "Contact", href: "#footer" },
   ],
