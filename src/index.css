@@ -442,6 +442,14 @@
     object-fit: contain;
   }
 
+  .blog-hero-figure.gojob-feature-figure {
+    background: #f5f7fb;
+  }
+
+  .blog-hero-figure.gojob-feature-figure img {
+    max-height: 640px;
+  }
+
   .blog-hero-figure video {
     min-height: 360px;
     object-fit: cover;
@@ -534,6 +542,81 @@
   .blog-block {
     margin-bottom: 64px;
     max-width: 930px;
+  }
+
+  .blog-step-list {
+    counter-reset: gojob-step;
+    display: grid;
+    gap: 12px;
+    list-style: none;
+    margin: 30px 0 0;
+    padding: 0;
+  }
+
+  .blog-step-list li {
+    align-items: start;
+    background: rgba(13, 24, 39, 0.72);
+    border: 1px solid rgba(143, 216, 255, 0.2);
+    counter-increment: gojob-step;
+    display: grid;
+    gap: 6px 18px;
+    grid-template-columns: 42px 1fr;
+    padding: 18px 20px;
+  }
+
+  .blog-step-list li::before {
+    color: #8fd8ff;
+    content: counter(gojob-step, decimal-leading-zero);
+    font-family: 'GeistMono', monospace;
+    font-size: 12px;
+    grid-row: 1 / span 2;
+    letter-spacing: 1px;
+    padding-top: 3px;
+  }
+
+  .blog-step-list strong {
+    color: #edf5ff;
+    font-size: 17px;
+    font-weight: 400;
+  }
+
+  .blog-step-list span {
+    color: #aebed4;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .blog-outcome {
+    background: linear-gradient(135deg, rgba(24, 57, 77, 0.72), rgba(10, 19, 31, 0.92));
+    border: 1px solid rgba(143, 216, 255, 0.34);
+    padding: clamp(24px, 4vw, 42px);
+  }
+
+  .blog-outcome-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .blog-outcome-grid > div {
+    background: rgba(5, 13, 23, 0.48);
+    border-top: 1px solid rgba(143, 216, 255, 0.3);
+    padding: 22px;
+  }
+
+  .blog-outcome-grid strong {
+    color: #8fd8ff;
+    font-family: 'GeistMono', monospace;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+
+  .blog-outcome-grid p {
+    color: #c0cee1;
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 14px 0 0;
   }
 
   .blog-economics-block {
@@ -804,7 +887,8 @@
 
     .blog-pill-grid,
     .blog-image-grid,
-    .blog-cost-grid {
+    .blog-cost-grid,
+    .blog-outcome-grid {
       grid-template-columns: 1fr;
     }
   }
