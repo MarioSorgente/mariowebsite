@@ -93,12 +93,14 @@ export default function Blog() {
         >
           {caseStudies.map((article) => {
             const isActive = article.slug === selectedArticle;
+            const isUnavailable = article.slug === 'mamma-calories-meal-prep';
             return (
               <button
                 key={article.slug}
                 type="button"
                 className={`blog-article-card ${isActive ? 'is-active' : ''}`}
                 onClick={(event) => toggleArticle(article, event.currentTarget)}
+                disabled={isUnavailable}
                 aria-expanded={isActive}
                 aria-pressed={isActive}
               >
@@ -115,7 +117,7 @@ export default function Blog() {
                   <span className="blog-card-summary">{article.summary}</span>
                   <span className="blog-card-meta">
                     <span>{article.year}</span>
-                    <span>{isActive ? 'Close article' : article.readingTime}</span>
+                    <span>{isUnavailable ? 'Temporarily unavailable' : isActive ? 'Close article' : article.readingTime}</span>
                   </span>
                 </span>
               </button>
