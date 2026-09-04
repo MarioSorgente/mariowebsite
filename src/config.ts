@@ -62,7 +62,7 @@ export const heroConfig: HeroConfig = {
   title: "Zero2Hero: Product Management",
   role: "Senior Product Builder",
   status: "Open to founder engagements",
-  subtitleLine1: "I'm Mario Sorgente, a founder, artist and product lead in AI and software scaleups, with a background in physics engineering, business and a creative approach to building products.",
+  subtitleLine1: "I am Mario Sorgente, a founder, product lead in AI and software scaleups and artist, with a background in physics engineering, business and a creative approach to building products.",
   subtitleLine2: "I help founders turn ideas into real products. I can build a product demo at zero cost in days.",
   ctaText: "Explore services",
   secondaryCtaText: "See case studies",
@@ -227,7 +227,6 @@ export interface ProcessStep {
 
 export interface ArchitectureConfig {
   sectionLabel: string;
-  videoPath: string;
   title: string;
   description: string;
   steps: ProcessStep[];
@@ -235,7 +234,6 @@ export interface ArchitectureConfig {
 
 export const architectureConfig: ArchitectureConfig = {
   sectionLabel: "Process",
-  videoPath: "/videos/cinematic-vision.mp4",
   title: "From a rough idea to a plan the team can build from.",
   description: "We define your MVP, structure the product, and work out the shortest route to a build, whether you want hands-on help or coaching. I came to product from physics engineering, so the work starts by taking the problem apart methodically. Then it moves quickly, because nothing is settled until someone outside the team has used what we made.",
   steps: [

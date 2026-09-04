@@ -3,7 +3,7 @@ import { useReveal } from '../hooks/useReveal';
 
 export default function CinematicVision() {
   const sectionRef = useReveal<HTMLElement>({ stagger: 100, threshold: 0.08 });
-  const { sectionLabel, videoPath, title, description, steps } = architectureConfig;
+  const { sectionLabel, title, description, steps } = architectureConfig;
 
   if (!sectionLabel && !title) return null;
 
@@ -18,17 +18,6 @@ export default function CinematicVision() {
             How an engagement runs.
           </h2>
         </header>
-
-        {videoPath && (
-          <div className="process__frame" data-reveal="mask">
-            <video src={videoPath} autoPlay muted loop playsInline aria-hidden="true" />
-            <span className="process__curtain" aria-hidden="true" />
-            <i className="process__tick" aria-hidden="true" />
-            <i className="process__tick" aria-hidden="true" />
-            <i className="process__tick" aria-hidden="true" />
-            <i className="process__tick" aria-hidden="true" />
-          </div>
-        )}
 
         <div className="process__split">
           {title && (

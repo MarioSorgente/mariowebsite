@@ -36,13 +36,6 @@
   transform: scale(0.94);
 }
 
-/* Media settles out of a slight over-scale; the wipe itself is a curtain
-   element inside the frame, because a clip-path here would zero the element's
-   intersection rect and the observer would never fire. */
-.reveal-ready [data-reveal='mask'] {
-  transform: scale(1.04);
-}
-
 /* A line that draws itself across the container. Never scaled to exactly zero,
    for the same observer reason. */
 .reveal-ready [data-reveal='rule'] {
