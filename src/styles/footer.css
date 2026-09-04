@@ -1,0 +1,260 @@
+/* ==========================================================================
+   Footer — closing statement, contact plate, link columns, colophon.
+   ========================================================================== */
+
+.site-footer {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(80% 60% at 78% 0%, rgba(255, 138, 61, 0.1), transparent 62%),
+    var(--ink-950);
+  padding-block: clamp(90px, 12vw, 150px) 32px;
+}
+
+.site-footer__top {
+  display: grid;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: end;
+  padding-bottom: clamp(56px, 8vw, 100px);
+}
+
+@media (min-width: 960px) {
+  .site-footer__top {
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+  }
+}
+
+.site-footer__heading {
+  margin: 22px 0 0;
+  font-size: clamp(44px, 7vw, 96px);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+}
+
+.site-footer__heading em {
+  font-style: italic;
+  background: linear-gradient(104deg, var(--ember-hi), var(--ember));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.site-footer__blurb {
+  margin: 26px 0 0;
+  max-width: 54ch;
+  color: var(--text-2);
+  font-size: var(--step-lede);
+  font-weight: 200;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+/* Contact plate ----------------------------------------------------------- */
+
+.contact-plate {
+  position: relative;
+  display: block;
+  padding: clamp(26px, 3vw, 36px);
+  border: 1px solid var(--line-2);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(22, 31, 48, 0.8), rgba(10, 15, 26, 0.9));
+  text-decoration: none;
+  overflow: hidden;
+  transition:
+    transform var(--dur-2) var(--ease-out),
+    border-color var(--dur-2) var(--ease-out),
+    box-shadow var(--dur-2) var(--ease-out);
+}
+
+.contact-plate:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 138, 61, 0.5);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.contact-plate__label {
+  display: block;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.contact-plate__value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 14px;
+  color: var(--text-1);
+  font-family: var(--font-mono);
+  font-size: clamp(13.5px, 1.25vw, 17px);
+  transition: color var(--dur-2) var(--ease-out);
+}
+
+.contact-plate:hover .contact-plate__value {
+  color: var(--ember-hi);
+}
+
+.contact-plate__value svg {
+  flex-shrink: 0;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.contact-plate:hover .contact-plate__value svg {
+  transform: translate(4px, -4px);
+}
+
+/* Link columns ------------------------------------------------------------ */
+
+.site-footer__columns {
+  display: grid;
+  gap: clamp(30px, 4vw, 56px);
+  padding-block: clamp(46px, 6vw, 72px);
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 700px) {
+  .site-footer__columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.footer-col h3 {
+  margin: 0 0 20px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-col a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-2);
+  font-size: 14.5px;
+  font-weight: 300;
+  text-decoration: none;
+  transition:
+    color var(--dur-2) var(--ease-out),
+    gap var(--dur-2) var(--ease-out);
+}
+
+.footer-col a:hover {
+  color: var(--ember-hi);
+  gap: 14px;
+}
+
+.footer-col a svg {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity var(--dur-2) var(--ease-out),
+    transform var(--dur-2) var(--ease-out);
+}
+
+.footer-col a:hover svg {
+  opacity: 1;
+  transform: none;
+}
+
+/* Colophon ---------------------------------------------------------------- */
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+
+.site-footer__bottom small,
+.site-footer__bottom a {
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: color var(--dur-2) var(--ease-out);
+}
+
+.site-footer__bottom a:hover {
+  color: var(--text-1);
+}
+
+.site-footer__bottom-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+}
+
+/* Back to top ------------------------------------------------------------- */
+
+.to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 15px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color var(--dur-2) var(--ease-out),
+    border-color var(--dur-2) var(--ease-out);
+}
+
+.to-top:hover {
+  color: var(--text-1);
+  border-color: var(--line-3);
+}
+
+.to-top svg {
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.to-top:hover svg {
+  transform: translateY(-3px);
+}
+
+/* Oversized signature that closes the page. */
+.site-footer__sign {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(34px, 5vw, 66px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.logo-stacked {
+  width: min(100%, 420px);
+  height: auto;
+  opacity: 0.5;
+  /* Fades into the page rather than sitting on top of it. */
+  -webkit-mask-image: linear-gradient(180deg, #000 30%, rgba(0, 0, 0, 0.12) 100%);
+  mask-image: linear-gradient(180deg, #000 30%, rgba(0, 0, 0, 0.12) 100%);
+}

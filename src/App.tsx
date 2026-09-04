@@ -8,21 +8,23 @@ import Footer from './sections/Footer';
 import CapabilityDetail from './sections/CapabilityDetail';
 import Blog from './sections/Blog';
 import Background from './sections/Background';
+import Marquee from './components/Marquee';
+import Statement from './components/Statement';
+import { statementConfig } from './config';
 
 function HomePage() {
   return (
-    <div
-      style={{
-        background: '#0a0a0a',
-        minHeight: '100vh',
-        overflowX: 'hidden',
-      }}
-    >
+    <div className="page-ground">
       <Navigation />
-
       <main>
         <Hero />
+        <Marquee />
         <Curriculum />
+        <Statement
+          text={statementConfig.text}
+          accent={statementConfig.accent}
+          caption={statementConfig.caption}
+        />
         <CinematicVision />
         <AlumniArchives />
         <Blog />
@@ -34,10 +36,13 @@ function HomePage() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/capability/:slug" element={<CapabilityDetail />} />
-      <Route path="/background" element={<Background />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/capability/:slug" element={<CapabilityDetail />} />
+        <Route path="/background" element={<Background />} />
+      </Routes>
+      <div className="grain-overlay" aria-hidden="true" />
+    </>
   );
 }

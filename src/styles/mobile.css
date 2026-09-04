@@ -1,0 +1,174 @@
+/* ==========================================================================
+   Small-screen refinements. Loaded last so it settles anything the
+   section stylesheets set for wider viewports.
+   ========================================================================== */
+
+@media (max-width: 720px) {
+  :root {
+    --section-y: clamp(72px, 15vw, 108px);
+  }
+
+  /* Hero ------------------------------------------------------------------ */
+
+  .hero {
+    min-height: auto;
+    padding-block: 118px 64px;
+  }
+
+  .hero__grid {
+    gap: 34px;
+  }
+
+  .hero__title {
+    font-size: clamp(32px, 9.2vw, 46px);
+  }
+
+  .hero__role {
+    letter-spacing: 0.22em;
+  }
+
+  /* Full-width buttons stack cleanly instead of wrapping into orphans. */
+  .hero__actions {
+    gap: 10px;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 100%;
+  }
+
+  .hero__stat {
+    padding: 15px 17px;
+  }
+
+  .social-rail--inline {
+    margin-top: 26px;
+  }
+
+  /* Services -------------------------------------------------------------- */
+
+  .service-row {
+    padding-block: 26px;
+    gap: 12px;
+  }
+
+  .service-row__title {
+    font-size: clamp(27px, 8vw, 34px);
+  }
+
+  .service-row__text {
+    font-size: 14.5px;
+  }
+
+  /* Statement ------------------------------------------------------------- */
+
+  .statement__text {
+    max-width: none;
+    font-size: clamp(26px, 7vw, 34px);
+    line-height: 1.22;
+  }
+
+  .statement__cap {
+    font-size: 14.5px;
+  }
+
+  .silk-flow {
+    opacity: 0.4;
+  }
+
+  /* Process --------------------------------------------------------------- */
+
+  .process__frame video {
+    aspect-ratio: 16 / 10;
+  }
+
+  .process__frame > .process__tick {
+    width: 15px;
+    height: 15px;
+  }
+
+  .process__split {
+    margin-top: 40px;
+    gap: 24px;
+  }
+
+  .process__step {
+    padding: 22px;
+  }
+
+  /* Case studies ---------------------------------------------------------- */
+
+  .case-card__title {
+    font-size: clamp(24px, 7vw, 30px);
+  }
+
+  .blog-reader-copy h2 {
+    font-size: clamp(31px, 8.6vw, 42px);
+  }
+
+  .blog-heading {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  .blog-copy {
+    font-size: 15.5px;
+  }
+
+  .blog-hero-figure img,
+  .blog-hero-figure video {
+    max-height: 320px;
+    min-height: 0;
+  }
+
+  .blog-figure img {
+    max-height: 300px;
+  }
+
+  .blog-website-feature-body {
+    min-height: 200px;
+  }
+
+  .blog-economics-formula {
+    gap: 8px;
+    padding: 18px;
+  }
+
+  /* Footer ---------------------------------------------------------------- */
+
+  .site-footer {
+    padding-block: 76px 26px;
+  }
+
+  .site-footer__top {
+    gap: 32px;
+    padding-bottom: 44px;
+  }
+
+  .site-footer__heading {
+    font-size: clamp(38px, 11vw, 56px);
+  }
+
+  .site-footer__bottom {
+    gap: 14px;
+  }
+
+  .site-footer__bottom-links {
+    gap: 16px;
+  }
+
+  .logo-stacked {
+    width: min(100%, 260px);
+  }
+}
+
+/* Anything with a coarse pointer keeps hover-only affordances visible. */
+@media (pointer: coarse) {
+  .venture-card__title svg,
+  .footer-col a svg {
+    opacity: 1;
+    transform: none;
+  }
+
+  .btn__label > span:last-child {
+    display: none;
+  }
+}

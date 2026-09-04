@@ -43,7 +43,7 @@ export default function AdesCaseStudy({ readerRef }: Props) {
               className="blog-reader-header"
             >
               <div className="blog-reader-copy">
-                <p className="blog-kicker">In evidence · First article</p>
+                <p className="blog-kicker">Founder build note</p>
                 <h2 id="ades-blog-title">How I built ADES</h2>
                 <p>
                   ADES started from a simple product management frustration: AI teams can brainstorm agents quickly, but turning that energy into a structured workflow with evals, reflection logic, safeguards, assumptions, and handoff notes is still painfully fragmented.
@@ -106,7 +106,7 @@ export default function AdesCaseStudy({ readerRef }: Props) {
                 className="blog-copy blog-block"
               >
                 <p className="blog-kicker">The build</p>
-                <h3 className="blog-heading">I built ADES as a 0-to-1 prototype with a production mindset.</h3>
+                <h3 className="blog-heading">I built ADES as a first version, with the plumbing a real product needs.</h3>
                 <p>
                   The stack was deliberately lean. Vercel handles deployment, GitHub keeps the build history clean, Firebase provides Google authentication and database persistence, and AI coding tools helped me move quickly across product copy, frontend implementation, and edge-case iteration. Claude Code and Codex were part of the development loop: I used them to accelerate scaffolding, refactor interface states, and keep the product moving while I focused on the workflow logic.
                 </p>
@@ -123,7 +123,7 @@ export default function AdesCaseStudy({ readerRef }: Props) {
                 className="blog-copy blog-block"
               >
                 <p className="blog-kicker">The design system</p>
-                <h3 className="blog-heading">The canvas is not a diagram. It is a product decision artifact.</h3>
+                <h3 className="blog-heading">The canvas records product decisions rather than drawing a diagram.</h3>
                 <p>
                   ADES breaks the agent into steps, then attaches the reasoning that usually gets lost: why the step exists, what input it needs, what output it should produce, how success is evaluated, whether reflection is needed, and which safeguards should be in place. The PM can edit the system instead of accepting the model output as final. That matters because agent design is collaborative: product, design, engineering, and governance need a shared object to debate.
                 </p>
@@ -138,9 +138,9 @@ export default function AdesCaseStudy({ readerRef }: Props) {
                 className="blog-copy blog-block"
               >
                 <p className="blog-kicker">What I learned</p>
-                <h3 className="blog-heading">The hard part is not generating steps. The hard part is making them reviewable.</h3>
+                <h3 className="blog-heading">Generating steps is easy. Making them reviewable is the hard part.</h3>
                 <p>
-                  The severe pain point is not that PMs cannot come up with agent ideas. It is that they cannot consistently convert those ideas into build-ready, evaluable systems. ADES uses generative AI where it is actually needed: interpreting messy product intent, decomposing it into workflow structure, proposing context-aware evals, placing reflection only where it helps, and packaging everything into an editable board.
+                  Product managers rarely struggle to come up with agent ideas. They struggle to turn those ideas into systems an engineer can build and a reviewer can evaluate. ADES uses generative AI where it is actually needed: interpreting messy product intent, decomposing it into workflow structure, proposing context-aware evals, placing reflection only where it helps, and packaging everything into an editable board.
                 </p>
                 <p>
                   The next phase is validation. I am inviting PMs, AI product leads, and founders into a pilot, watching generation volume and cost, tracking API errors and JSON/rendering failures, and using feedback to decide which collaboration, governance, and evaluation features deserve to become paid B2B SaaS tiers.

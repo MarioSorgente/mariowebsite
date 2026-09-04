@@ -1,5 +1,9 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
+/**
+ * The perspective floor under the hero. Horizontals travel toward the viewer on
+ * an eased depth curve so the motion reads as forward travel, never a rewind.
+ */
 export default function RetroGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -9,92 +13,95 @@ export default function RetroGrid() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationId: number;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let raf = 0;
     let phase = 0;
 
     const resize = () => {
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = canvas.offsetWidth * dpr;
-      canvas.height = canvas.offsetHeight * dpr;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.max(1, Math.round(rect.width * dpr));
+      canvas.height = Math.max(1, Math.round(rect.height * dpr));
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
-
-    resize();
-    window.addEventListener('resize', resize);
 
     const draw = () => {
       const width = canvas.offsetWidth;
       const height = canvas.offsetHeight;
-      const horizonY = height * 0.12;
+      const horizonY = height * 0.1;
       const centerX = width / 2;
 
       ctx.clearRect(0, 0, width, height);
+      if (!prefersReduced) phase = (phase + 0.0028) % 1;
 
-      // Subtle one-direction motion loop: phase only increases and wraps.
-      phase = (phase + 0.0035) % 1;
-
-      ctx.strokeStyle = 'rgba(96, 165, 250, 0.14)';
-      ctx.lineWidth = 1;
-
-      // Perspective verticals.
-      const columns = 36;
-      const spread = width * 0.95;
+      // Vanishing-point verticals, brighter toward the centre of the floor.
+      const columns = 34;
+      const spread = width * 0.98;
       for (let i = -columns; i <= columns; i++) {
-        const xNorm = i / columns;
-        const xBase = centerX + xNorm * spread;
-        const xFar = centerX + xNorm * spread * 0.06;
-
+        const norm = i / columns;
+        const fade = 1 - Math.abs(norm) * 0.75;
+        ctx.strokeStyle = `rgba(120, 178, 255, ${0.03 + fade * 0.1})`;
+        ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(xBase, height);
-        ctx.lineTo(xFar, horizonY);
+        ctx.moveTo(centerX + norm * spread, height);
+        ctx.lineTo(centerX + norm * spread * 0.05, horizonY);
         ctx.stroke();
       }
 
-      // Infinite forward-moving horizontals (never reverse).
-      const rows = 34;
+      const rows = 32;
       for (let i = 0; i <= rows; i++) {
-        const depth = ((i / rows) + phase) % 1;
+        const depth = (i / rows + phase) % 1;
         const eased = depth * depth;
         const y = horizonY + (height - horizonY) * eased;
         if (y <= horizonY + 1 || y >= height) continue;
 
-        const alpha = 0.03 + depth * 0.12;
-        ctx.strokeStyle = `rgba(96, 165, 250, ${alpha})`;
+        // Rows warm up as they approach, tying the floor to the accent.
+        const alpha = 0.025 + depth * 0.13;
+        ctx.strokeStyle =
+          depth > 0.74
+            ? `rgba(255, 154, 84, ${alpha * 0.8})`
+            : `rgba(120, 178, 255, ${alpha})`;
         ctx.beginPath();
         ctx.moveTo(0, y);
         ctx.lineTo(width, y);
         ctx.stroke();
       }
 
-      const gradient = ctx.createLinearGradient(0, horizonY, 0, height);
-      gradient.addColorStop(0, 'rgba(96, 165, 250, 0.03)');
-      gradient.addColorStop(0.45, 'rgba(96, 165, 250, 0.05)');
-      gradient.addColorStop(1, 'rgba(96, 165, 250, 0)');
-      ctx.fillStyle = gradient;
+      const wash = ctx.createLinearGradient(0, horizonY, 0, height);
+      wash.addColorStop(0, 'rgba(108, 198, 255, 0.05)');
+      wash.addColorStop(0.5, 'rgba(108, 198, 255, 0.04)');
+      wash.addColorStop(1, 'rgba(255, 138, 61, 0.03)');
+      ctx.fillStyle = wash;
       ctx.fillRect(0, horizonY, width, height - horizonY);
 
-      animationId = requestAnimationFrame(draw);
+      raf = requestAnimationFrame(draw);
     };
 
-    draw();
+    resize();
+    const observer = new ResizeObserver(resize);
+    observer.observe(canvas);
+    raf = requestAnimationFrame(draw);
 
     return () => {
-      window.removeEventListener('resize', resize);
-      cancelAnimationFrame(animationId);
+      observer.disconnect();
+      cancelAnimationFrame(raf);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       style={{
         position: 'absolute',
         bottom: 0,
         left: 0,
         width: '100%',
-        height: '45vh',
-        zIndex: 1,
+        height: '46vh',
         pointerEvents: 'none',
+        maskImage: 'linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent)',
+        WebkitMaskImage: 'linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent)',
       }}
     />
   );

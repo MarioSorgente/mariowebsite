@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Design tokens — one source of truth for colour, type, rhythm and motion.
+   ========================================================================== */
+
+:root {
+  /* Surfaces, darkest to lightest */
+  --ink-950: #04070d;
+  --ink-900: #070b13;
+  --ink-850: #0a0f1a;
+  --ink-800: #0d1320;
+  --ink-750: #111827;
+  --ink-700: #161f30;
+
+  /* Text */
+  --text-1: #eef4ff;
+  --text-2: #b8c7e0;
+  --text-3: #7e90ac;
+
+  /* Lines */
+  --line: rgba(148, 177, 225, 0.14);
+  --line-2: rgba(148, 177, 225, 0.26);
+  --line-3: rgba(148, 177, 225, 0.44);
+
+  /* Signature accent — warm ember */
+  --ember: #ff8a3d;
+  --ember-hi: #ffc27a;
+  --ember-lo: #e05f12;
+  --ember-glow: rgba(255, 138, 61, 0.42);
+  --ember-wash: rgba(255, 138, 61, 0.1);
+
+  /* Supporting accent — azure */
+  --azure: #6cc6ff;
+  --azure-hi: #a9e0ff;
+  --azure-glow: rgba(108, 198, 255, 0.34);
+  --azure-wash: rgba(108, 198, 255, 0.1);
+
+  /* Type */
+  --font-display: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --step-display: clamp(44px, 6.4vw, 92px);
+  --step-h2: clamp(38px, 5vw, 72px);
+  --step-h3: clamp(26px, 2.6vw, 38px);
+  --step-lede: clamp(16px, 1.35vw, 19px);
+  --step-body: clamp(15px, 1.1vw, 17px);
+  --step-meta: 11px;
+
+  /* Rhythm */
+  --gutter: clamp(20px, 5vw, 68px);
+  --section-y: clamp(96px, 12vw, 168px);
+  --shell: 1320px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 0.22s;
+  --dur-2: 0.42s;
+  --dur-3: 0.7s;
+
+  /* Elevation */
+  --shadow-1: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  --shadow-2: 0 18px 48px rgba(0, 0, 0, 0.42);
+  --shadow-3: 0 32px 90px rgba(0, 0, 0, 0.55);
+}

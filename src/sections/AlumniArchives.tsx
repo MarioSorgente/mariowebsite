@@ -1,155 +1,53 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import { ArrowUpRight } from 'lucide-react';
 import { researchConfig } from '../config';
+import { useReveal } from '../hooks/useReveal';
+import { trackSpotlight } from '../lib/pointer';
 
 export default function AlumniArchives() {
-  const gridRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const sectionRef = useReveal<HTMLElement>({ stagger: 90 });
+  const { sectionLabel, projects } = researchConfig;
 
-  useEffect(() => {
-    const items = itemRefs.current.filter(Boolean) as HTMLAnchorElement[];
-
-    items.forEach((item) => {
-      gsap.set(item, { opacity: 0, y: 30 });
-    });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = items.indexOf(entry.target as HTMLAnchorElement);
-            gsap.to(entry.target, {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              delay: (idx % 4) * 0.1,
-              ease: 'power2.out',
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    items.forEach((item) => observer.observe(item));
-
-    return () => observer.disconnect();
-  }, []);
-
-  if (!researchConfig.sectionLabel && researchConfig.projects.length === 0) {
-    return null;
-  }
+  if (!sectionLabel && projects.length === 0) return null;
 
   return (
-    <section
-      id="alumni"
-      style={{
-        padding: '150px 5vw',
-        background: '#0e131b',
-        position: 'relative',
-        zIndex: 2,
-      }}
-    >
-      <div style={{ maxWidth: 1400, margin: '0 auto' }}>
-        {researchConfig.sectionLabel && (
-          <header className="portfolio-intro">
-            <div className="portfolio-section-label">Founder-led ventures</div>
-            <h2 className="portfolio-heading">
-              Portfolio <span aria-hidden="true">·</span> {researchConfig.sectionLabel}
-            </h2>
-            <p className="portfolio-description">
-              Companies Mario founded and led from the first idea—shaping the product, design, and path to market rather than simply contributing to a project gallery.
-            </p>
-          </header>
-        )}
-        <div className="portfolio-divider" />
+    <section id="alumni" ref={sectionRef} className="section section--seam ventures">
+      <div className="shell">
+        <header className="section-head">
+          <p className="eyebrow" data-reveal="up">
+            Founder-led ventures
+          </p>
+          <h2 className="section-title" data-reveal="up">
+            Companies I <em>founded</em>.
+          </h2>
+          <p className="section-lede" data-reveal="up">
+            Companies I started and led from the first idea, covering the product, the design and
+            the route to market.
+          </p>
+        </header>
 
-        <div
-          ref={gridRef}
-          className="grid grid-cols-2 md:grid-cols-4"
-          style={{ gap: 0 }}
-        >
-          {researchConfig.projects.map((project, i) => (
+        <div className="ventures__grid">
+          {projects.map((project) => (
             <a
-              key={`${project.title}-${i}`}
+              key={project.title}
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              ref={(el) => { itemRefs.current[i] = el; }}
-              className="group cursor-pointer border-b border-r [&:nth-child(2n)]:border-r-0 md:[&:nth-child(2n)]:border-r md:[&:nth-child(4n)]:border-r-0"
-              style={{
-                display: 'block',
-                borderColor: 'rgba(167, 186, 223, 0.18)',
-                padding: '24px 20px',
-                textDecoration: 'none',
-              }}
+              className="venture-card spotlight"
+              onPointerMove={trackSpotlight}
+              data-reveal="up"
+              data-reveal-group="ventures"
             >
-              <div
-                className="relative overflow-hidden mb-4"
-                style={{ aspectRatio: '1/1' }}
-              >
-                {project.image && (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-all duration-700"
-                    style={{
-                      opacity: 0.8,
-                      filter: 'grayscale(20%)',
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.target as HTMLImageElement).style.opacity = '1';
-                      (e.target as HTMLImageElement).style.filter = 'grayscale(0%)';
-                      (e.target as HTMLImageElement).style.transform = 'scale(1.04)';
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.target as HTMLImageElement).style.opacity = '0.5';
-                      (e.target as HTMLImageElement).style.filter = 'grayscale(100%)';
-                      (e.target as HTMLImageElement).style.transform = 'scale(1)';
-                    }}
-                    loading="lazy"
-                  />
-                )}
-              </div>
-              <h4
-                style={{
-                  fontFamily: "'EB Garamond', serif",
-                  fontWeight: 400,
-                  fontSize: 18,
-                  color: '#e6edff',
-                  margin: '0 0 6px 0',
-                  lineHeight: 1.3,
-                }}
-              >
-                {project.title}
-              </h4>
-              <div
-                className="flex items-center justify-between"
-              >
-                <span
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 200,
-                    fontSize: 12,
-                    color: '#a5b3cc',
-                    opacity: 0.6,
-                  }}
-                >
-                  {project.discipline}
+              <span className="venture-card__media">
+                {project.image && <img src={project.image} alt="" loading="lazy" />}
+                <span className="venture-card__year">{project.year}</span>
+              </span>
+              <span className="venture-card__body">
+                <span className="venture-card__title">
+                  {project.title}
+                  <ArrowUpRight size={19} aria-hidden="true" />
                 </span>
-                <span
-                  style={{
-                    fontFamily: "'Fira Code', monospace",
-                    fontWeight: 400,
-                    fontSize: 11,
-                    color: '#a5b3cc',
-                    opacity: 0.4,
-                  }}
-                >
-                  {project.year}
-                </span>
-              </div>
+                <span className="venture-card__discipline">{project.discipline}</span>
+              </span>
             </a>
           ))}
         </div>

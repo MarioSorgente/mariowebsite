@@ -1,0 +1,187 @@
+/* ==========================================================================
+   Motion — the scroll reveal system plus every shared keyframe.
+
+   Elements opt in with data-reveal. The hidden state only applies once the
+   reveal hook has marked the document ready, so content is never trapped
+   invisible if the script fails to run.
+   ========================================================================== */
+
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 0.85s var(--ease-out),
+    transform 0.95s var(--ease-out),
+    filter 0.85s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-ready [data-reveal='up'] {
+  transform: translate3d(0, 34px, 0);
+}
+
+.reveal-ready [data-reveal='fade'] {
+  filter: blur(6px);
+}
+
+.reveal-ready [data-reveal='left'] {
+  transform: translate3d(-36px, 0, 0);
+}
+
+.reveal-ready [data-reveal='right'] {
+  transform: translate3d(36px, 0, 0);
+}
+
+.reveal-ready [data-reveal='scale'] {
+  transform: scale(0.94);
+}
+
+/* Media settles out of a slight over-scale; the wipe itself is a curtain
+   element inside the frame, because a clip-path here would zero the element's
+   intersection rect and the observer would never fire. */
+.reveal-ready [data-reveal='mask'] {
+  transform: scale(1.04);
+}
+
+/* A line that draws itself across the container. Never scaled to exactly zero,
+   for the same observer reason. */
+.reveal-ready [data-reveal='rule'] {
+  transform: scaleX(0.03);
+  transform-origin: left center;
+}
+
+.reveal-ready [data-reveal][data-in] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.reveal-ready [data-reveal='rule'][data-in] {
+  transform: scaleX(1);
+}
+
+/* Per-line mask reveal used by the hero headline. ------------------------- */
+
+.line-mask {
+  display: block;
+  overflow: hidden;
+  /* A sliver of horizontal slack keeps side bearings out of the clip. */
+  padding-inline: 0.06em;
+  margin-inline: -0.06em;
+}
+
+.line-mask > span {
+  display: block;
+  transform: translate3d(0, 105%, 0);
+  transition: transform 1.05s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.line-mask.is-in > span {
+  transform: none;
+}
+
+/* Shared keyframes -------------------------------------------------------- */
+
+@keyframes ember-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(108, 198, 255, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(108, 198, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(108, 198, 255, 0);
+  }
+}
+
+@keyframes marquee-slide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes sheen-sweep {
+  from {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(320%) skewX(-18deg);
+  }
+}
+
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) scale(1.12);
+    opacity: 0.85;
+  }
+}
+
+/* Anyone who asked for calm gets it: no travel, no loops, content visible. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-ready [data-reveal],
+  .reveal-ready [data-reveal][data-in] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+  .line-mask > span {
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

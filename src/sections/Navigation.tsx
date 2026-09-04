@@ -1,138 +1,139 @@
 import { useEffect, useState } from 'react';
-import { siteConfig, navigationConfig } from '../config';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ArrowUpRight } from 'lucide-react';
+import Button from '../components/Button';
+import { navigationConfig } from '../config';
+import Logo from '../components/Logo';
+import { useActiveSection, useScrollProgress } from '../hooks/useReveal';
+
+const backgroundLinks = [
+  { label: 'Profile', href: '#profile' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Expertise', href: '#expertise' },
+  { label: 'Education', href: '#education' },
+  { label: 'Contact', href: '#contact' },
+];
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const progressRef = useScrollProgress();
+
   const onBackground = location.pathname === '/background';
-  const links = onBackground
-    ? [
-        { label: 'Profile', href: '#profile' },
-        { label: 'Experience', href: '#experience' },
-        { label: 'Expertise', href: '#expertise' },
-        { label: 'Education', href: '#education' },
-        { label: 'Contact', href: '#contact' },
-      ]
-    : navigationConfig.links;
+  const links = onBackground ? backgroundLinks : navigationConfig.links;
+  const activeId = useActiveSection(
+    links.filter((link) => link.href.startsWith('#')).map((link) => link.href.slice(1))
+  );
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  // A locked page behind an open sheet stops the background from scrolling away.
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  const go = (event: React.MouseEvent<HTMLElement>, href: string) => {
+    event.preventDefault();
+    setMenuOpen(false);
+
     if (href.startsWith('/')) {
       navigate(href);
-      setMobileMenuOpen(false);
       return;
     }
     if (location.pathname !== '/') {
       navigate(`/${href}`);
-      setMobileMenuOpen(false);
       return;
     }
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-      setMobileMenuOpen(false);
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  if (!siteConfig.brandName && links.length === 0) {
-    return null;
-  }
+  const ctaHref = onBackground ? 'https://www.linkedin.com/in/mario-sorgente' : '#footer';
+  const ctaLabel = onBackground ? 'Connect on LinkedIn' : navigationConfig.ctaText;
+
+  const renderLinks = (inSheet: boolean) =>
+    links.map((link, index) => {
+      const isActive = link.href.startsWith('#') && link.href.slice(1) === activeId;
+      return (
+        <a
+          key={link.label}
+          href={link.href}
+          onClick={(event) => go(event, link.href)}
+          className={`nav-link${isActive ? ' is-active' : ''}`}
+          style={inSheet ? ({ '--i': index } as React.CSSProperties) : undefined}
+          aria-current={isActive ? 'true' : undefined}
+        >
+          <span>{link.label}</span>
+          {inSheet && <ArrowUpRight size={16} aria-hidden="true" />}
+        </a>
+      );
+    });
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 transition-colors duration-500"
-      style={{
-        backgroundColor: scrolled ? 'rgba(8, 15, 28, 0.78)' : 'rgba(8, 15, 28, 0.42)',
-        backdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(167, 186, 223, 0.18)',
-      }}
-    >
-      <div className="flex items-center justify-between" style={{ minHeight: 80, padding: '0 5vw' }}>
+    <nav className={`site-nav${scrolled ? ' is-scrolled' : ''}`}>
+      <div className="shell site-nav__inner">
         <a
           href={onBackground ? '/' : '#hero'}
-          onClick={(e) => handleClick(e, onBackground ? '/' : '#hero')}
-          className="no-underline"
-          style={{
-            fontFamily: "'GeistMono', monospace",
-            fontSize: 18,
-            fontWeight: 400,
-            letterSpacing: '-0.5px',
-            color: '#f0f6ff',
-          }}
+          onClick={(event) => go(event, onBackground ? '/' : '#hero')}
+          className="site-nav__brand"
+          aria-label="Zero2Hero home"
         >
-          {siteConfig.brandName}
+          <Logo />
         </a>
 
-        <div className="hidden md:flex items-center" style={{ gap: 40 }}>
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => handleClick(e, link.href)}
-              className="nav-link"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
+        <div className="site-nav__links">{renderLinks(false)}</div>
 
-        {navigationConfig.ctaText && (
-          <a
-            href={onBackground ? 'https://www.linkedin.com/in/mario-sorgente' : '#footer'}
-            onClick={onBackground ? undefined : (e) => handleClick(e, '#footer')}
-            className="nav-cta hidden md:inline-flex"
-          >
-            {onBackground ? 'Connect on LinkedIn' : navigationConfig.ctaText}
-          </a>
-        )}
+        <Button
+          href={ctaHref}
+          onClick={onBackground ? undefined : (event) => go(event, ctaHref)}
+          target={onBackground ? '_blank' : undefined}
+          rel={onBackground ? 'noopener noreferrer' : undefined}
+          className="site-nav__cta"
+          icon={<ArrowUpRight size={16} />}
+        >
+          {ctaLabel}
+        </Button>
 
         <button
           type="button"
-          className="md:hidden"
-          aria-label="Toggle menu"
-          onClick={() => setMobileMenuOpen((prev) => !prev)}
-          style={{ color: '#d4e4ff', fontSize: 26, lineHeight: 1 }}
+          className={`site-nav__burger${menuOpen ? ' is-open' : ''}`}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
         >
-          {mobileMenuOpen ? '×' : '☰'}
+          <i />
+          <i />
+          <i />
         </button>
       </div>
 
-      {mobileMenuOpen && (
-        <div className="md:hidden flex flex-col" style={{ padding: '0 5vw 20px', gap: 14 }}>
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => handleClick(e, link.href)}
-              className="nav-link"
-              style={{ width: 'fit-content' }}
+      <div className={`site-nav__sheet${menuOpen ? ' is-open' : ''}`}>
+        <div>
+          <div className="shell site-nav__sheet-inner">
+            {renderLinks(true)}
+            <Button
+              href={ctaHref}
+              onClick={onBackground ? undefined : (event) => go(event, ctaHref)}
+              target={onBackground ? '_blank' : undefined}
+              rel={onBackground ? 'noopener noreferrer' : undefined}
+              icon={<ArrowUpRight size={16} />}
             >
-              {link.label}
-            </a>
-          ))}
-          {navigationConfig.ctaText && (
-            <a
-              href={onBackground ? 'https://www.linkedin.com/in/mario-sorgente' : '#footer'}
-              onClick={onBackground ? undefined : (e) => handleClick(e, '#footer')}
-              className="nav-cta inline-flex"
-              style={{ width: 'fit-content', marginTop: 4 }}
-            >
-              {onBackground ? 'Connect on LinkedIn' : navigationConfig.ctaText}
-            </a>
-          )}
+              {ctaLabel}
+            </Button>
+          </div>
         </div>
-      )}
+      </div>
+
+      <div ref={progressRef} className="site-nav__progress" style={{ transform: 'scaleX(0)' }} />
     </nav>
   );
 }

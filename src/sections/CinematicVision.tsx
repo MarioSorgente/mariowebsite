@@ -1,146 +1,59 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
 import { architectureConfig } from '../config';
+import { useReveal } from '../hooks/useReveal';
 
 export default function CinematicVision() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
+  const sectionRef = useReveal<HTMLElement>({ stagger: 100, threshold: 0.08 });
+  const { sectionLabel, videoPath, title, description, steps } = architectureConfig;
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const text = textRef.current;
-    if (!section || !text) return;
-
-    gsap.set(text, { opacity: 0, y: 40 });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            gsap.to(text, {
-              opacity: 1,
-              y: 0,
-              duration: 1.2,
-              ease: 'power3.out',
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(section);
-
-    return () => observer.disconnect();
-  }, []);
-
-  if (!architectureConfig.sectionLabel && !architectureConfig.title) {
-    return null;
-  }
+  if (!sectionLabel && !title) return null;
 
   return (
-    <section
-      id="cinematic"
-      ref={sectionRef}
-      style={{
-        padding: '150px 5vw 80px',
-        background: '#0e131b',
-        position: 'relative',
-        zIndex: 2,
-      }}
-    >
-      <div style={{ maxWidth: 1400, margin: '0 auto' }}>
-        {architectureConfig.sectionLabel && (
-          <div
-            className="mb-6"
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 12,
-              fontWeight: 300,
-              letterSpacing: '3px',
-              textTransform: 'uppercase',
-              color: '#a5b3cc',
-              opacity: 0.6,
-            }}
-          >
-            {architectureConfig.sectionLabel}
+    <section id="cinematic" ref={sectionRef} className="section section--seam process">
+      <div className="shell">
+        <header className="section-head">
+          <p className="eyebrow" data-reveal="up">
+            {sectionLabel}
+          </p>
+          <h2 className="section-title" data-reveal="up">
+            How an engagement runs.
+          </h2>
+        </header>
+
+        {videoPath && (
+          <div className="process__frame" data-reveal="mask">
+            <video src={videoPath} autoPlay muted loop playsInline aria-hidden="true" />
+            <span className="process__curtain" aria-hidden="true" />
+            <i className="process__tick" aria-hidden="true" />
+            <i className="process__tick" aria-hidden="true" />
+            <i className="process__tick" aria-hidden="true" />
+            <i className="process__tick" aria-hidden="true" />
           </div>
         )}
-        <div
-          className="mb-16"
-          style={{
-            width: '100%',
-            height: 1,
-            background: 'rgba(167, 186, 223, 0.20)',
-          }}
-        />
 
-        <div className="relative">
-          {architectureConfig.videoPath && (
-            <div
-              className="relative overflow-hidden"
-              style={{
-                width: '100%',
-                maxWidth: '80vw',
-                margin: '0 auto',
-                aspectRatio: '21/9',
-              }}
-            >
-              <video
-                ref={videoRef}
-                src={architectureConfig.videoPath}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover"
-                style={{ display: 'block' }}
-              />
-            </div>
+        <div className="process__split">
+          {title && (
+            <h3 className="process__title" data-reveal="up" data-reveal-group="split">
+              {title}
+            </h3>
           )}
-
-          <div
-            ref={textRef}
-            className="flex flex-col md:flex-row md:items-center"
-            style={{ marginTop: 160, gap: '60px' }}
-          >
-            {architectureConfig.title && (
-              <h2
-                style={{
-                  fontFamily: "'EB Garamond', serif",
-                  fontWeight: 400,
-                  fontSize: 'clamp(32px, 4vw, 64px)',
-                  lineHeight: 1.15,
-                  letterSpacing: '-1px',
-                  color: '#e6edff',
-                  margin: 0,
-                  flex: '0 0 50%',
-                  textWrap: 'balance',
-                }}
-              >
-                {architectureConfig.title}
-              </h2>
-            )}
-            {architectureConfig.description && (
-              <p
-                style={{
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 200,
-                  fontSize: 17,
-                  lineHeight: 1.85,
-                  color: '#e7f0ff',
-                  margin: 0,
-                  flex: '1 1 50%',
-                  textWrap: 'pretty',
-                }}
-              >
-                {architectureConfig.description}
-              </p>
-            )}
-          </div>
+          {description && (
+            <p className="process__copy" data-reveal="up" data-reveal-group="split">
+              {description}
+            </p>
+          )}
         </div>
+
+        {steps.length > 0 && (
+          <ol className="process__steps">
+            {steps.map((step) => (
+              <li key={step.index} className="process__step" data-reveal="up" data-reveal-group="steps">
+                <b>{step.index}</b>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </li>
+            ))}
+          </ol>
+        )}
       </div>
     </section>
   );

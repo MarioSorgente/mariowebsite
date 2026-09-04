@@ -1,166 +1,61 @@
-import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import gsap from 'gsap';
+import { ArrowUpRight } from 'lucide-react';
 import { capabilitiesConfig } from '../config';
+import { useReveal } from '../hooks/useReveal';
 
 export default function Curriculum() {
   const navigate = useNavigate();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const sectionRef = useReveal<HTMLElement>({ stagger: 110 });
 
-  useEffect(() => {
-    const items = itemRefs.current.filter(Boolean) as HTMLDivElement[];
-    const observers: IntersectionObserver[] = [];
-
-    items.forEach((item, index) => {
-      gsap.set(item, { opacity: 0, y: 60 });
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              gsap.to(item, {
-                opacity: 1,
-                y: 0,
-                duration: 1.0,
-                delay: index * 0.15,
-                ease: 'power3.out',
-              });
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-
-      observer.observe(item);
-      observers.push(observer);
-    });
-
-    return () => {
-      observers.forEach((o) => o.disconnect());
-    };
-  }, []);
-
-  if (!capabilitiesConfig.sectionLabel && capabilitiesConfig.items.length === 0) {
-    return null;
-  }
+  const { sectionLabel, items } = capabilitiesConfig;
+  if (!sectionLabel && items.length === 0) return null;
 
   return (
-    <section
-      id="curriculum"
-      ref={sectionRef}
-      className="relative"
-      style={{
-        padding: '150px 5vw',
-        minHeight: '100vh',
-        background: 'transparent',
-      }}
-    >
-      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        {capabilitiesConfig.sectionLabel && (
-          <div
-            className="mb-6"
-            style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 12,
-              fontWeight: 300,
-              letterSpacing: '3px',
-              textTransform: 'uppercase',
-              color: '#dadada',
-              opacity: 0.6,
-            }}
-          >
-            {capabilitiesConfig.sectionLabel}
-          </div>
-        )}
-        <div
-          className="mb-20"
-          style={{
-            width: '100%',
-            height: 1,
-            background: 'rgba(255, 255, 255, 0.1)',
-          }}
-        />
+    <section id="curriculum" ref={sectionRef} className="section services">
+      <div className="shell">
+        <header className="section-head">
+          <p className="eyebrow" data-reveal="up">
+            {sectionLabel}
+          </p>
+          <h2 className="section-title" data-reveal="up">
+            Three ways to turn an <em>idea</em> into a working product.
+          </h2>
+          <p className="section-lede" data-reveal="up">
+            Pick the engagement that matches where you are. Each one ends with a working product
+            that people outside the team can open and use.
+          </p>
+        </header>
 
-        <div className="flex flex-col" style={{ gap: 100 }}>
-          {capabilitiesConfig.items.map((discipline, i) => (
-            <div
-              key={discipline.title}
-              ref={(el) => { itemRefs.current[i] = el; }}
-              className="flex flex-col md:flex-row md:items-start"
-              style={{ gap: '40px', cursor: 'pointer' }}
-              onClick={() => navigate(`/capability/${discipline.slug}`)}
-              onMouseEnter={() => setHoveredIndex(i)}
-              onMouseLeave={() => setHoveredIndex(null)}
+        <div className="services__list">
+          {items.map((item, index) => (
+            <button
+              key={item.slug}
+              type="button"
+              className="service-row"
+              onClick={() => navigate(`/capability/${item.slug}`)}
+              aria-label={`Read more about ${item.title}`}
+              data-reveal="up"
+              data-reveal-group="services"
             >
-              <div style={{ flex: '0 0 70%' }}>
-                <h3
-                  style={{
-                    fontFamily: "'EB Garamond', serif",
-                    fontWeight: 400,
-                    fontSize: 'clamp(40px, 5.4vw, 86.4px)',
-                    lineHeight: 1.05,
-                    letterSpacing: '-1.44px',
-                    color: hoveredIndex === i ? 'rgba(96, 165, 250, 1)' : '#ffffff',
-                    margin: 0,
-                    textWrap: 'balance',
-                    transition: 'color 0.4s ease',
-                  }}
-                >
-                  {discipline.title}
-                </h3>
-              </div>
-              <div
-                className="flex items-start"
-                style={{
-                  flex: '1 1 30%',
-                  paddingTop: 'clamp(4px, 1vw, 16px)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  minHeight: hoveredIndex === i ? 200 : 'auto',
-                  transition: 'min-height 0.4s ease',
-                }}
-              >
-                {/* Description text - fades out on hover */}
-                <p
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 200,
-                    fontSize: 15,
-                    lineHeight: 1.8,
-                    color: '#dadada',
-                    margin: 0,
-                    textWrap: 'pretty',
-                    opacity: hoveredIndex === i ? 0 : 1,
-                    transition: 'opacity 0.35s ease',
-                  }}
-                >
-                  {discipline.description}
-                </p>
+              <span className="service-row__index">{String(index + 1).padStart(2, '0')}</span>
 
-                {/* Image - fades in on hover */}
-                {discipline.image && (
-                  <img
-                    src={discipline.image}
-                    alt={discipline.title}
-                    style={{
-                      position: 'absolute',
-                      inset: 0,
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      opacity: hoveredIndex === i ? 1 : 0,
-                      transform: hoveredIndex === i ? 'scale(1)' : 'scale(1.05)',
-                      transition: 'opacity 0.45s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
-                      filter: 'grayscale(30%)',
-                    }}
-                    loading="lazy"
-                  />
-                )}
-              </div>
-            </div>
+              <h3 className="service-row__title">{item.title}</h3>
+
+              <span className="service-row__body">
+                <span className="service-row__text">{item.description}</span>
+                <span className="service-row__meta">
+                  {item.meta.map((tag) => (
+                    <span key={tag} className="chip">
+                      {tag}
+                    </span>
+                  ))}
+                </span>
+              </span>
+
+              <span className="service-row__go" aria-hidden="true">
+                <ArrowUpRight size={19} />
+              </span>
+            </button>
           ))}
         </div>
       </div>

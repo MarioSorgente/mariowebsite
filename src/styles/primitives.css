@@ -1,0 +1,320 @@
+/* ==========================================================================
+   Primitives — the small vocabulary every section is built from.
+   ========================================================================== */
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  z-index: 2;
+  padding-block: var(--section-y);
+}
+
+.section--seam {
+  border-top: 1px solid var(--line);
+}
+
+/* Eyebrow + rule that opens every section. -------------------------------- */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: var(--azure);
+  font-family: var(--font-mono);
+  font-size: var(--step-meta);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--azure));
+}
+
+.section-head {
+  display: grid;
+  gap: clamp(18px, 2vw, 26px);
+  margin-bottom: clamp(46px, 6vw, 84px);
+}
+
+.section-title {
+  margin: 0;
+  font-size: var(--step-h2);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  max-width: 17ch;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--azure);
+}
+
+.section-lede {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--text-2);
+  font-size: var(--step-lede);
+  font-weight: 200;
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.rule {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, var(--line-2), var(--line), transparent);
+  margin: 0;
+}
+
+/* Buttons ----------------------------------------------------------------- */
+
+.btn {
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 0 10px 0 26px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform var(--dur-2) var(--ease-out),
+    box-shadow var(--dur-2) var(--ease-out),
+    border-color var(--dur-2) var(--ease-out),
+    background var(--dur-2) var(--ease-out),
+    color var(--dur-2) var(--ease-out);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Soft light that follows the pointer across the face of the button. */
+.btn__sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: radial-gradient(180px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.34), transparent 62%);
+  opacity: 0;
+  transition: opacity var(--dur-2) var(--ease-out);
+  pointer-events: none;
+}
+
+.btn:hover .btn__sheen {
+  opacity: 1;
+}
+
+/* Label that swaps for a copy of itself sliding up from below. */
+.btn__label {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  overflow: hidden;
+  line-height: 1.35;
+}
+
+.btn__label > span {
+  grid-area: 1 / 1;
+  transition: transform 0.5s var(--ease-out), opacity 0.4s var(--ease-out);
+}
+
+.btn__label > span:last-child {
+  transform: translateY(105%);
+  opacity: 0;
+}
+
+.btn:hover .btn__label > span:first-child {
+  transform: translateY(-105%);
+  opacity: 0;
+}
+
+.btn:hover .btn__label > span:last-child {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Arrow sitting in its own chip so the button reads as a control, not a link. */
+.btn__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transition:
+    background var(--dur-2) var(--ease-out),
+    color var(--dur-2) var(--ease-out),
+    transform var(--dur-2) var(--ease-out);
+}
+
+.btn:hover .btn__icon {
+  transform: translateX(3px);
+}
+
+/* Primary — ember fill with a bevelled top edge and a coloured cast beneath. */
+.btn--primary {
+  background: linear-gradient(180deg, var(--ember-hi) 0%, var(--ember) 52%, var(--ember-lo) 100%);
+  border-color: rgba(255, 216, 176, 0.75);
+  color: #2a0f00;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(120, 44, 0, 0.28),
+    0 8px 22px rgba(255, 122, 26, 0.26);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(120, 44, 0, 0.3),
+    0 16px 40px rgba(255, 122, 26, 0.42);
+}
+
+.btn--primary .btn__icon {
+  background: rgba(58, 20, 0, 0.16);
+  color: #2a0f00;
+}
+
+.btn--primary:hover .btn__icon {
+  background: #2a0f00;
+  color: var(--ember-hi);
+}
+
+/* Ghost — glass over the page, with a hairline that warms on hover. */
+.btn--ghost {
+  background: rgba(148, 177, 225, 0.07);
+  border-color: var(--line-2);
+  color: var(--text-1);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.btn--ghost .btn__sheen {
+  background: radial-gradient(180px circle at var(--mx) var(--my), rgba(255, 178, 118, 0.22), transparent 62%);
+}
+
+.btn--ghost:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 138, 61, 0.45);
+  background: rgba(148, 177, 225, 0.12);
+}
+
+.btn--ghost .btn__icon {
+  background: rgba(148, 177, 225, 0.12);
+  color: var(--text-1);
+}
+
+.btn--ghost:hover .btn__icon {
+  background: var(--ember);
+  color: #2a0f00;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn__label > span:last-child {
+    display: none;
+  }
+
+  .btn:hover .btn__label > span:first-child {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Chips ------------------------------------------------------------------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(148, 177, 225, 0.05);
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: var(--step-meta);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    border-color var(--dur-2) var(--ease-out),
+    color var(--dur-2) var(--ease-out);
+}
+
+/* Text link with a underline that grows from the left. --------------------- */
+
+.link-underline {
+  position: relative;
+  color: var(--text-1);
+  text-decoration: none;
+  padding-bottom: 2px;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Status pill with a live dot. -------------------------------------------- */
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 16px 7px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: rgba(10, 15, 26, 0.55);
+  backdrop-filter: blur(10px);
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: var(--step-meta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.status-pill i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--azure);
+  animation: pulse-ring 2.6s ease-out infinite;
+}

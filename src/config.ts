@@ -9,7 +9,7 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   language: "en",
-  brandName: "Mario Sorgente",
+  brandName: "Zero2Hero",
 };
 
 // ============================================================
@@ -42,18 +42,74 @@ export const navigationConfig: NavigationConfig = {
 // Hero
 // ============================================================
 
+export interface HeroStat {
+  value: string;
+  label: string;
+}
+
 export interface HeroConfig {
   title: string;
+  role: string;
+  status: string;
   subtitleLine1: string;
   subtitleLine2: string;
   ctaText: string;
+  secondaryCtaText: string;
+  stats: HeroStat[];
 }
 
 export const heroConfig: HeroConfig = {
   title: "Zero2Hero: Product Management",
+  role: "Senior Product Builder",
+  status: "Open to founder engagements",
   subtitleLine1: "I'm Mario Sorgente, a founder, artist and product lead in AI and software scaleups, with a background in physics engineering, business and a creative approach to building products.",
-  subtitleLine2: "I help founders turn ideas into real products. I can build product demo at zero cost in days.",
+  subtitleLine2: "I help founders turn ideas into real products. I can build a product demo at zero cost in days.",
   ctaText: "Explore services",
+  secondaryCtaText: "See case studies",
+  stats: [
+    { value: "120%", label: "Revenue growth delivered" },
+    { value: "1,000+", label: "Active users acquired" },
+    { value: "48h", label: "Idea to working demo" },
+    { value: "4", label: "Companies founded" },
+    {
+      value: "Tens of hours",
+      label: "Spent training OpenAI and Anthropic models as AI PM trainer",
+    },
+  ],
+};
+
+// ============================================================
+// Marquee (capability ticker under the hero)
+// ============================================================
+
+export const marqueeItems: string[] = [
+  "AI Product Strategy",
+  "LLM-Powered Workflows",
+  "Agent Design",
+  "Zero-Cost Prototyping",
+  "Discovery & Validation",
+  "Product-Market Fit",
+  "Platform & SaaS",
+  "Go-To-Market",
+  "Roadmapping",
+  "Human-in-the-Loop Systems",
+];
+
+// ============================================================
+// Statement (pinned scroll moment)
+// ============================================================
+
+export interface StatementConfig {
+  text: string;
+  accent: string[];
+  caption: string;
+}
+
+export const statementConfig: StatementConfig = {
+  text: "Most products fail because nobody wanted them. The quickest way to find out is to put a working version in front of real users.",
+  accent: ["working", "users"],
+  caption:
+    "Every engagement ends with something people outside the team can open and use. What they do with it decides what gets built next.",
 };
 
 // ============================================================
@@ -65,6 +121,7 @@ export interface CapabilityItem {
   slug: string;
   description: string;
   image: string;
+  meta: string[];
 }
 
 export interface CapabilitiesConfig {
@@ -80,18 +137,21 @@ export const capabilitiesConfig: CapabilitiesConfig = {
       slug: "zero-to-demo",
       description: "Build working product demos in 48-72 hours at zero cost. Validate your idea with real users before spending a dime on development.",
       image: "/images/capability-1.jpg",
+      meta: ["48-72 hours", "Clickable demo", "Zero cost"],
     },
     {
       title: "AI Product Architecture",
       slug: "ai-architecture",
       description: "Design intelligent product workflows that leverage AI to create 10x user experiences. Not chatbot wrappers - deeply integrated intelligence.",
       image: "/images/capability-2.jpg",
+      meta: ["Agent design", "Evaluation", "Retrieval"],
     },
     {
       title: "Founder Coaching",
       slug: "founder-coaching",
       description: "Sessions at your pace to structure your MVP, prioritize features and find the fastest path to product-market fit. Hands-on support or coaching.",
       image: "/images/capability-3.jpg",
+      meta: ["MVP scoping", "Prioritisation", "Hands-on"],
     },
   ],
 };
@@ -126,30 +186,30 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
       title: "Zero-to-Demo Sprints",
       subtitle: "From concept to clickable prototype in 48-72 hours.",
       paragraphs: [
-        "Most founders spend months and thousands of dollars building products nobody wants. The Zero-to-Demo Sprint flips this script: we build a working, clickable demo in 48-72 hours using no-code tools, AI code generation and rapid prototyping techniques.",
-        "During the sprint, we define your core user story, map the critical user journey, and build just enough to get meaningful feedback. The demo isn't a pitch deck - it's a real product surface that users can interact with.",
-        "This approach has helped founders secure pre-seed meetings, validate demand before hiring engineers and pivot early when the data suggests a different direction. The cost is zero - my time is invested in founders who are committed to building something meaningful.",
-        "After the sprint, you receive the demo, a product requirements document and a clear roadmap for turning the prototype into a production-ready MVP.",
+        "Most founders spend months and thousands of dollars building products nobody wants. A Zero-to-Demo Sprint reverses that order. We build a working, clickable demo in 48 to 72 hours, using no-code tools, AI code generation and rapid prototyping.",
+        "During the sprint we define your core user story, map the main user journey, and build just enough to get useful feedback. You end up with a product people can click through and react to, rather than a pitch deck.",
+        "This approach has helped founders secure pre-seed meetings, test demand before hiring engineers, and change direction early when the data pointed somewhere else. The sprint costs nothing. I give my time to founders who are serious about building something people will use.",
+        "After the sprint you keep the demo, a product requirements document, and a roadmap for turning the prototype into an MVP you can ship.",
       ],
     },
     "ai-architecture": {
       title: "AI Product Architecture",
-      subtitle: "Design products where AI is the core, not a bolt-on.",
+      subtitle: "Designing products with AI running through them.",
       paragraphs: [
-        "The next generation of iconic products will be AI-native - not existing software with a chatbot attached. AI Product Architecture is about designing systems where intelligence flows through every layer of the user experience.",
-        "I help founders identify which user problems are genuinely suited for AI, select the right model architecture (whether frontier LLMs, fine-tuned open weights, or classical ML) and design interaction patterns that feel magical rather than mechanical.",
-        "This includes prompt engineering frameworks, retrieval architecture design, agent orchestration and evaluation systems. The goal is a product that gets smarter with every user interaction, creating compounding value over time.",
-        "Whether you're building a creative tool, an analytics platform, or a vertical-specific assistant, the architecture decisions you make in the first 90 days determine your technical moat for years.",
+        "The next generation of products will have AI running through them rather than a chatbot bolted onto existing software. AI Product Architecture means designing systems where the model shapes the whole experience, not one corner of it.",
+        "I help founders work out which user problems actually suit AI, choose the right model architecture from frontier LLMs, fine-tuned open weights or classical machine learning, and design interactions that feel natural rather than mechanical.",
+        "That covers prompt engineering frameworks, retrieval design, agent orchestration and evaluation systems. The aim is a product that answers better the more people use it.",
+        "Whether you are building a creative tool, an analytics platform or an assistant for one industry, the architecture you choose in the first 90 days decides what competitors will struggle to copy for years.",
       ],
     },
     "founder-coaching": {
       title: "Founder Coaching",
       subtitle: "Hands-on product strategy for early-stage founders.",
       paragraphs: [
-        "Building a product as a founder is lonely. You're making high-stakes decisions about scope, timing and positioning with limited data and constant pressure. Founder Coaching provides a structured sounding board and hands-on support.",
-        "We meet online at your pace to review progress, untangle prioritization conflicts and refine your product narrative. I bring the perspective of someone who has built two companies and led product at AI scaleups - I've made the mistakes so you don't have to.",
-        "Coaching covers MVP scoping, user research tactics, metrics that matter and team hiring for product and engineering. When needed, I roll up my sleeves and contribute directly to design and prototyping.",
-        "This is for founders who want to move fast without breaking things - who value strategic clarity as much as execution speed. The relationship adapts to your stage and challenges.",
+        "Building a product as a founder is lonely. You make expensive decisions about scope, timing and positioning with thin data and constant pressure. Founder Coaching gives you someone to test those decisions against, and hands-on help when you need it.",
+        "We meet online at your pace to review progress, settle prioritisation conflicts and sharpen how you explain the product. I have built two companies and led product at AI scaleups, and I have already made many of these mistakes myself.",
+        "Coaching covers MVP scoping, user research, the metrics worth tracking, and hiring for product and engineering. When it helps, I work directly on the design and the prototype with you.",
+        "This suits founders who want to move quickly and still know why each decision was made. How we work together changes as your stage and problems change.",
       ],
     },
   },
@@ -159,18 +219,47 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
 // Architecture (CinematicVision section)
 // ============================================================
 
+export interface ProcessStep {
+  index: string;
+  title: string;
+  description: string;
+}
+
 export interface ArchitectureConfig {
   sectionLabel: string;
   videoPath: string;
   title: string;
   description: string;
+  steps: ProcessStep[];
 }
 
 export const architectureConfig: ArchitectureConfig = {
   sectionLabel: "Process",
   videoPath: "/videos/cinematic-vision.mp4",
-  title: "Define. Structure. Execute. Fast.",
-  description: "We will define your MVP, structure your product and identify the fastest path to execution whether you need hands-on support or coaching. My process combines physics-engineering rigor with creative intuition - analyzing the problem space systematically, then building with the urgency of someone who knows ideas are cheap and execution is everything.",
+  title: "From a rough idea to a plan the team can build from.",
+  description: "We define your MVP, structure the product, and work out the shortest route to a build, whether you want hands-on help or coaching. I came to product from physics engineering, so the work starts by taking the problem apart methodically. Then it moves quickly, because nothing is settled until someone outside the team has used what we made.",
+  steps: [
+    {
+      index: "01",
+      title: "Define",
+      description: "We pick the one user problem worth solving first, and write down what the product has to prove.",
+    },
+    {
+      index: "02",
+      title: "Structure",
+      description: "We map the scope, the architecture and the main user journey, so nothing gets built by accident.",
+    },
+    {
+      index: "03",
+      title: "Execute",
+      description: "We build a working version in days, using AI code generation and rapid prototyping.",
+    },
+    {
+      index: "04",
+      title: "Learn",
+      description: "Real users try it, tell us what breaks, and we rewrite the roadmap around what they say.",
+    },
+  ],
 };
 
 // ============================================================
@@ -228,9 +317,15 @@ export const researchConfig: ResearchConfig = {
 // Footer
 // ============================================================
 
+export interface FooterLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
 export interface FooterLinkColumn {
   title: string;
-  links: string[];
+  links: FooterLink[];
 }
 
 export interface FooterBottomLink {
@@ -239,30 +334,46 @@ export interface FooterBottomLink {
 }
 
 export interface FooterConfig {
+  eyebrow: string;
   heading: string;
+  blurb: string;
+  ctaText: string;
+  ctaHref: string;
   columns: FooterLinkColumn[];
   copyright: string;
   bottomLinks: FooterBottomLink[];
 }
 
 export const footerConfig: FooterConfig = {
-  heading: "Let's build something real.",
+  eyebrow: "Start a conversation",
+  heading: "Let's build the first version.",
+  blurb:
+    "Tell me about the idea you keep coming back to. If it holds up, we can put a working version in front of real users this week.",
+  ctaText: "mario.sorgente@gmail.com",
+  ctaHref: "mailto:mario.sorgente@gmail.com",
   columns: [
     {
       title: "Services",
       links: [
-        "Zero-to-Demo Sprints",
-        "AI Product Architecture",
-        "Founder Coaching",
+        { label: "Zero-to-Demo Sprints", href: "/capability/zero-to-demo" },
+        { label: "AI Product Architecture", href: "/capability/ai-architecture" },
+        { label: "Founder Coaching", href: "/capability/founder-coaching" },
+      ],
+    },
+    {
+      title: "Explore",
+      links: [
+        { label: "Companies Founded", href: "#alumni" },
+        { label: "Case Studies", href: "#blog" },
+        { label: "Background", href: "/background" },
       ],
     },
     {
       title: "Connect",
       links: [
-        "LinkedIn",
-        "GitHub",
-        "Instagram",
-        "mario.sorgente(at)gmail.com",
+        { label: "LinkedIn", href: "https://www.linkedin.com/in/mario-sorgente/", external: true },
+        { label: "GitHub", href: "https://github.com/MarioSorgente", external: true },
+        { label: "mario.sorgente(at)gmail.com", href: "mailto:mario.sorgente@gmail.com" },
       ],
     },
   ],

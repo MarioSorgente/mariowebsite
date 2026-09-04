@@ -6,8 +6,10 @@ This repository contains Mario Sorgente's personal/founder website built as a Vi
 It includes:
 - Home route: `/`
 - Capability detail route: `/capability/:slug`
-- Tailwind-styled UI sections (Navigation, Hero, Curriculum, CinematicVision, AlumniArchives, Footer)
-- GSAP-based animations
+- Tailwind-styled UI sections (Navigation, Hero, Curriculum, CinematicVision, AlumniArchives, Blog, Footer)
+- A token-driven stylesheet in `src/styles/`, with all colour, type, spacing and easing values defined in `tokens.css`
+- Scroll-reveal animations driven by `src/hooks/useReveal.ts`, which honours `prefers-reduced-motion`
+- Native CSS scroll-driven animations in `src/styles/scroll.css`, all behind `@supports`
 - Static image/video assets from `public/`
 
 ## Tech stack
@@ -72,16 +74,46 @@ Recommended Vercel settings:
 ├── public/
 │   ├── images/
 │   └── videos/
+├── scripts/
+│   └── build-logo-assets.py
 └── src/
     ├── main.tsx
     ├── App.tsx
-    ├── config.ts
-    ├── index.css
+    ├── config.ts          # all page copy and link data
+    ├── index.css          # Tailwind entry
+    ├── styles/            # design tokens and per-section stylesheets
     ├── components/
+    ├── data/
     ├── hooks/
     ├── lib/
     └── sections/
 ```
+
+## Brand assets
+The Zero2Hero logo files under `public/images/` are generated from the master artwork,
+which is dark ink on a white background and cannot be used directly on the dark page.
+Regenerate them after any logo change:
+
+```bash
+python scripts/build-logo-assets.py path/to/logo_zero.png
+```
+
+That writes the icon, the horizontal lockup used in the navigation, the stacked lockup
+used in the footer, and both favicons. It needs `pillow` and `numpy`.
+
+## Scroll-driven animation
+`src/styles/scroll.css` uses native CSS scroll timelines. Two things will silently break
+them, so avoid both on any ancestor of an animated element:
+
+- `overflow: hidden` (use `clip`, which does not create a scroll container)
+- any other property that makes an ancestor scrollable
+
+`<body>` and the hero both use `overflow: clip` for exactly this reason.
+
+## Styling
+`src/index.css` loads Tailwind. `src/styles/app.css` is imported after it from `main.tsx`, so
+the site's own rules win over Tailwind's preflight. Design tokens live in `src/styles/tokens.css`;
+change a colour or a type step there and it propagates across every section.
 
 ## Environment variables
 No environment variables are currently required by this project.
