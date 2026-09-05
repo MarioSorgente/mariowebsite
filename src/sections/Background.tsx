@@ -1,10 +1,19 @@
 import { useState } from 'react';
 import { ArrowDownRight, ArrowUpRight, MapPin } from 'lucide-react';
 import Navigation from './Navigation';
+import SectionStrip, { type StripItem } from '../components/SectionStrip';
 import { chapters, certifications, education, expertise, languages, metrics, publications, type Company, type Role } from '../data/backgroundData';
 import './background.css';
 
 const linkedIn = 'https://www.linkedin.com/in/mario-sorgente';
+
+const sections: StripItem[] = [
+  { label: 'Profile', id: 'profile' },
+  { label: 'Experience', id: 'experience' },
+  { label: 'Expertise', id: 'expertise' },
+  { label: 'Education', id: 'education' },
+  { label: 'Contact', id: 'contact' },
+];
 const highlight = (text: string) => {
   const parts = text.split(/(TRL 8|1,000|170|120%|125%|99\.8%|95%|30%|28%|20%|1 to 7|15\+)/g);
   return <>{parts.map((part, i) => /\d/.test(part) ? <strong key={i}>{part}</strong> : part)}</>;
@@ -36,6 +45,7 @@ function CompanyBlock({ company }: { company: Company }) {
 export default function Background() {
   return <div className="background-page">
     <Navigation />
+    <SectionStrip items={sections} />
     <main>
       <section className="background-hero" aria-labelledby="background-title">
         <div className="bg-container hero-grid"><div><img className="portrait" src="/images/mario-sorgente.jpg" alt="Mario Sorgente" width={400} height={400} /><p className="eyebrow">Senior Product Manager and AI Product Builder</p><h1 id="background-title">Mario Sorgente</h1><h2>Building AI, platform and SaaS products from ambiguity to scale.</h2></div><div className="hero-copy"><p>Senior Product Manager with 6+ years of experience building B2B and B2C products across AI systems, LLM-powered workflows, agent design, SaaS platforms, energy and deep-tech.</p><p>I turn complex technical and commercial problems into focused product strategies, intuitive experiences and scalable products.</p><div className="hero-actions"><a className="primary-action" href="#experience">View experience <ArrowDownRight size={17}/></a><a className="text-action" href={linkedIn}>LinkedIn profile <ArrowUpRight size={16}/></a></div><address><span><MapPin size={15}/>Working remotely</span></address></div></div>

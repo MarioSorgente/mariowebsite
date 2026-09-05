@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import AmberCascades from './AmberCascades';
 import { capabilityDetailConfig } from '../config';
-import Logo from '../components/Logo';
 import Button from '../components/Button';
-import { useReveal, useScrollProgress } from '../hooks/useReveal';
+import { useReveal } from '../hooks/useReveal';
+import Navigation from './Navigation';
 
 const SLUGS = Object.keys(capabilityDetailConfig.capabilities);
 
@@ -13,12 +12,6 @@ export default function CapabilityDetail() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const pageRef = useReveal<HTMLDivElement>({ stagger: 80, threshold: 0.05 });
-  const progressRef = useScrollProgress();
-
-  // Every service page opens at the top, including prev/next hops.
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
 
   const data = slug ? capabilityDetailConfig.capabilities[slug] : null;
 
@@ -45,18 +38,7 @@ export default function CapabilityDetail() {
         <AmberCascades />
       </div>
 
-      <nav className="site-nav is-scrolled">
-        <div className="shell site-nav__inner">
-          <Link to="/" className="site-nav__brand" aria-label="Zero2Hero home">
-            <Logo />
-          </Link>
-          <Link to="/" className="nav-link">
-            <ArrowLeft size={15} aria-hidden="true" />
-            <span style={{ marginLeft: 8 }}>{capabilityDetailConfig.backLinkText}</span>
-          </Link>
-        </div>
-        <div ref={progressRef} className="site-nav__progress" style={{ transform: 'scaleX(0)' }} />
-      </nav>
+      <Navigation />
 
       <div className="article-body">
         <header className="article-hero">

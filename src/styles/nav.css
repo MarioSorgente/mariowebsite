@@ -238,3 +238,97 @@
 .site-nav__sheet .btn {
   margin-top: 14px;
 }
+
+/* ==========================================================================
+   Section strip — the index for a long sub-page. Deliberately quieter than the
+   navigation above it: shorter, smaller, and underlined rather than pilled.
+   ========================================================================== */
+
+.section-strip {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 45;
+  height: var(--strip-h);
+  border-bottom: 1px solid var(--line);
+  background: rgba(7, 11, 19, 0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  /* Out of the way until the hero has gone, so the page arrives with one bar. */
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition:
+    opacity var(--dur-3) var(--ease-out),
+    transform var(--dur-3) var(--ease-out);
+}
+
+.section-strip.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.section-strip__inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3vw, 34px);
+  height: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+}
+
+.section-strip__inner::-webkit-scrollbar {
+  display: none;
+}
+
+.section-strip__link {
+  position: relative;
+  flex-shrink: 0;
+  padding: 4px 0;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--dur-2) var(--ease-out);
+}
+
+.section-strip__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: var(--ember);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.section-strip__link:hover {
+  color: var(--text-1);
+}
+
+.section-strip__link.is-active {
+  color: var(--ember-hi);
+}
+
+.section-strip__link.is-active::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-strip {
+    transition: none;
+  }
+}
+
+@media print {
+  .section-strip {
+    display: none;
+  }
+}

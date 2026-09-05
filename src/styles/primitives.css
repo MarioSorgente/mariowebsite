@@ -13,6 +13,8 @@
   position: relative;
   z-index: 2;
   padding-block: var(--section-y);
+  /* Anchor jumps clear the fixed navigation rather than sliding under it. */
+  scroll-margin-top: var(--nav-h);
 }
 
 .section--seam {

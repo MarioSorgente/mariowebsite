@@ -5,6 +5,7 @@ import RetroGrid from '../components/RetroGrid';
 import SocialIcons from '../components/SocialIcons';
 import Button from '../components/Button';
 import { heroConfig } from '../config';
+import { scrollToSection } from '../lib/scroll';
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -51,8 +52,7 @@ export default function Hero() {
   const titleLines = heroConfig.title.split(' ');
   const [claimHead, ...claimRest] = heroConfig.subtitleLine2.split('.');
 
-  const scrollTo = (selector: string) =>
-    document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
+  const scrollTo = (selector: string) => scrollToSection(document.querySelector(selector));
 
   return (
     <section id="hero" ref={sectionRef} className="hero">

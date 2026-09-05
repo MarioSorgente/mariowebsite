@@ -5,15 +5,14 @@ import Button from '../components/Button';
 import { navigationConfig } from '../config';
 import Logo from '../components/Logo';
 import { useActiveSection, useScrollProgress } from '../hooks/useReveal';
+import { scrollToSection } from '../lib/scroll';
 
-const backgroundLinks = [
-  { label: 'Profile', href: '#profile' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Expertise', href: '#expertise' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
-];
-
+/**
+ * The site's one navigation bar. It shows the same links on every route, so
+ * moving between the home page, the background page and a service page never
+ * changes what is on offer. Sub-pages with sections of their own carry a
+ * separate, subordinate strip instead; see components/SectionStrip.
+ */
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,11 +20,15 @@ export default function Navigation() {
   const navigate = useNavigate();
   const progressRef = useScrollProgress();
 
-  const onBackground = location.pathname === '/background';
-  const links = onBackground ? backgroundLinks : navigationConfig.links;
-  const activeId = useActiveSection(
-    links.filter((link) => link.href.startsWith('#')).map((link) => link.href.slice(1))
-  );
+  const { links, ctaText } = navigationConfig;
+  const onHome = location.pathname === '/';
+
+  // Section highlighting only means anything on the page that owns those
+  // sections, so away from home no hash link is tracked or highlighted.
+  const hashIds = onHome
+    ? links.filter((link) => link.href.startsWith('#')).map((link) => link.href.slice(1))
+    : [];
+  const activeId = useActiveSection(hashIds);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -50,19 +53,20 @@ export default function Navigation() {
       navigate(href);
       return;
     }
-    if (location.pathname !== '/') {
+    if (!onHome) {
+      // Carry the hash across the route change; App scrolls to it on arrival.
       navigate(`/${href}`);
       return;
     }
-    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    scrollToSection(document.querySelector(href));
   };
 
-  const ctaHref = onBackground ? 'https://www.linkedin.com/in/mario-sorgente' : '#footer';
-  const ctaLabel = onBackground ? 'Connect on LinkedIn' : navigationConfig.ctaText;
+  const isLinkActive = (href: string) =>
+    href.startsWith('/') ? location.pathname === href : onHome && href.slice(1) === activeId;
 
   const renderLinks = (inSheet: boolean) =>
     links.map((link, index) => {
-      const isActive = link.href.startsWith('#') && link.href.slice(1) === activeId;
+      const isActive = isLinkActive(link.href);
       return (
         <a
           key={link.label}
@@ -70,7 +74,7 @@ export default function Navigation() {
           onClick={(event) => go(event, link.href)}
           className={`nav-link${isActive ? ' is-active' : ''}`}
           style={inSheet ? ({ '--i': index } as React.CSSProperties) : undefined}
-          aria-current={isActive ? 'true' : undefined}
+          aria-current={isActive ? 'page' : undefined}
         >
           <span>{link.label}</span>
           {inSheet && <ArrowUpRight size={16} aria-hidden="true" />}
@@ -78,12 +82,14 @@ export default function Navigation() {
       );
     });
 
+  const ctaHref = '#footer';
+
   return (
     <nav className={`site-nav${scrolled ? ' is-scrolled' : ''}`}>
       <div className="shell site-nav__inner">
         <a
-          href={onBackground ? '/' : '#hero'}
-          onClick={(event) => go(event, onBackground ? '/' : '#hero')}
+          href={onHome ? '#hero' : '/'}
+          onClick={(event) => go(event, onHome ? '#hero' : '/')}
           className="site-nav__brand"
           aria-label="Zero2Hero home"
         >
@@ -94,13 +100,11 @@ export default function Navigation() {
 
         <Button
           href={ctaHref}
-          onClick={onBackground ? undefined : (event) => go(event, ctaHref)}
-          target={onBackground ? '_blank' : undefined}
-          rel={onBackground ? 'noopener noreferrer' : undefined}
+          onClick={(event) => go(event, ctaHref)}
           className="site-nav__cta"
           icon={<ArrowUpRight size={16} />}
         >
-          {ctaLabel}
+          {ctaText}
         </Button>
 
         <button
@@ -120,14 +124,8 @@ export default function Navigation() {
         <div>
           <div className="shell site-nav__sheet-inner">
             {renderLinks(true)}
-            <Button
-              href={ctaHref}
-              onClick={onBackground ? undefined : (event) => go(event, ctaHref)}
-              target={onBackground ? '_blank' : undefined}
-              rel={onBackground ? 'noopener noreferrer' : undefined}
-              icon={<ArrowUpRight size={16} />}
-            >
-              {ctaLabel}
+            <Button href={ctaHref} onClick={(event) => go(event, ctaHref)} icon={<ArrowUpRight size={16} />}>
+              {ctaText}
             </Button>
           </div>
         </div>

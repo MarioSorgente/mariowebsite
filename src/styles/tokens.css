@@ -48,6 +48,8 @@
 
   /* Rhythm */
   --gutter: clamp(20px, 5vw, 68px);
+  --nav-h: 77px;
+  --strip-h: 48px;
   --section-y: clamp(96px, 12vw, 168px);
   --shell: 1320px;
 
