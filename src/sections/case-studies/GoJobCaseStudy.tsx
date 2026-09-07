@@ -9,7 +9,7 @@ export default function GoJobCaseStudy({ readerRef }: Props) {
             <header className="blog-reader-header">
               <div className="blog-reader-copy">
                 <p className="blog-kicker">Case study on hospitality hiring</p>
-                <h2 id="gojob-blog-title">GoJob: from application noise to a useful shortlist</h2>
+                <h2 id="gojob-blog-title">GoJob: from a flood of applications to a useful shortlist</h2>
                 <p>
                   GoJob is a production-ready hiring product for Bali's restaurants, cafés, bars, hotels, and beach clubs: start with the role, surface relevant local candidates, show why each person may fit, and make the next conversation easy.
                 </p>
@@ -27,7 +27,7 @@ export default function GoJobCaseStudy({ readerRef }: Props) {
               <section className="blog-two-column">
                 <div>
                   <p className="blog-kicker">The hiring problem</p>
-                  <h3 className="blog-heading">A full inbox is not the same as a credible candidate pipeline.</h3>
+                  <h3 className="blog-heading">A full inbox still leaves the employer without a shortlist.</h3>
                 </div>
                 <div className="blog-copy">
                   <p>Conversations with the founders and early customers repeatedly surfaced the same problem: hospitality employers needed to hire new people, but applications arrived without enough consistent information to compare candidates efficiently.</p>
@@ -38,7 +38,7 @@ export default function GoJobCaseStudy({ readerRef }: Props) {
               <section className="blog-copy blog-block">
                 <p className="blog-kicker">The product hypothesis</p>
                 <h3 className="blog-heading">Match candidates against the role instead of reading every message.</h3>
-                <p>The hypothesis behind GoJob is that employers will make faster, more confident first-pass decisions when every candidate is evaluated against a defined role and presented in a ranked shortlist. Rather than treating every application as an unstructured message, the product can organize relevant evidence into a consistent, scannable view.</p>
+                <p>The hypothesis behind GoJob is that employers will make faster, more confident first-pass decisions when the product evaluates every candidate against a defined role and presents them in a ranked shortlist. Rather than treating every application as an unstructured message, the product can organize relevant evidence into a consistent, scannable view.</p>
                 <p>A match percentage works as a way to order the list rather than as a hiring verdict. It helps an employer decide whom to look at first, while the supporting evidence explains the recommendation and leaves the decision with the person.</p>
               </section>
 
@@ -57,7 +57,7 @@ export default function GoJobCaseStudy({ readerRef }: Props) {
               <section className="blog-two-column blog-block">
                 <div>
                   <p className="blog-kicker">Trust and localization</p>
-                  <h3 className="blog-heading">Ranking must be legible, local, and careful about certainty.</h3>
+                  <h3 className="blog-heading">Ranking must be readable, local, and honest about what it does not know.</h3>
                 </div>
                 <div className="blog-copy">
                   <p>A useful filter should weigh signals that matter in Bali hospitality: stated availability, relevant role experience, working languages, location, profile completeness, and overall fit with the role requirements. Employers should be able to see which signals contributed instead of trusting an unexplained score.</p>
@@ -67,15 +67,15 @@ export default function GoJobCaseStudy({ readerRef }: Props) {
 
               <section className="blog-copy blog-block">
                 <p className="blog-kicker">Decisions visible in the product</p>
-                <h3 className="blog-heading">What the hypothesis looks like in the built product.</h3>
+                <h3 className="blog-heading">What the hypothesis looks like in the shipped product.</h3>
                 <p>The supplied view leads with Bali-specific hospitality positioning rather than a generic global job board. Bilingual entry points support the local context. Inside the employer experience, live-role status says what the shortlist is for, match percentages set the order of review, and short candidate evidence explains the ranking without turning each card into a full CV.</p>
                 <p>The strongest interaction decision is the final one: “Invite to chat.” It gives employers a concrete next step while avoiding the false certainty of “hire” or “approve.” The product helps two people reach a relevant conversation. It does not automate the hiring decision.</p>
               </section>
 
               <section className="blog-copy blog-block">
-                <p className="blog-kicker">Mario's role and build process</p>
+                <p className="blog-kicker">My role and build process</p>
                 <h3 className="blog-heading">Product lead from demand research through production build.</h3>
-                <p>As product lead working with the founders, I took GoJob from zero to one. I analyzed demand, validated the problem with the founders, the market, and early leads, then shaped the journey, information hierarchy, interface, and technical build.</p>
+                <p>As product lead working with the founders, I took GoJob from the first idea to a live product. I analyzed demand, validated the problem with the founders, the market, and early leads, then shaped the journey, information hierarchy, interface, and technical build.</p>
                 <p>I built the role-first workflow, ranked candidate cards, bilingual entry points, responsive experience, and database-backed product. Every feature shown here works in the live product.</p>
               </section>
 
@@ -94,8 +94,8 @@ export default function GoJobCaseStudy({ readerRef }: Props) {
                 <p className="blog-kicker">Outcome</p>
                 <h3 id="gojob-outcome-title" className="blog-heading">A working product, with commercial outcomes still to establish.</h3>
                 <div className="blog-outcome-grid">
-                  <div><strong>What was built</strong><p>A production-ready, database-backed product with role setup, ranked local matches, concise fit evidence, live-role context, candidate review, and an invite-to-chat action.</p></div>
-                  <div><strong>What is not claimed</strong><p>This case study claims nothing about repeat use, successful hires, ranking performance or willingness to pay. Ongoing testing should establish those outcomes.</p></div>
+                  <div><strong>What I built</strong><p>A production-ready, database-backed product with role setup, ranked local matches, concise fit evidence, live-role context, candidate review, and an invite-to-chat action.</p></div>
+                  <div><strong>What this does not claim</strong><p>This case study claims nothing about repeat use, successful hires, ranking performance or willingness to pay. Ongoing testing should establish those outcomes.</p></div>
                 </div>
               </section>
             </div>

@@ -20,10 +20,10 @@ const buildImages: BlogImage[] = [
   [designPageImage, 'ADES design page where users describe the agent opportunity', 'The design page turns a vague initiative into a Blueprint with user, outcome, context, constraints, risk level, and human involvement.'],
   [dashboardImage, 'ADES dashboard with generated project work to complete', 'The dashboard makes the work visible: generated projects, next review actions, and the main areas the PM needs to refine.'],
   [canvasImage, 'ADES canvas breaking an agent into workflow steps with evals and reflection loops', 'The canvas is the core artifact: workflow steps, assumptions, evals, reflection points, safeguards, and handoff notes in one place.'],
-  [editableStepImage, 'ADES editable step drawer where steps can be modified or added', 'Each step is editable, so a PM can challenge the model, add context, and reshape the workflow before engineering starts.'],
+  [editableStepImage, 'ADES editable step drawer for changing or adding steps', 'Each step is editable, so a PM can challenge the model, add context, and reshape the workflow before engineering starts.'],
   [designGuidanceImage, 'ADES design guidance view showing missing elements in an agent design', 'Design guidance acts like a readiness review, highlighting missing pieces before a team treats the workflow as buildable.'],
   [masterPromptGenImage, 'ADES generated master system prompt from the canvas', 'Once the canvas is coherent, ADES can generate a master system prompt that translates product design into implementation guidance.'],
-  [gradersGenerationImage, 'ADES grader generation in simple, Python, and JSON formats', 'Graders can be generated in simple, Python, or JSON formats, making the design easier to reuse in the OpenAI eval platform.'],
+  [gradersGenerationImage, 'ADES grader generation in simple, Python, and JSON formats', 'ADES can generate graders in simple, Python or JSON formats, which makes the design easier to reuse in the OpenAI eval platform.'],
   [evalsReviewImage, 'ADES evaluation review page showing generated evals', 'The evals review page keeps quality criteria explicit instead of leaving success definitions scattered across docs and chats.'],
   [reflectionLoopImage, 'ADES reflection loop visualization', 'Reflection loops appear where uncertainty, ambiguity, or high-consequence judgment makes extra reasoning useful.'],
 ].map(([src, alt, caption]) => ({ src, alt, caption }));
@@ -46,7 +46,7 @@ export default function AdesCaseStudy({ readerRef }: Props) {
                 <p className="blog-kicker">Founder build note</p>
                 <h2 id="ades-blog-title">How I built ADES</h2>
                 <p>
-                  ADES started from a simple product management frustration: AI teams can brainstorm agents quickly, but turning that energy into a structured workflow with evals, reflection logic, safeguards, assumptions, and handoff notes is still painfully fragmented.
+                  ADES started from a simple product management frustration: AI teams can brainstorm agents quickly, but turning that energy into a structured workflow with evals, reflection logic, safeguards, assumptions, and handoff notes is still fragmented.
                 </p>
               </div>
               <figure className="blog-hero-figure">
@@ -60,18 +60,18 @@ export default function AdesCaseStudy({ readerRef }: Props) {
                 className="blog-two-column"
               >
                 <div>
-                  <p className="blog-kicker">The category</p>
-                  <h3 className="blog-heading">Agentic AI needs product infrastructure before runtime infrastructure.</h3>
+                  <p className="blog-kicker">Market context</p>
+                  <h3 className="blog-heading">Agentic AI needs the design decisions settled before the runtime gets built.</h3>
                 </div>
                 <div className="blog-copy">
                   <p>
-                    ADES operates in AI Product Management Enablement for B2B product teams. The product sits between agent design software, AI workflow visualization, and evaluation/governance support. The market is moving quickly: enterprise agentic AI was estimated at USD 2.58B in 2024 and projected by Grand View Research to reach USD 24.50B by 2030, while McKinsey reported that 39% of organizations had begun experimenting with AI agents and another 23% were already scaling them. LinkedIn also reported in January 2026 that 1.3 million AI-enabled jobs had emerged globally over the previous two years, a useful signal that AI workflows are becoming a talent and operating-model shift, not only a software trend.
+                    ADES is a tool for B2B product teams designing AI agents. It sits between agent design software, workflow visualisation and evaluation tooling. The market is moving quickly: Grand View Research put enterprise agentic AI at USD 2.58B in 2024 and projects USD 24.50B by 2030, while McKinsey reported that 39% of organizations had begun experimenting with AI agents and another 23% were already scaling them. LinkedIn also reported in January 2026 that 1.3 million AI-enabled jobs had emerged globally over the previous two years, a signal that AI workflows are changing how companies hire and operate, beyond the software they buy.
                   </p>
                   <p className="blog-sources">
                     Sources: <a href="https://www.grandviewresearch.com/industry-analysis/enterprise-agentic-ai-market-report" target="_blank" rel="noopener noreferrer">Grand View Research</a>, <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener noreferrer">McKinsey</a>, and <a href="https://news.linkedin.com/2026/2026-Davos-Press-Release" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
                   </p>
                   <p>
-                    That growth does not remove the messy middle. PMs still open a PRD, sketch boxes in Miro or FigJam, ask ChatGPT for ideas, paste notes into docs, and track eval ideas in spreadsheets. The result is useful thinking spread across disconnected tools. ADES is my attempt to make the pre-build phase more structured.
+                    None of that growth helps with the part in between. PMs still open a PRD, sketch boxes in Miro or FigJam, ask ChatGPT for ideas, paste notes into docs, and track eval ideas in spreadsheets. The result is useful thinking spread across disconnected tools. ADES is my attempt to make the pre-build phase more structured.
                   </p>
                 </div>
               </section>
@@ -93,7 +93,7 @@ export default function AdesCaseStudy({ readerRef }: Props) {
                 <p className="blog-kicker">The product problem</p>
                 <h3 className="blog-heading">The blank-page problem is worse for agents.</h3>
                 <p>
-                  A normal product feature can often be described as screens, states, and API contracts. An agentic workflow asks for more: what should the agent know, when should it ask a human, what does a good answer look like, when should it reflect, what failure modes matter, and what safeguards are required? A static template can ask those questions, but it cannot interpret the domain, risk level, desired outcome, and user context. ADES uses an LLM to turn a vague initiative into a domain-specific Blueprint and then into a design canvas.
+                  You can usually describe a normal product feature as screens, states, and API contracts. An agentic workflow asks for more: what should the agent know, when should it ask a human, what does a good answer look like, when should it reflect, what failure modes matter, and which safeguards it needs? A static template can ask those questions, but it cannot interpret the domain, risk level, desired outcome, and user context. ADES uses an LLM to turn a vague initiative into a domain-specific Blueprint and then into a design canvas.
                 </p>
                 <p>
                   The first version is intentionally early-stage: a public platform, an interactive demo, free sign-in, one free project generation per signed-in user, and a validation prompt after that first generation to test willingness to pay. The long-term model is B2B SaaS for product teams, AI product leads, and founders building agent-driven products.
@@ -108,7 +108,7 @@ export default function AdesCaseStudy({ readerRef }: Props) {
                 <p className="blog-kicker">The build</p>
                 <h3 className="blog-heading">I built ADES as a first version, with the plumbing a real product needs.</h3>
                 <p>
-                  The stack was deliberately lean. Vercel handles deployment, GitHub keeps the build history clean, Firebase provides Google authentication and database persistence, and AI coding tools helped me move quickly across product copy, frontend implementation, and edge-case iteration. Claude Code and Codex were part of the development loop: I used them to accelerate scaffolding, refactor interface states, and keep the product moving while I focused on the workflow logic.
+                  The stack was deliberately lean. Vercel handles deployment, GitHub keeps the build history clean, Firebase provides Google authentication and database persistence, and AI coding tools helped me move quickly across product copy, frontend work and edge cases. Claude Code and Codex were part of the development loop: I used them to accelerate scaffolding, refactor interface states, and keep the product moving while I focused on the workflow logic.
                 </p>
                 <div className="blog-stack-list">
                   {techStack.map((item) => (
@@ -123,12 +123,12 @@ export default function AdesCaseStudy({ readerRef }: Props) {
                 className="blog-copy blog-block"
               >
                 <p className="blog-kicker">The design system</p>
-                <h3 className="blog-heading">The canvas records product decisions rather than drawing a diagram.</h3>
+                <h3 className="blog-heading">The canvas records the reasoning behind each step alongside its shape.</h3>
                 <p>
-                  ADES breaks the agent into steps, then attaches the reasoning that usually gets lost: why the step exists, what input it needs, what output it should produce, how success is evaluated, whether reflection is needed, and which safeguards should be in place. The PM can edit the system instead of accepting the model output as final. That matters because agent design is collaborative: product, design, engineering, and governance need a shared object to debate.
+                  ADES breaks the agent into steps, then attaches the reasoning that usually gets lost: why the step exists, what input it needs, what output it should produce, how to measure success, whether it needs reflection, and which safeguards belong around it. The PM can edit the system instead of accepting the model output as final. That matters because agent design is collaborative: product, design, engineering, and governance need a shared object to debate.
                 </p>
                 <p>
-                  I also built design guidance so the artifact can critique itself. Instead of only generating a pretty workflow, ADES asks what is missing: unclear handoff, weak eval, vague failure mode, unowned human escalation, or missing assumption. That is where the product becomes more than ChatGPT plus a whiteboard.
+                  I also built design guidance, so the tool reviews its own output. Beyond generating a workflow, ADES asks what is missing: unclear handoff, weak eval, vague failure mode, unowned human escalation, or missing assumption. That is where the product becomes more than ChatGPT plus a whiteboard.
                 </p>
               </section>
 
@@ -140,10 +140,10 @@ export default function AdesCaseStudy({ readerRef }: Props) {
                 <p className="blog-kicker">What I learned</p>
                 <h3 className="blog-heading">Generating steps is easy. Making them reviewable is the hard part.</h3>
                 <p>
-                  Product managers rarely struggle to come up with agent ideas. They struggle to turn those ideas into systems an engineer can build and a reviewer can evaluate. ADES uses generative AI where it is actually needed: interpreting messy product intent, decomposing it into workflow structure, proposing context-aware evals, placing reflection only where it helps, and packaging everything into an editable board.
+                  Product managers rarely struggle to come up with agent ideas. They struggle to turn those ideas into systems an engineer can build and a reviewer can evaluate. ADES uses generative AI where it helps: interpreting messy product intent, decomposing it into workflow structure, proposing context-aware evals, placing reflection only where it helps, and packaging everything into an editable board.
                 </p>
                 <p>
-                  The next phase is validation. I am inviting PMs, AI product leads, and founders into a pilot, watching generation volume and cost, tracking API errors and JSON/rendering failures, and using feedback to decide which collaboration, governance, and evaluation features deserve to become paid B2B SaaS tiers.
+                  The next phase is validation. I am inviting PMs, AI product leads, and founders into a pilot, watching generation volume and cost, tracking API errors and failures in JSON and rendering, and using feedback to decide which collaboration, governance, and evaluation features deserve to become paid B2B SaaS tiers.
                 </p>
               </section>
             </div>

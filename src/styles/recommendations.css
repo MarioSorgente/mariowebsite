@@ -7,12 +7,12 @@
    the background page.
    ========================================================================== */
 
-/* Sits between the case studies and the footer, both of which are ink-900 with
-   an ember wash, so this one steps down a shade and leans azure instead. */
+/* Follows the ventures section, which is already ink-850, so this one drops
+   back to the darker ground and leans azure to keep the two sections apart. */
 .recos {
   background:
     radial-gradient(64% 44% at 82% 0%, rgba(108, 198, 255, 0.09), transparent 62%),
-    var(--ink-850);
+    var(--ink-900);
 }
 
 /* Filters and arrows share one line, and stack when there is no room. ------ */

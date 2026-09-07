@@ -30,8 +30,11 @@ export const navigationConfig: NavigationConfig = {
   links: [
     { label: "Services", href: "#curriculum" },
     { label: "Process", href: "#cinematic" },
-    { label: "Companies Founded", href: "#alumni" },
+    // Order must follow the sections on the page: useActiveSection takes the
+    // last entry whose section has passed the scroll line, so an out-of-order
+    // link highlights the wrong item.
     { label: "Case Studies", href: "#blog" },
+    { label: "Companies Founded", href: "#alumni" },
     { label: "Background", href: "/background" },
     { label: "Contact", href: "#footer" },
   ],
@@ -62,18 +65,18 @@ export const heroConfig: HeroConfig = {
   title: "Zero2Hero: Product Management",
   role: "Senior Product Builder",
   status: "Open to founder engagements",
-  subtitleLine1: "I am Mario Sorgente, a founder, product lead in AI and software scaleups and artist, with a background in physics engineering, business and a creative approach to building products.",
+  subtitleLine1: "I am Mario Sorgente, a founder, a product lead at AI and software scaleups, and an artist. My background is in physics engineering and business.",
   subtitleLine2: "I help founders turn ideas into real products. I can build a product demo at zero cost in days.",
   ctaText: "Explore services",
   secondaryCtaText: "See case studies",
   stats: [
-    { value: "120%", label: "Revenue growth delivered" },
-    { value: "1,000+", label: "Active users acquired" },
+    { value: "120%", label: "Revenue growth" },
+    { value: "1,000+", label: "Active users" },
     { value: "48h", label: "Idea to working demo" },
     { value: "4", label: "Companies founded" },
     {
       value: "Tens of hours",
-      label: "Spent training OpenAI and Anthropic models as AI PM trainer",
+      label: "Training OpenAI and Anthropic models as a product management expert",
     },
   ],
 };
@@ -135,21 +138,21 @@ export const capabilitiesConfig: CapabilitiesConfig = {
     {
       title: "Zero-to-Demo Sprints",
       slug: "zero-to-demo",
-      description: "Build working product demos in 48-72 hours at zero cost. Validate your idea with real users before spending a dime on development.",
+      description: "Build working product demos in 48 to 72 hours at no cost. Test the idea with real users before spending anything on development.",
       image: "/images/capability-1.jpg",
       meta: ["48-72 hours", "Clickable demo", "Zero cost"],
     },
     {
       title: "AI Product Architecture",
       slug: "ai-architecture",
-      description: "Design intelligent product workflows that leverage AI to create 10x user experiences. Not chatbot wrappers - deeply integrated intelligence.",
+      description: "Design product workflows where the model does real work across the whole experience, rather than answering questions in a side panel.",
       image: "/images/capability-2.jpg",
       meta: ["Agent design", "Evaluation", "Retrieval"],
     },
     {
       title: "Founder Coaching",
       slug: "founder-coaching",
-      description: "Sessions at your pace to structure your MVP, prioritize features and find the fastest path to product-market fit. Hands-on support or coaching.",
+      description: "Sessions at your pace to scope your MVP, prioritize features and find the fastest route to product-market fit, with hands-on help or coaching depending on what you need.",
       image: "/images/capability-3.jpg",
       meta: ["MVP scoping", "Prioritisation", "Hands-on"],
     },
@@ -184,9 +187,9 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
   capabilities: {
     "zero-to-demo": {
       title: "Zero-to-Demo Sprints",
-      subtitle: "From concept to clickable prototype in 48-72 hours.",
+      subtitle: "From concept to clickable prototype in 48 to 72 hours.",
       paragraphs: [
-        "Most founders spend months and thousands of dollars building products nobody wants. A Zero-to-Demo Sprint reverses that order. We build a working, clickable demo in 48 to 72 hours, using no-code tools, AI code generation and rapid prototyping.",
+        "Most founders spend months and thousands of dollars building products nobody wants. A Zero-to-Demo Sprint puts the test first. We build a working, clickable demo in 48 to 72 hours, using no-code tools, AI code generation and rapid prototyping.",
         "During the sprint we define your core user story, map the main user journey, and build just enough to get useful feedback. You end up with a product people can click through and react to, rather than a pitch deck.",
         "This approach has helped founders secure pre-seed meetings, test demand before hiring engineers, and change direction early when the data pointed somewhere else. The sprint costs nothing. I give my time to founders who are serious about building something people will use.",
         "After the sprint you keep the demo, a product requirements document, and a roadmap for turning the prototype into an MVP you can ship.",
@@ -196,7 +199,7 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
       title: "AI Product Architecture",
       subtitle: "Designing products with AI running through them.",
       paragraphs: [
-        "The next generation of products will have AI running through them rather than a chatbot bolted onto existing software. AI Product Architecture means designing systems where the model shapes the whole experience, not one corner of it.",
+        "The next generation of products will have AI running through them instead of a chatbot bolted onto existing software. AI Product Architecture means designing systems where the model shapes the whole experience rather than one corner of it.",
         "I help founders work out which user problems actually suit AI, choose the right model architecture from frontier LLMs, fine-tuned open weights or classical machine learning, and design interactions that feel natural rather than mechanical.",
         "That covers prompt engineering frameworks, retrieval design, agent orchestration and evaluation systems. The aim is a product that answers better the more people use it.",
         "Whether you are building a creative tool, an analytics platform or an assistant for one industry, the architecture you choose in the first 90 days decides what competitors will struggle to copy for years.",
@@ -207,9 +210,9 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
       subtitle: "Hands-on product strategy for early-stage founders.",
       paragraphs: [
         "Building a product as a founder is lonely. You make expensive decisions about scope, timing and positioning with thin data and constant pressure. Founder Coaching gives you someone to test those decisions against, and hands-on help when you need it.",
-        "We meet online at your pace to review progress, settle prioritisation conflicts and sharpen how you explain the product. I have built two companies and led product at AI scaleups, and I have already made many of these mistakes myself.",
+        "We meet online at your pace to review progress, settle prioritisation conflicts and sharpen how you explain the product. I have founded four companies and led product at AI scaleups, and I have already made many of these mistakes myself.",
         "Coaching covers MVP scoping, user research, the metrics worth tracking, and hiring for product and engineering. When it helps, I work directly on the design and the prototype with you.",
-        "This suits founders who want to move quickly and still know why each decision was made. How we work together changes as your stage and problems change.",
+        "This suits founders who want to move quickly and still know the reason behind each decision. How we work together changes as your stage and problems change.",
       ],
     },
   },
@@ -235,7 +238,7 @@ export interface ArchitectureConfig {
 export const architectureConfig: ArchitectureConfig = {
   sectionLabel: "Process",
   title: "From a rough idea to a plan the team can build from.",
-  description: "We define your MVP, structure the product, and work out the shortest route to a build, whether you want hands-on help or coaching. I came to product from physics engineering, so the work starts by taking the problem apart methodically. Then it moves quickly, because nothing is settled until someone outside the team has used what we made.",
+  description: "We define your MVP, structure the product, and work out the shortest route to a build, whether you want hands-on help or coaching. I came to product from physics engineering, so the work starts by taking the problem apart methodically. Then it moves quickly, because nothing counts as settled until someone outside the team has used what we made.",
   steps: [
     {
       index: "01",
@@ -361,8 +364,8 @@ export const footerConfig: FooterConfig = {
     {
       title: "Explore",
       links: [
-        { label: "Companies Founded", href: "#alumni" },
         { label: "Case Studies", href: "#blog" },
+        { label: "Companies Founded", href: "#alumni" },
         { label: "Background", href: "/background" },
       ],
     },

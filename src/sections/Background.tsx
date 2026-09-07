@@ -12,6 +12,7 @@ const sections: StripItem[] = [
   { label: 'Experience', id: 'experience' },
   { label: 'Expertise', id: 'expertise' },
   { label: 'Education', id: 'education' },
+  { label: 'Certifications', id: 'certifications' },
   { label: 'Contact', id: 'contact' },
 ];
 const highlight = (text: string) => {
@@ -60,7 +61,9 @@ export default function Background() {
 
       <section id="expertise" className="bg-section expertise-section"><div className="bg-container"><SectionHeading label="Core expertise" title="Strategy grounded in technical fluency."/><div className="expertise-grid">{Object.entries(expertise).map(([group,items],i)=><article key={group}><span>0{i+1}</span><h3>{group}</h3><ul>{items.map(item=><li key={item}>{item}</li>)}</ul></article>)}</div></div></section>
 
-      <section id="education" className="bg-section credentials-section"><div className="bg-container"><SectionHeading label="Education & credentials" title="Engineering depth, continuously extended."/><div className="credentials-grid"><div className="education-list">{education.map(([school,degree,field,dates])=><article key={`${school}-${degree}`}><div><h3>{school}</h3><p>{degree}</p><span>{field}</span></div><time>{dates}</time></article>)}</div><aside><h3>Languages</h3>{languages.map(([language,level])=><p key={language}><strong>{language}</strong><span>{level}</span></p>)}<h3>Certifications</h3><ul>{certifications.map(item=><li key={item}>{item}</li>)}</ul></aside></div></div></section>
+      <section id="education" className="bg-section credentials-section"><div className="bg-container"><SectionHeading label="Education & credentials" title="Engineering depth, continuously extended."/><div className="credentials-grid"><div className="education-list">{education.map(([school,degree,field,dates])=><article key={`${school}-${degree}`}><div><h3>{school}</h3><p>{degree}</p><span>{field}</span></div><time>{dates}</time></article>)}</div><aside><h3>Languages</h3>{languages.map(([language,level])=><p key={language}><strong>{language}</strong><span>{level}</span></p>)}</aside></div></div></section>
+
+      <section id="certifications" className="bg-section credentials-section"><div className="bg-container"><SectionHeading label="Licenses &amp; certifications" title="Twenty certifications, most recent first."/><div className="education-list">{certifications.map(({name,issuer,date})=><article key={name}><div><h3>{name}</h3>{issuer && <p>{issuer}</p>}</div>{date && <time>{date}</time>}</article>)}<article><a className="text-action" href={`${linkedIn}/details/certifications/`} target="_blank" rel="noopener noreferrer">Verify these on LinkedIn <ArrowUpRight size={16}/></a></article></div></div></section>
 
       <section className="bg-section publications-section"><div className="bg-container"><SectionHeading label="Publications" title="Selected writing and research."/><ol>{publications.map((title,i)=><li key={title}><span>{String(i+1).padStart(2,'0')}</span><p>{title}</p></li>)}</ol></div></section>
     </main>

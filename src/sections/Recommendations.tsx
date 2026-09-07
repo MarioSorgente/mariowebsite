@@ -134,9 +134,9 @@ export default function Recommendations() {
             Recommendations, <em>unedited</em>.
           </h2>
           <p className="section-lede" data-reveal="up">
-            Written on LinkedIn by the people who managed me, worked beside me and sat in my team.
-            Reproduced word for word, with the profile linked so you can check any of them against
-            the source.
+            These come from LinkedIn, written by the people who managed me, worked beside me and
+            sat in my team. I reproduce each one word for word and link the profile so you can check
+            it against the source.
           </p>
         </header>
 

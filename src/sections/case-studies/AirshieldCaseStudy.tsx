@@ -13,7 +13,7 @@ export default function AirshieldCaseStudy({ readerRef }: Props) {
                 <p className="blog-kicker">Case study on strategy, product and fundraising</p>
                 <h2 id="airshield-blog-title">How I built Airshield</h2>
                 <p>
-                  Airshield began with a founder who had a meaningful product idea: a new approach to helmet protection. But an invention alone is not yet a fundable business. I helped turn the founder's expertise into a clear company story, a credible website, a complete business model, and an investor strategy designed to open fundraising conversations.
+                  Airshield began with a founder and a new approach to helmet protection. But an invention alone is not yet a fundable business. I helped turn the founder's expertise into a clear company story, a credible website, a complete business model, and an investor strategy designed to open fundraising conversations.
                 </p>
                 <div className="blog-cta-row">
                   <a className="blog-cta" href="https://www.airshieldhelmets.com/" target="_blank" rel="noopener noreferrer">Visit Airshield</a>
@@ -33,7 +33,7 @@ export default function AirshieldCaseStudy({ readerRef }: Props) {
                   <h3 className="blog-heading">A strong product needed a business that investors could understand.</h3>
                 </div>
                 <div className="blog-copy">
-                  <p>The founder understood the protection problem and believed deeply in the solution. What was missing was not passion or technical ambition. It was a way to explain the idea. Prospective customers needed to grasp the value quickly, partners needed to see a route to market, and investors needed evidence that the idea could become a scalable company.</p>
+                  <p>The founder understood the protection problem and believed in the solution. The gap was explanation. Prospective customers needed to grasp the value quickly, partners needed to see a route to market, and investors needed evidence that the idea could become a scalable company.</p>
                   <p>The early story had to answer difficult questions in plain language: Who is the first customer? What pain is urgent enough to change buying behavior? Why is Airshield different from established helmet options? How will the company reach buyers, make money, prove demand, and use investment responsibly? Without those connections, the website would be decoration and the pitch would feel like a product presentation rather than an investment case.</p>
                 </div>
               </section>
@@ -44,18 +44,18 @@ export default function AirshieldCaseStudy({ readerRef }: Props) {
 
               <section className="blog-copy blog-block">
                 <p className="blog-kicker">The business foundation</p>
-                <h3 className="blog-heading">Before designing pages, I designed the company logic.</h3>
+                <h3 className="blog-heading">Before designing pages, I worked out how the business would make money.</h3>
                 <p>I worked from the founder's knowledge outward, turning conversations and assumptions into a Business Model Canvas. We defined customer segments, the value proposition for each audience, channels, customer relationships, key activities, resources, partners, costs, and revenue streams. This made hidden assumptions visible and gave us a practical list of what needed validation.</p>
-                <p>The canvas became our decision system. It kept the website from trying to speak to everyone, connected product benefits to commercial outcomes, and gave the fundraising narrative a believable path from today's concept to tomorrow's company. Instead of promising a giant market without a route into it, we could show a focused entry point, the partnerships required, and the milestones capital would unlock.</p>
+                <p>The canvas became the reference for every later decision. It kept the website from trying to speak to everyone, connected product benefits to commercial outcomes, and gave the fundraising story a believable path from the current concept to an operating company. Instead of promising a giant market without a route into it, we could show a focused entry point, the partnerships required, and the milestones the funding would pay for.</p>
               </section>
 
               <section className="blog-two-column blog-block">
                 <div>
                   <p className="blog-kicker">The product promise</p>
-                  <h3 className="blog-heading">Protection extends from the skull to the air a rider breathes.</h3>
+                  <h3 className="blog-heading">The helmet protects the head and filters the air the rider breathes.</h3>
                 </div>
                 <div className="blog-copy">
-                  <p>Airshield's proposition starts with a daily reality for Indonesian riders: sitting inches from exhaust, road dust, and PM2.5. The product extends the familiar safety role of a helmet to the air a rider breathes, pairing premium filtration with a replaceable filter cartridge and a USB-C rechargeable battery.</p>
+                  <p>Airshield's proposition starts with a daily reality for Indonesian riders: sitting inches from exhaust, road dust, and PM2.5. The product extends the familiar safety role of a helmet to the air a rider breathes, pairing filtration with a replaceable cartridge and a USB-C rechargeable battery.</p>
                   <p>That makes the story concrete. The helmet is the durable product, the cartridge makes maintenance and repeat purchases visible, and recharging fits a routine customers already follow. Launching first in Jakarta, Bali and the major cities across Java also gave the commercial plan a specific place to learn before expanding.</p>
                   <p className="blog-sources">Product details and launch positioning: <a href="https://www.airshieldhelmets.com/" target="_blank" rel="noopener noreferrer">Airshield Helmets</a>.</p>
                 </div>
@@ -63,13 +63,13 @@ export default function AirshieldCaseStudy({ readerRef }: Props) {
 
               <section className="blog-copy blog-block blog-economics-block">
                 <p className="blog-kicker">The unit economics</p>
-                <h3 className="blog-heading">A credible price starts by separating every cost, including CAC.</h3>
+                <h3 className="blog-heading">A credible price starts by separating every cost, including customer acquisition.</h3>
                 <p>A blended “cost per helmet” hides the decisions that determine whether growth creates value or consumes cash. We needed to separate the bill of materials and assembly from freight, duties, warehousing, payment fees, warranty and returns, customer support, and ongoing cartridge fulfilment. That produces a contribution margin we can actually manage instead of a gross-margin headline built on incomplete inputs.</p>
                 <div className="blog-cost-grid" aria-label="Airshield cost model components">
                   <div><strong>Product</strong><span>Components, filtration system, battery, assembly, packaging and quality control.</span></div>
                   <div><strong>Landed</strong><span>Freight, insurance, duties, local handling and inventory storage.</span></div>
                   <div><strong>Transaction</strong><span>Payment fees, fulfilment, delivery, returns, warranty and customer care.</span></div>
-                  <div><strong>Acquisition</strong><span>Creative, paid media, partnerships, sales effort and promotions, which together make up CAC.</span></div>
+                  <div><strong>Acquisition</strong><span>Creative, paid media, partnerships, sales effort and promotions, which together make up customer acquisition cost.</span></div>
                 </div>
                 <p>CAC matters here because a premium new category has to educate the market, build trust and turn attention into a reservation or a purchase. Ad spend is only part of it. A useful blended CAC divides all sales and marketing costs by the new customers won in the same period. We then compare that figure with first-order contribution margin, cartridge repeat margin, payback time, and customer lifetime value.</p>
                 <div className="blog-economics-formula" aria-label="Contribution economics formula">
@@ -81,8 +81,8 @@ export default function AirshieldCaseStudy({ readerRef }: Props) {
               <section className="blog-copy blog-block">
                 <p className="blog-kicker">The website</p>
                 <h3 className="blog-heading">The website answers a visitor's questions in order.</h3>
-                <p>I structured and built the Airshield website around the questions a visitor asks in sequence: what is the problem, what is different about this solution, why should I believe it, and what should I do next? The visual system balances safety, performance, and innovation while the copy translates the founder's technical insight into benefits that customers, strategic partners, and investors can understand.</p>
-                <p>The site also became a credibility asset for outreach. It gives every introduction, pitch email, and investor conversation a consistent home. That consistency matters at an early stage: the founder no longer has to rebuild the explanation from scratch in every meeting, and every stakeholder encounters the same focused proposition.</p>
+                <p>I structured and built the Airshield website around the questions a visitor asks in sequence: what is the problem, what is different about this solution, why should I believe it, and what should I do next? The design pairs the safety cues of a helmet with the look of engineered hardware, while the copy turns the founder's technical insight into benefits that customers, strategic partners, and investors can understand.</p>
+                <p>The site also gave every introduction something solid to point at. It gives every introduction, pitch email, and investor conversation a consistent home. That consistency matters at an early stage: the founder no longer has to rebuild the explanation from scratch in every meeting, and everyone hears the same version.</p>
                 <a className="blog-website-feature" href="https://www.airshieldhelmets.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit the live Airshield Helmets website">
                   <span className="blog-browser-bar" aria-hidden="true">
                     <span className="blog-browser-dots"><i /><i /><i /></span>
@@ -103,9 +103,9 @@ export default function AirshieldCaseStudy({ readerRef }: Props) {
                   <h3 className="blog-heading">I created the marketing material with Higgsfield.</h3>
                 </div>
                 <div className="blog-copy">
-                  <p>A new physical product needs to feel real before a full-scale production shoot is practical. I used Higgsfield as an AI creative-production tool to develop Airshield's marketing imagery and translate the brand direction into polished campaign material. That gave the founder one consistent set of images for the website, investor conversations, presentations and social posts, instead of a pile of unrelated mockups.</p>
-                  <p>I established the visual direction first: premium protection, engineered performance, movement, and confidence. I then built and refined Higgsfield prompts around that system, controlling composition, environment, lighting, camera language, product emphasis, and brand tone. Iteration was essential. I selected the strongest generations, corrected inconsistencies, and shaped the final assets so they felt like one campaign.</p>
-                  <p>The resulting material helped show Airshield in context and communicate an ambition that technical diagrams alone could not. It also made the launch system efficient: one creative direction could support hero imagery, campaign concepts, social assets, pitch-deck visuals, and partner outreach while keeping the story recognizably Airshield.</p>
+                  <p>A new physical product needs to feel real before a full-scale production shoot is practical. I used Higgsfield as an AI creative-production tool to develop Airshield's marketing imagery and turn the brand direction into campaign material. That gave the founder one consistent set of images for the website, investor conversations, presentations and social posts, instead of a pile of unrelated mockups.</p>
+                  <p>I set the visual direction first, built around protection, motion and the feel of engineered hardware. I then built and refined Higgsfield prompts around that system, controlling composition, setting, lighting, camera angle, product emphasis and tone. Iteration was essential. I selected the strongest generations, corrected inconsistencies, and shaped the final assets so they felt like one campaign.</p>
+                  <p>The resulting material showed Airshield in context and conveyed the scale the founder was aiming for, which technical diagrams alone could not. It also kept the launch cheap: one creative direction covered hero imagery, campaign concepts, social posts, pitch-deck visuals and partner outreach, and everything still looked like Airshield.</p>
                   <div className="blog-stack-list" aria-label="Marketing materials created with Higgsfield">
                     {['Campaign art direction', 'Product visuals', 'Website imagery', 'Social content', 'Pitch-deck visuals'].map((item) => (
                       <span key={item} className="blog-stack-chip">{item}</span>
@@ -116,9 +116,9 @@ export default function AirshieldCaseStudy({ readerRef }: Props) {
 
               <section className="blog-copy blog-block">
                 <p className="blog-kicker">The investor strategy</p>
-                <h3 className="blog-heading">The deck connects the vision to a credible use of capital.</h3>
+                <h3 className="blog-heading">The deck connects the product plan to what the money would actually buy.</h3>
                 <p>I built the strategy deck to raise money rather than to describe the product. It frames the founder's problem, the market opportunity, the solution, the differentiation, the business model, the route to market and the investment roadmap as one argument. The problem creates urgency, the solution holds interest, the model shows commercial thinking, and the roadmap shows how funding reduces risk.</p>
-                <p>The result gives the founder a repeatable narrative for investor meetings and a foundation that can evolve as customer evidence, partnerships, testing, and traction grow. Most importantly, it changes the ask from “believe in my invention” to “help fund a clearly staged plan for building this company.”</p>
+                <p>The result gives the founder a repeatable narrative for investor meetings and a foundation that can evolve as customer evidence, partnerships, testing, and traction grow. It also changes the ask from “believe in my invention” to “help fund a clearly staged plan for building this company.”</p>
                 <div className="blog-cta-row">
                   <a className="blog-cta" href="https://drive.google.com/uc?export=download&amp;id=1B04BjaRXttfZucYs8SqomcD6iCCKYqsO" target="_blank" rel="noopener noreferrer">Download the investor strategy deck</a>
                   <a className="blog-text-link" href="https://drive.google.com/file/d/1B04BjaRXttfZucYs8SqomcD6iCCKYqsO/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Preview on Google Drive</a>
@@ -127,7 +127,7 @@ export default function AirshieldCaseStudy({ readerRef }: Props) {
 
               <section className="blog-copy blog-block">
                 <p className="blog-kicker">The outcome</p>
-                <h3 className="blog-heading">One founder story, built to work across product, web, and fundraising.</h3>
+                <h3 className="blog-heading">One consistent story across the product, the website and the fundraising deck.</h3>
                 <p>Airshield now has more than an idea and a logo. The founder has a coherent business foundation, a public website that communicates the opportunity, and an investor-ready story for raising capital. The work shows how I usually start with founders. Rather than producing separate deliverables, I look for the one argument that links the customer problem, the business model, the product experience and the case for investment, then build everything around it.</p>
               </section>
             </div>

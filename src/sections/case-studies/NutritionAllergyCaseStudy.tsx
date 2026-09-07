@@ -35,11 +35,11 @@ export default function NutritionAllergyCaseStudy({ readerRef }: Props) {
               >
                 <div>
                   <p className="blog-kicker">The reason</p>
-                  <h3 className="blog-heading">When a toddler has allergies, the family becomes the data layer.</h3>
+                  <h3 className="blog-heading">When a toddler has allergies, the family ends up keeping all the records.</h3>
                 </div>
                 <div className="blog-copy">
                   <p>
-                    He is the love of my life. Watching him struggle with histamine-related symptoms, food reactions, sleep disruption, skin signals, and the emotional burden that lands on his parents made the problem feel painfully concrete. The hard part was not a lack of care. It was the opposite: everyone cared so much that information multiplied faster than anyone could connect it.
+                    He is the love of my life. Watching him struggle with histamine-related symptoms, food reactions, sleep disruption, skin signals, and the emotional burden that lands on his parents made the problem concrete. The hard part was never a lack of care. Everyone cared so much that information multiplied faster than anyone could connect it.
                   </p>
                   <p>
                     Allergy care is naturally interdisciplinary. Pediatricians look at growth, infections, medication safety, and developmental context. Allergy specialists focus on triggers, reaction severity, testing history, elimination risk, and emergency planning. Nutritionists worry about adequate calories, protein, micronutrients, food variety, gut tolerance, and the hidden cost of over-restricting a young child's diet. A parent sees all of it, but usually inside scattered PDFs, WhatsApp notes, appointment memories, food diaries, supplement labels, and lab reports.
@@ -67,13 +67,13 @@ export default function NutritionAllergyCaseStudy({ readerRef }: Props) {
                 <p className="blog-kicker">The panel</p>
                 <h3 className="blog-heading">A panel that argues, rather than one chatbot pretending to be a doctor.</h3>
                 <p>
-                  The system takes the parents' inputs, including PDF exams and notes, and routes the case through three specialist agents trained to reason from a functional-medicine lens while staying explicit about uncertainty. The pediatrician agent checks age-specific constraints, growth context, red flags, medication questions, and what should be escalated. The nutritionist agent maps the diet pattern, missing nutrients, tolerated foods, meal rhythm, supplement considerations, and the risk of narrowing a toddler's food world too aggressively. The allergy specialist agent focuses on reaction patterns, likely trigger categories, histamine load, environmental context, testing questions, and emergency-plan gaps.
+                  The system takes the parents' inputs, including PDF exams and notes, and routes the case through three specialist agents prompted to reason from a functional-medicine perspective while staying explicit about uncertainty. The pediatrician agent checks age-specific constraints, growth context, red flags, medication questions, and what to escalate. The nutritionist agent maps the diet pattern, missing nutrients, tolerated foods, meal rhythm, supplement considerations, and the risk of narrowing a toddler's diet too far. The allergy specialist agent focuses on reaction patterns, likely trigger categories, histamine load, environmental context, testing questions, and emergency-plan gaps.
                 </p>
                 <p>
                   Each agent first reviews the case independently. That matters because a panel only becomes useful if the agents form their own hypotheses before they see everyone else's answer. Then they debate: the pediatrician can challenge an elimination diet that looks nutritionally risky, the nutritionist can ask whether a supplement idea is age-appropriate, and the allergy specialist can push back when a food correlation is too weak or when the family needs medical testing rather than another home experiment.
                 </p>
                 <p>
-                  After the debate, a moderator agent creates the artifact the family actually needs: possible root causes, key observations, diet suggestions to discuss with professionals, supplement considerations, questions for the family doctor or specialists, and a protocol for what to investigate next. The output works as a structured agenda for better appointments and calmer decisions. It never functions as a diagnosis.
+                  After the debate, a moderator agent produces what the family actually needs: possible root causes, key observations, diet suggestions to discuss with professionals, supplement considerations, questions for the family doctor or specialists, and a protocol for what to investigate next. The output works as a structured agenda for better appointments and calmer decisions. It never functions as a diagnosis.
                 </p>
               </section>
 
@@ -81,15 +81,15 @@ export default function NutritionAllergyCaseStudy({ readerRef }: Props) {
                 className="blog-copy blog-block"
               >
                 <p className="blog-kicker">The architecture</p>
-                <h3 className="blog-heading">Multi-agent AI is useful when the roles create real friction.</h3>
+                <h3 className="blog-heading">Multi-agent AI earns its cost when the roles genuinely disagree.</h3>
                 <p>
-                  Many multi-agent demos amount to three personas politely rephrasing the same answer. I designed this panel around disagreement instead. The agents receive the same evidence packet, but each is graded against a different responsibility. One watches child safety and escalation. One watches nutritional adequacy and practicality. One watches the rigour of the allergy reasoning. The moderator cannot average them. It has to keep the disagreements, flag missing data, and separate confident observations from ideas that need a clinician.
+                  Many multi-agent demos amount to three personas politely rephrasing the same answer. I designed this panel around disagreement instead. The agents receive the same evidence packet, but the panel grades each one against a different responsibility. One watches child safety and escalation. One watches nutritional adequacy and practicality. One watches the rigour of the allergy reasoning. The moderator cannot average them. It has to keep the disagreements, flag missing data, and separate confident observations from ideas that need a clinician.
                 </p>
                 <p>
-                  The research direction supports this pattern. Multi-agent debate can help models identify reasoning gaps because agents externalize different reasoning paths before convergence. Medical multi-agent frameworks go further by testing whether role-specific collaboration improves complex clinical reasoning. My practical takeaway was simple. Adding agents because it sounds advanced helps nobody. Add them when a domain has genuinely competing points of view, and when the final answer has to show where those views pull apart.
+                  Published research points the same way. Multi-agent debate can help models find reasoning gaps, because each agent states its own reasoning before the group settles on an answer. Medical multi-agent frameworks go further by testing whether role-specific collaboration improves complex clinical reasoning. My practical takeaway was simple. Adding agents because it sounds advanced helps nobody. Add them when a domain has genuinely competing points of view, and when the final answer has to show where those views pull apart.
                 </p>
                 <p>
-                  Cost mattered too. I built an orchestrator that routes work between Anthropic and Kimi from Moonshot AI depending on the stage. Kimi handles extraction, research packets, document digestion, and first-pass analysis. Claude is reserved for deeper reasoning, contradiction handling, synthesis, and final moderation. That routing keeps the system more affordable without treating all reasoning steps as equal.
+                  Cost mattered too. I built an orchestrator that routes work between Anthropic and Kimi from Moonshot AI depending on the stage. Kimi handles extraction, research packets, document digestion, and first-pass analysis. Claude handles deeper reasoning, contradiction handling, synthesis, and final moderation. That routing keeps the system more affordable without treating all reasoning steps as equal.
                 </p>
                 <div className="blog-stack-list">
                   {allergyPanelStack.map((item) => (
@@ -117,10 +117,10 @@ export default function NutritionAllergyCaseStudy({ readerRef }: Props) {
                 <p className="blog-kicker">Why ADES mattered</p>
                 <h3 className="blog-heading">I used ADES to design the agents before I trusted the workflow.</h3>
                 <p>
-                  ADES, my Agent Design Studio, helped me design the architecture, system prompts, role boundaries, and graders before coding the whole flow. That was important because the project was emotionally charged. When you are building for family, it is easy to overfit to urgency. ADES forced me to write down the actual workflow: intake, extraction, evidence normalization, independent reviews, debate, contradiction resolution, moderated synthesis, safety disclaimer, and follow-up-question generation.
+                  ADES, my Agent Design Studio, helped me design the architecture, system prompts, role boundaries, and graders before coding the whole flow. That was important because the project was emotionally charged. When you are building for family, it is easy to let urgency drive the design. ADES forced me to write down the actual workflow: intake, extraction, evidence normalization, independent reviews, debate, contradiction resolution, moderated synthesis, safety disclaimer, and follow-up-question generation.
                 </p>
                 <p>
-                  Claude Code and Codex helped me move from design to implementation. Vercel, GitHub, and the usual shipping stack made it possible to turn the prototype into something the family could actually use. But the core product choice was architectural, not technical: build a panel that helps parents become better prepared collaborators with doctors, not a black-box bot that hands out medical certainty.
+                  Claude Code and Codex helped me move from design to implementation, and Vercel and GitHub turned the prototype into something the family could actually use. The core product choice was architectural. The panel exists to help parents arrive at appointments better prepared, and it deliberately avoids handing out medical certainty.
                 </p>
               </section>
             </div>

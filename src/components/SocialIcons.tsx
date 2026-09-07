@@ -46,7 +46,7 @@ export default function SocialIcons({ variant }: { variant: 'vertical' | 'inline
           target={external ? '_blank' : undefined}
           rel={external ? 'noopener noreferrer' : undefined}
         >
-          <Icon strokeWidth={1.4} aria-hidden="true" />
+          <Icon strokeWidth={1.6} aria-hidden="true" />
           <span className="social-btn__label" aria-hidden="true">
             {label}
           </span>

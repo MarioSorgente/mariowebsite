@@ -8,6 +8,8 @@ import MammaCaloriesCaseStudy from './case-studies/MammaCaloriesCaseStudy';
 import GoJobCaseStudy from './case-studies/GoJobCaseStudy';
 import AirshieldCaseStudy from './case-studies/AirshieldCaseStudy';
 import AdesCaseStudy from './case-studies/AdesCaseStudy';
+import DataMaskCaseStudy from './case-studies/DataMaskCaseStudy';
+import DevdokCaseStudy from './case-studies/DevdokCaseStudy';
 import NutritionAllergyCaseStudy from './case-studies/NutritionAllergyCaseStudy';
 
 interface CaseStudyProps {
@@ -19,6 +21,8 @@ const caseStudyRegistry: Record<CaseStudySlug, ComponentType<CaseStudyProps>> = 
   'gojob-bali-hospitality-hiring': GoJobCaseStudy,
   'how-i-built-airshield': AirshieldCaseStudy,
   'how-did-i-build-ades': AdesCaseStudy,
+  'how-i-built-datamask': DataMaskCaseStudy,
+  'how-i-built-devdok': DevdokCaseStudy,
   'multi-agent-panel-nutrition-allergy': NutritionAllergyCaseStudy,
 };
 

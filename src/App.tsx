@@ -59,8 +59,8 @@ function HomePage() {
           caption={statementConfig.caption}
         />
         <CinematicVision />
-        <AlumniArchives />
         <Blog />
+        <AlumniArchives />
         <Recommendations />
         <Footer />
       </main>
