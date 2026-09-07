@@ -5,6 +5,7 @@ import Hero from './sections/Hero';
 import Curriculum from './sections/Curriculum';
 import CinematicVision from './sections/CinematicVision';
 import AlumniArchives from './sections/AlumniArchives';
+import Recommendations from './sections/Recommendations';
 import Footer from './sections/Footer';
 import CapabilityDetail from './sections/CapabilityDetail';
 import Blog from './sections/Blog';
@@ -60,6 +61,7 @@ function HomePage() {
         <CinematicVision />
         <AlumniArchives />
         <Blog />
+        <Recommendations />
         <Footer />
       </main>
     </div>

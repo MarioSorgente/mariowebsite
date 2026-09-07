@@ -85,6 +85,34 @@
     padding: 22px;
   }
 
+  /* Recommendations ------------------------------------------------------- */
+
+  .reco-card {
+    flex-basis: min(84vw, 340px);
+    padding: 22px;
+  }
+
+  /* Swiping the rail beats two small targets, so the arrows step aside and the
+     filters scroll rather than wrapping into three ragged rows. */
+  .recos__nav {
+    display: none;
+  }
+
+  .recos__filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .recos__filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .reco-filter {
+    flex-shrink: 0;
+  }
+
   /* Case studies ---------------------------------------------------------- */
 
   .case-card__title {
