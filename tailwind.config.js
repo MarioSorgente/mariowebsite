@@ -59,26 +59,11 @@ module.exports = {
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "caret-blink": {
-          "0%,70%,100%": { opacity: "1" },
-          "20%,50%": { opacity: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "caret-blink": "caret-blink 1.25s ease-out infinite",
-      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  // Tailwind is kept only for its preflight reset, which the site's own CSS
+  // relies on. The accordion and caret keyframes, and the tailwindcss-animate
+  // plugin that went with them, existed for the shadcn components that are
+  // gone, so nothing references them any more.
+  plugins: [],
 }
