@@ -34,9 +34,14 @@ const links: SocialLink[] = [
   },
 ];
 
-export default function SocialIcons({ variant }: { variant: 'vertical' | 'inline' }) {
+/**
+ * Sits in the hero copy, directly above the two calls to action. It used to
+ * float in a rail against the right edge, where it read as page furniture and
+ * was easy to miss.
+ */
+export default function SocialIcons() {
   return (
-    <div className={`social-rail social-rail--${variant}`}>
+    <div className="social-rail">
       {links.map(({ label, href, external, icon: Icon }) => (
         <a
           key={label}

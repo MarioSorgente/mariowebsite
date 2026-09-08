@@ -271,33 +271,10 @@
 .social-rail {
   display: flex;
   gap: 12px;
-}
-
-.social-rail--vertical {
-  position: absolute;
-  right: clamp(16px, 2vw, 30px);
-  top: 50%;
-  z-index: 4;
-  flex-direction: column;
-  gap: 14px;
-  transform: translateY(-50%);
-}
-
-@media (max-width: 1399px) {
-  .social-rail--vertical {
-    display: none;
-  }
-}
-
-.social-rail--inline {
-  margin-top: 34px;
   flex-wrap: wrap;
-}
-
-@media (min-width: 1400px) {
-  .social-rail--inline {
-    display: none;
-  }
+  /* Sits between the claim and the two calls to action, closer to the buttons
+     it belongs with than to the paragraph above. */
+  margin: 30px 0 22px;
 }
 
 .social-btn {
@@ -305,51 +282,53 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border: 1px solid var(--line-2);
+  width: 52px;
+  height: 52px;
+  /* Lit rather than outlined. In the old right-hand rail these read as page
+     furniture, so they now carry an azure ring and wash: clearly interactive,
+     while the ember fill of the primary button below still leads. */
+  border: 1px solid rgba(108, 198, 255, 0.58);
   border-radius: 50%;
-  background: rgba(13, 19, 32, 0.72);
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(108, 198, 255, 0.22), transparent 70%),
+    rgba(13, 19, 32, 0.82);
   color: var(--text-1);
   backdrop-filter: blur(8px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 0 0 4px rgba(108, 198, 255, 0.07),
+    0 6px 18px rgba(0, 0, 0, 0.34);
   transition:
     transform var(--dur-2) var(--ease-out),
     border-color var(--dur-2) var(--ease-out),
+    background var(--dur-2) var(--ease-out),
     color var(--dur-2) var(--ease-out),
     box-shadow var(--dur-2) var(--ease-out);
 }
 
 .social-btn:hover {
   transform: translateY(-3px);
-  border-color: rgba(255, 138, 61, 0.5);
+  border-color: rgba(255, 138, 61, 0.62);
+  background:
+    radial-gradient(120% 120% at 50% 0%, rgba(255, 138, 61, 0.24), transparent 70%),
+    rgba(13, 19, 32, 0.86);
   color: var(--ember-hi);
-  box-shadow: 0 10px 26px rgba(255, 138, 61, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 12px 30px rgba(255, 138, 61, 0.28);
 }
 
 .social-btn svg {
-  width: 21px;
-  height: 21px;
-}
-
-/* The vertical rail stands beside the stats card on wide screens, so it carries
-   a little more weight there to hold its own against that block. */
-.social-rail--vertical .social-btn {
-  width: 54px;
-  height: 54px;
-}
-
-.social-rail--vertical .social-btn svg {
-  width: 23px;
-  height: 23px;
+  width: 22px;
+  height: 22px;
 }
 
 /* Tooltip that slides out of the button on hover. */
 .social-btn__label {
   position: absolute;
-  right: calc(100% + 12px);
+  bottom: calc(100% + 10px);
   padding: 5px 10px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-2);
   border-radius: 6px;
   background: rgba(7, 11, 19, 0.95);
   color: var(--text-2);
@@ -359,17 +338,11 @@
   text-transform: uppercase;
   white-space: nowrap;
   opacity: 0;
-  transform: translateX(6px);
+  transform: translateY(6px);
   pointer-events: none;
   transition:
     opacity var(--dur-2) var(--ease-out),
     transform var(--dur-2) var(--ease-out);
-}
-
-.social-rail--inline .social-btn__label {
-  right: auto;
-  bottom: calc(100% + 10px);
-  transform: translateY(6px);
 }
 
 .social-btn:hover .social-btn__label {

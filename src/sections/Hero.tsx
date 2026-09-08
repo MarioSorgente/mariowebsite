@@ -73,8 +73,6 @@ export default function Hero() {
       />
       <div className="hero__scrim" aria-hidden="true" />
 
-      <SocialIcons variant="vertical" />
-
       <div className="shell hero__shell">
         <div className="hero__grid">
           <div className="hero__copy">
@@ -119,6 +117,8 @@ export default function Hero() {
               </p>
             )}
 
+            <SocialIcons />
+
             <div className="hero__actions">
               <Button onClick={() => scrollTo('#curriculum')} icon={<ArrowRight size={16} />}>
                 {heroConfig.ctaText}
@@ -131,8 +131,6 @@ export default function Hero() {
                 {heroConfig.secondaryCtaText}
               </Button>
             </div>
-
-            <SocialIcons variant="inline" />
           </div>
 
           {heroConfig.stats.length > 0 && (
