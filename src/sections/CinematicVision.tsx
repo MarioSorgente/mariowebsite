@@ -14,9 +14,6 @@ export default function CinematicVision() {
           <p className="eyebrow" data-reveal="up">
             {sectionLabel}
           </p>
-          <h2 className="section-title" data-reveal="up">
-            How an engagement runs.
-          </h2>
         </header>
 
         <div className="process__split">
