@@ -1,16 +1,16 @@
 import type { RefObject } from 'react';
-import landingImage from '../../../pics/landing.png';
-import signinImage from '../../../pics/signin.png';
-import firebaseImage from '../../../pics/firebase.png';
-import designPageImage from '../../../pics/designpage.png';
-import dashboardImage from '../../../pics/dashboard.png';
-import canvasImage from '../../../pics/canvas.png';
-import editableStepImage from '../../../pics/editablestep.png';
-import designGuidanceImage from '../../../pics/designguidance.png';
-import masterPromptGenImage from '../../../pics/masterpromptgen.png';
-import gradersGenerationImage from '../../../pics/gradersgeneration.png';
-import evalsReviewImage from '../../../pics/evalsreview.png';
-import reflectionLoopImage from '../../../pics/reflectionloop.png';
+import landingImage from '../../../pics/landing.webp';
+import signinImage from '../../../pics/signin.webp';
+import firebaseImage from '../../../pics/firebase.webp';
+import designPageImage from '../../../pics/designpage.webp';
+import dashboardImage from '../../../pics/dashboard.webp';
+import canvasImage from '../../../pics/canvas.webp';
+import editableStepImage from '../../../pics/editablestep.webp';
+import designGuidanceImage from '../../../pics/designguidance.webp';
+import masterPromptGenImage from '../../../pics/masterpromptgen.webp';
+import gradersGenerationImage from '../../../pics/gradersgeneration.webp';
+import evalsReviewImage from '../../../pics/evalsreview.webp';
+import reflectionLoopImage from '../../../pics/reflectionloop.webp';
 
 interface BlogImage { src: string; alt: string; caption: string }
 const buildImages: BlogImage[] = [

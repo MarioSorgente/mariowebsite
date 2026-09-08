@@ -1,39 +1,45 @@
-import { useCallback, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useRef, useState } from 'react';
 import type { ComponentType, RefObject } from 'react';
 import { caseStudies, type CaseStudy, type CaseStudySlug } from '../data/caseStudies';
 import { useReveal } from '../hooks/useReveal';
 import { trackSpotlight } from '../lib/pointer';
 import CaseModal from '../components/CaseModal';
-import MammaCaloriesCaseStudy from './case-studies/MammaCaloriesCaseStudy';
-import GoJobCaseStudy from './case-studies/GoJobCaseStudy';
-import AirshieldCaseStudy from './case-studies/AirshieldCaseStudy';
-import AdesCaseStudy from './case-studies/AdesCaseStudy';
-import DataMaskCaseStudy from './case-studies/DataMaskCaseStudy';
-import DevdokCaseStudy from './case-studies/DevdokCaseStudy';
-import NutritionAllergyCaseStudy from './case-studies/NutritionAllergyCaseStudy';
 
 interface CaseStudyProps {
   readerRef: RefObject<HTMLElement | null>;
 }
 
+/**
+ * Each study loads the moment its card is clicked, not before. Importing them
+ * eagerly put all seven articles and their screenshots in the entry chunk, for
+ * content that only ever renders inside a closed modal.
+ *
+ * The Record type still covers every slug, so a missing entry fails the build
+ * exactly as it did before.
+ */
 const caseStudyRegistry: Record<CaseStudySlug, ComponentType<CaseStudyProps>> = {
-  'mamma-calories-meal-prep': MammaCaloriesCaseStudy,
-  'gojob-bali-hospitality-hiring': GoJobCaseStudy,
-  'how-i-built-airshield': AirshieldCaseStudy,
-  'how-did-i-build-ades': AdesCaseStudy,
-  'how-i-built-datamask': DataMaskCaseStudy,
-  'how-i-built-devdok': DevdokCaseStudy,
-  'multi-agent-panel-nutrition-allergy': NutritionAllergyCaseStudy,
+  'mamma-calories-meal-prep': lazy(() => import('./case-studies/MammaCaloriesCaseStudy')),
+  'gojob-bali-hospitality-hiring': lazy(() => import('./case-studies/GoJobCaseStudy')),
+  'how-i-built-airshield': lazy(() => import('./case-studies/AirshieldCaseStudy')),
+  'how-did-i-build-ades': lazy(() => import('./case-studies/AdesCaseStudy')),
+  'how-i-built-datamask': lazy(() => import('./case-studies/DataMaskCaseStudy')),
+  'how-i-built-devdok': lazy(() => import('./case-studies/DevdokCaseStudy')),
+  'multi-agent-panel-nutrition-allergy': lazy(() =>
+    import('./case-studies/NutritionAllergyCaseStudy')
+  ),
 };
 
 function HeroMedia({ article }: { article: CaseStudy }) {
   return article.heroMedia.type === 'video' ? (
     <video
       src={article.heroMedia.src}
+      poster={article.heroMedia.poster}
       muted
       loop
       playsInline
-      preload="metadata"
+      // The card shows the poster and fetches nothing. `metadata` still opened a
+      // range request against a 23.5 MB file while the page was painting.
+      preload="none"
       aria-label={article.heroMedia.description}
     />
   ) : (
@@ -122,7 +128,11 @@ export default function Blog() {
           eyebrow={selectedArticle.eyebrow}
           onClose={close}
         >
-          <SelectedCaseStudy key={selected} readerRef={articleRef} />
+          {/* The window opens immediately with its title bar already filled in,
+              so the fallback only covers the body while the chunk arrives. */}
+          <Suspense fallback={<div className="case-modal__loading" />}>
+            <SelectedCaseStudy key={selected} readerRef={articleRef} />
+          </Suspense>
         </CaseModal>
       )}
     </section>

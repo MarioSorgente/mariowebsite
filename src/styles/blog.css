@@ -253,6 +253,13 @@
   overscroll-behavior: contain;
 }
 
+/* Holds the window open while a case study's chunk arrives. Deliberately blank:
+   the panel and its title bar are already on screen, and the wait is one
+   request, so anything more would flash. */
+.case-modal__loading {
+  min-height: 60vh;
+}
+
 /* Inside the window the article drops its own frame: the window is the frame. */
 .case-modal .blog-reader {
   border: 0;

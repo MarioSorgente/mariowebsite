@@ -1,5 +1,6 @@
 import type { RefObject } from 'react';
 import allergyPanelVideo from '../../../pics/Video Project.mp4';
+import allergyPanelPoster from '../../../pics/allergy-panel-poster.webp';
 
 const allergyPanelStack = ['Claude Code', 'Codex', 'ADES', 'Anthropic Claude', 'Kimi / Moonshot AI', 'Vercel', 'GitHub'];
 const allergyPanelPrinciples = ['Evidence intake first', 'Independent expert review', 'Structured debate', 'Moderator synthesis', 'Doctor-ready questions', 'Human medical oversight'];
@@ -24,7 +25,8 @@ export default function NutritionAllergyCaseStudy({ readerRef }: Props) {
                 </p>
               </div>
               <figure className="blog-hero-figure">
-                <video src={allergyPanelVideo} controls muted loop playsInline preload="metadata" aria-label="Video preview of the nutrition and allergy advice project" />
+                {/* 23.5 MB, so it downloads on play rather than on open. */}
+                <video src={allergyPanelVideo} poster={allergyPanelPoster} controls muted loop playsInline preload="none" aria-label="Video preview of the nutrition and allergy advice project" />
                 <figcaption>The prototype starts from the parents' evidence and routes the case through a pediatrician, nutritionist, allergy specialist, and moderator agent.</figcaption>
               </figure>
             </header>

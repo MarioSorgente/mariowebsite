@@ -106,7 +106,6 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
 export const architectureConfig: ArchitectureConfig = {
   sectionLabel: "",   // Uppercase label, e.g. "Architecture"
   videoPath: "",      // Path to the looping video file
-                      // Example: "/videos/cinematic-vision.mp4"
   title: "",          // Large heading below video (EB Garamond at clamp 32-64px)
                       // Constraint: max ~55 characters for balanced 50/50 layout
   description: "",    // Paragraph beside the title
@@ -179,7 +178,6 @@ Place video in `public/videos/`.
 
 If the required video asset does not already exist, write a video-generation prompt based on the user's request and this template's visual style, call the `generate_video` tool, save the generated file into `public/videos/`, and then reference that final file path in `src/config.ts`.
 
-- `videos/cinematic-vision.mp4` - Looping background video for the architecture section
   - Aspect ratio: 21:9 (ultrawide)
   - Autoplays muted, loops continuously
   - Recommended: 10-30 seconds, abstract or architectural footage

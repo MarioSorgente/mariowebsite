@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import devdokImage from '../../../pics/devdok.png';
+import devdokImage from '../../../pics/devdok.webp';
 
 const techStack = ['Vercel serverless', 'OpenAI API', 'Firebase Auth', 'Firestore', 'GitHub raw API', 'Bootstrap'];
 

@@ -174,18 +174,68 @@ export default function AmberCascades() {
       pointer.y = -9999;
     };
 
+    // Every frame walks five waves and does an all-pairs pass over the nodes
+    // with a shadow blur on each one, so the loop and its pointer tracking both
+    // stop once the hero leaves the screen. Both used to run for the life of
+    // the page, which cost the most during the first load.
+    let visible = true;
+    let listening = false;
+
+    // The canvas sets pointer-events: none, so the move has to come from window.
+    const listen = () => {
+      if (listening) return;
+      window.addEventListener('pointermove', onPointerMove, { passive: true });
+      window.addEventListener('pointerleave', onPointerLeave);
+      listening = true;
+    };
+
+    const unlisten = () => {
+      if (!listening) return;
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerleave', onPointerLeave);
+      listening = false;
+    };
+
+    const start = () => {
+      listen();
+      if (raf) return;
+      raf = requestAnimationFrame(render);
+    };
+
+    const stop = () => {
+      unlisten();
+      if (!raf) return;
+      cancelAnimationFrame(raf);
+      raf = 0;
+    };
+
     resize();
     const observer = new ResizeObserver(resize);
     observer.observe(canvas);
-    window.addEventListener('pointermove', onPointerMove, { passive: true });
-    window.addEventListener('pointerleave', onPointerLeave);
-    raf = requestAnimationFrame(render);
+
+    const seen = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible) start();
+        else stop();
+      },
+      { rootMargin: '20% 0px' }
+    );
+    seen.observe(canvas);
+
+    const onVisibility = () => {
+      if (document.hidden) stop();
+      else if (visible) start();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
+    start();
 
     return () => {
+      stop();
       observer.disconnect();
-      window.removeEventListener('pointermove', onPointerMove);
-      window.removeEventListener('pointerleave', onPointerLeave);
-      cancelAnimationFrame(raf);
+      seen.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
 

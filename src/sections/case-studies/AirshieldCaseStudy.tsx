@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import airshieldImage from '../../../public/images/airshield-photo.svg';
+const airshieldImage = '/images/airshield-photo.svg';
 
 const airshieldWork = ['Founder discovery', 'Business Model Canvas', 'Website design & build', 'Higgsfield marketing', 'Investor story', 'Fundraising deck'];
 

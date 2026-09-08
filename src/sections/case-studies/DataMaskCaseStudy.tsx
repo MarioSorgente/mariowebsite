@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import dataMaskLogo from '../../../pics/datamask-logo.png';
+import dataMaskLogo from '../../../pics/datamask-logo.webp';
 
 const techStack = ['Chrome Manifest V3', 'Service worker', 'chrome.storage.local', 'chrome.scripting', 'Vanilla JavaScript'];
 const surfaces = ['Toolbar popup', 'Right-click menu', 'Keyboard shortcut', 'Options page', 'JSON export', 'JSON import'];

@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import goJobImage from '../../../public/images/gojob-dashboard.svg';
+const goJobImage = '/images/gojob-dashboard.svg';
 
 interface Props { readerRef: RefObject<HTMLElement | null> }
 

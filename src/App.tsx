@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './sections/Navigation';
 import Hero from './sections/Hero';
@@ -7,12 +7,16 @@ import CinematicVision from './sections/CinematicVision';
 import AlumniArchives from './sections/AlumniArchives';
 import Recommendations from './sections/Recommendations';
 import Footer from './sections/Footer';
-import CapabilityDetail from './sections/CapabilityDetail';
 import Blog from './sections/Blog';
-import Background from './sections/Background';
 import Marquee from './components/Marquee';
 import Statement from './components/Statement';
 import { statementConfig } from './config';
+
+// The two sub-pages load on demand. Nobody arriving at the home page needs the
+// full CV or the service write-ups, and eagerly importing them put both in the
+// single entry chunk. The home page stays eager so it never shows a fallback.
+const CapabilityDetail = lazy(() => import('./sections/CapabilityDetail'));
+const Background = lazy(() => import('./sections/Background'));
 
 /**
  * Puts every route change at a sensible scroll position. Without this, moving
@@ -72,11 +76,16 @@ export default function App() {
   return (
     <>
       <RouteBehaviour />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/capability/:slug" element={<CapabilityDetail />} />
-        <Route path="/background" element={<Background />} />
-      </Routes>
+      {/* The fallback is the page ground itself: the lazy routes are a single
+          request on an already-painted dark page, so a spinner would flash
+          more than it would reassure. */}
+      <Suspense fallback={<div className="page-ground" />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/capability/:slug" element={<CapabilityDetail />} />
+          <Route path="/background" element={<Background />} />
+        </Routes>
+      </Suspense>
       <div className="grain-overlay" aria-hidden="true" />
     </>
   );

@@ -78,14 +78,49 @@ export default function RetroGrid() {
       raf = requestAnimationFrame(draw);
     };
 
+    // Roughly a hundred strokes and a fresh gradient per frame, so the loop
+    // only runs while the hero is actually on screen. It used to keep going for
+    // the life of the page, competing with the rest of the first load.
+    let visible = true;
+
+    const start = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(draw);
+    };
+
+    const stop = () => {
+      if (!raf) return;
+      cancelAnimationFrame(raf);
+      raf = 0;
+    };
+
     resize();
     const observer = new ResizeObserver(resize);
     observer.observe(canvas);
-    raf = requestAnimationFrame(draw);
+
+    const seen = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible) start();
+        else stop();
+      },
+      { rootMargin: '20% 0px' }
+    );
+    seen.observe(canvas);
+
+    const onVisibility = () => {
+      if (document.hidden) stop();
+      else if (visible) start();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
+    start();
 
     return () => {
+      stop();
       observer.disconnect();
-      cancelAnimationFrame(raf);
+      seen.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, []);
 

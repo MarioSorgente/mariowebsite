@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import mammaCaloriesImage from '../../../public/images/mamma-calories-dashboard.svg';
+const mammaCaloriesImage = '/images/mamma-calories-dashboard.svg';
 
 interface Props { readerRef: RefObject<HTMLElement | null> }
 

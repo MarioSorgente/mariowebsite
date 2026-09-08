@@ -11,7 +11,7 @@
 export function LogoMark({ size = 34, className = '' }: { size?: number; className?: string }) {
   return (
     <img
-      src="/images/zero2hero-mark.png"
+      src="/images/zero2hero-mark.webp"
       alt=""
       width={size}
       height={size}
@@ -26,7 +26,7 @@ export function LogoMark({ size = 34, className = '' }: { size?: number; classNa
 export default function Logo({ height = 34 }: { height?: number }) {
   return (
     <img
-      src="/images/zero2hero-lockup.png"
+      src="/images/zero2hero-lockup.webp"
       alt="Zero2Hero"
       className="logo"
       style={{ height }}
@@ -38,8 +38,10 @@ export default function Logo({ height = 34 }: { height?: number }) {
 export function LogoStacked({ className = '' }: { className?: string }) {
   return (
     <img
-      src="/images/zero2hero-logo.png"
+      src="/images/zero2hero-logo.webp"
       alt=""
+      // Sits in the footer, so it never needs to compete with the first paint.
+      loading="lazy"
       className={`logo-stacked ${className}`.trim()}
       aria-hidden="true"
     />

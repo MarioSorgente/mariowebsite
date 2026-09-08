@@ -120,4 +120,4 @@ No environment variables are currently required by this project.
 
 ## Notes about public assets
 - Images are served from `/public/images` and referenced via absolute paths like `/images/capability-1.jpg`.
-- Video is served from `/public/videos` and referenced as `/videos/cinematic-vision.mp4`.
+- The process section is text only. There is no background video.
