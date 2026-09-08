@@ -65,7 +65,7 @@ export const heroConfig: HeroConfig = {
   title: "Zero2Hero: Product Management",
   role: "Senior Product Builder",
   status: "Open to founder engagements",
-  subtitleLine1: "I am Mario Sorgente, a founder, a product lead at AI and software scaleups, and an artist. My background is in physics engineering and business.",
+  subtitleLine1: "I am Mario, founder, AI product lead and an artist. My background is in physics engineering and business.",
   subtitleLine2: "I help founders turn ideas into real products. I can build a product demo at zero cost in days.",
   ctaText: "Explore services",
   secondaryCtaText: "See case studies",
