@@ -570,7 +570,7 @@ export const aboutConfig = {
   /** The first role leads; the others read as a secondary line. */
   roles: ["Product Manager", "Artist", "Fitness coach"],
   paragraphs: [
-    "I'm Mario Sorgente, a Senior Product Manager with a physics background. My work spans product management at Sympower, AI product development and my own projects.",
+    "I'm Mario Sorgente, a Senior Product Manager with a physics background. I've managed energy products at Sympower, built AI products and started my own projects.",
     "I take complicated problems apart, make the choices clear and get something useful into people's hands.",
     "Product is my main work. I'm also an artist and a fitness coach.",
   ],
