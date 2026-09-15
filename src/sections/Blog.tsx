@@ -90,7 +90,7 @@ export default function Blog() {
           </h2>
           <p className="section-lede" data-reveal="up">
             Products and companies I defined, designed and built, from the first strategy work
-            through to something people can use. Open any one to read how it was made.
+            through to something people can use. Open any one to read how I built it.
           </p>
         </header>
 

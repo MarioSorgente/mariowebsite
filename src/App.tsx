@@ -72,7 +72,7 @@ function RouteBehaviour() {
 function HomePage() {
   // The canonical never carries ?engagement=, so the two modes are one page.
   usePageMeta({
-    title: 'Zero2Hero | Mario Sorgente, Fractional Product Leadership',
+    title: 'Zero2Hero, fractional product leadership by Mario Sorgente',
     description:
       'Work with Mario Sorgente on fractional product leadership, product strategy, focused consulting and team coaching. Open to selected remote full-time roles.',
     canonical: `${SITE_URL}/`,

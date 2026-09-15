@@ -31,7 +31,7 @@ export const servicesSection = {
   heading: 'Four ways to work together',
   intro: 'Ongoing leadership, a strategy engagement, focused consulting or team coaching.',
   pricingNote:
-    'Scope and fees are agreed before we start: a monthly fee for ongoing work, a project fee for focused engagements.',
+    'We agree scope and fees before starting. Ongoing work runs on a monthly fee, focused engagements on a project fee.',
   detailLabel: 'Details',
 };
 
@@ -42,9 +42,9 @@ export const services: readonly Service[] = [
     badge: 'Preferred engagement',
     cardCopy:
       'Part-time product ownership. I set direction, make priorities explicit and run the work from discovery to delivery.',
-    format: '1–2 days a week · 3–6 months to start',
+    format: '1–2 days a week, for an initial 3–6 months',
     bestFor:
-      'Early-stage and growing companies with a team that can execute and needs consistent product ownership. Stage is a fit signal, not a funding requirement.',
+      'Early-stage and growing companies with a team that can execute and needs consistent product ownership.',
     intro:
       'When product decisions keep returning to the founder, I own an agreed product area and set a working rhythm with the team: which outcomes matter, what comes first and how we review progress.',
     scopeHeading: 'What I take on',
@@ -64,9 +64,9 @@ export const services: readonly Service[] = [
       'A monthly account of decisions, progress and changes to the plan.',
     ],
     success:
-      'We track the agreed outcome, delivery predictability and how long important decisions take, against a baseline and review dates set at the start.',
+      'We track the agreed outcome, delivery predictability and how long decisions take, against a baseline we set at the start.',
     scopeBoundary:
-      'Weekly capacity, meeting windows, decision rights and response times are agreed in writing. Fractional support does not imply full-time availability.',
+      'We agree weekly capacity, meeting windows, decision rights and response times in writing. Fractional support does not mean full-time availability.',
     cta: 'Discuss fractional support',
     metaDescription:
       'Part-time product ownership from Mario Sorgente: 1–2 days per week for an initial 3–6 months, covering direction, priorities, discovery and delivery.',
@@ -76,7 +76,7 @@ export const services: readonly Service[] = [
     title: 'Product Strategy & Advisory',
     cardCopy:
       'Decide where your product goes next, using customer evidence, business priorities and product data.',
-    format: '4–6 weeks · optional monthly advisory',
+    format: '4–6 weeks, then optional monthly advisory',
     bestFor:
       'Teams with competing directions, an unclear target customer or uncertain adoption and revenue.',
     intro:
@@ -108,7 +108,7 @@ export const services: readonly Service[] = [
     title: 'Focused Product Consulting',
     cardCopy:
       'Work through one important product decision and leave with clear next actions.',
-    format: '1–2 working sessions · progress review',
+    format: '1–2 working sessions, then a progress review',
     bestFor:
       'A blocked decision, a disputed roadmap, an onboarding problem or a launch that needs a clearer plan.',
     intro:
@@ -127,7 +127,7 @@ export const services: readonly Service[] = [
       'A metric or observable condition for checking whether the change worked.',
     ],
     success:
-      'A decision is made, an owner takes the next action and the team can check the result. A short engagement cannot prove a long-term retention or revenue outcome.',
+      'You make the decision, an owner takes the next action and the team can check the result. A short engagement cannot prove a long-term retention or revenue outcome.',
     cta: 'Bring a product challenge',
     metaDescription:
       'Focused product consulting with Mario Sorgente: one or two working sessions on a single product decision, with a written recommendation and a follow-up review.',
@@ -137,11 +137,11 @@ export const services: readonly Service[] = [
     title: 'Product Operations & Team Coaching',
     cardCopy:
       'Build a consistent way to discover, prioritise and deliver, with clear roles and routines.',
-    format: '6–8 weeks · workshops and implementation support',
+    format: '6–8 weeks of workshops and implementation support',
     bestFor:
       'Product, design and engineering teams where ownership is unclear, planning drags or decisions keep reopening.',
     intro:
-      'We review how work moves through your team, then test a simpler operating process on real work so the new habits can be judged.',
+      'We review how work moves through your team, then test a simpler operating process on real work, so you can see whether the new habits hold.',
     scopeHeading: 'What we work on',
     scope: [
       'Review current planning, discovery and delivery practices.',
@@ -156,10 +156,10 @@ export const services: readonly Service[] = [
       'Defined roles, decision rules and review routines.',
       'Reusable templates and a short team playbook.',
       "Workshops using the team's real product challenges.",
-      'A handover plan and a check of whether the routines are being used.',
+      'A handover plan and a check that the team still follows the routines.',
     ],
     success:
-      'We assess routine adoption, decision turnaround, delivery predictability and time spent on manual work, and whether decisions are getting better.',
+      'We look at how far the team adopts the routines, how quickly decisions happen, how predictably work ships, and how much time recurring manual work still takes.',
     cta: 'Discuss your team',
     metaDescription:
       'Product operations and team coaching with Mario Sorgente: 6–8 weeks of workshops and implementation support for clearer ownership, planning and decisions.',

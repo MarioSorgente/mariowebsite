@@ -40,7 +40,7 @@ function ServiceArticle({ id }: { id: string }) {
   const { selectService } = useEngagement();
 
   usePageMeta({
-    title: `${service.title} | Zero2Hero`,
+    title: `${service.title}, Zero2Hero`,
     description: service.metaDescription,
     canonical: `${SITE_URL}/services/${service.id}`,
   });

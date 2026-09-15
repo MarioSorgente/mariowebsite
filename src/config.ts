@@ -105,16 +105,16 @@ export const heroConfig: HeroConfig = {
   modes: {
     fractional: {
       headline: "A clear product direction your team can deliver.",
-      body: "I help founders and product teams set priorities, understand customers and ship. Part-time leadership, or a focused engagement when you need a next step.",
-      supporting: "Senior product experience, technical depth, hands-on AI prototyping.",
+      body: "I help founders and product teams set priorities, understand their customers and ship. Work with me part-time, or for a focused engagement when you need a clear next step.",
+      supporting: "I bring senior product experience, technical depth and hands-on AI prototyping.",
       primaryCta: "Discuss your product",
       secondaryCta: "See my work",
       secondaryHref: "#blog",
     },
     "full-time": {
       headline: "Product leadership from first question to next release.",
-      body: "Strategy, customer discovery and technical depth in one role. I help teams choose what matters and ship with a clear definition of success.",
-      supporting: "AI product development, working across engineering and business teams.",
+      body: "I bring strategy, customer discovery and technical depth to one role. I help teams choose what matters and ship with a clear definition of success.",
+      supporting: "I build AI products and work across engineering and business teams.",
       primaryCta: "Discuss a role",
       secondaryCta: "View background",
       secondaryHref: "/background",
@@ -138,7 +138,7 @@ export const heroConfig: HeroConfig = {
 
 export const marqueeItems: string[] = [
   "AI Product Strategy",
-  "LLM-Powered Workflows",
+  "LLM Workflows",
   "Agent Design",
   "Rapid AI Prototyping",
   "Discovery & Validation",
@@ -146,7 +146,7 @@ export const marqueeItems: string[] = [
   "Platform & SaaS",
   "Go-To-Market",
   "Roadmapping",
-  "Human-in-the-Loop Systems",
+  "Human Review in AI Systems",
 ];
 
 // ============================================================
@@ -188,7 +188,7 @@ export interface CredibilityConfig {
 export const credibilityConfig: CredibilityConfig = {
   eyebrow: "Track record",
   heading: "The last five years",
-  lead: "7+ years in product. The roots first, then the recent stretch.",
+  lead: "7+ years in product.",
   timeline: [
     {
       when: "Roots",
@@ -312,7 +312,7 @@ export const problemsConfig: CardSectionConfig = {
 export const roleScopeConfig: CardSectionConfig & { roleFit: string; cta: string } = {
   eyebrow: "Role scope",
   heading: "What I can own in your team",
-  intro: "Senior product roles with clear ownership, remote-only work and full alignment on priorities.",
+  intro: "I look for senior product roles with clear ownership, remote work and agreement on what matters most.",
   cards: [
     {
       title: "Product direction",
@@ -351,8 +351,8 @@ export const secondaryCapabilities = {
 // Public copy only. Targets belong in an engagement scorecard, never here.
 export const measurementConfig: CardSectionConfig = {
   eyebrow: "Results",
-  heading: "Agree what success looks like first",
-  intro: "A few measures, a baseline and a review date, tied to customer value and business results.",
+  heading: "We agree the measures before the work starts",
+  intro: "We pick a few measures, set a baseline and agree when to review them, so the work connects to customer value and business results.",
   cards: [
     {
       title: "Customers reach value",
@@ -360,7 +360,7 @@ export const measurementConfig: CardSectionConfig = {
     },
     {
       title: "Customers stay",
-      body: "Repeat use, cancellations and revenue kept from existing customers.",
+      body: "Repeat use, cancellations and the revenue you keep from existing customers.",
     },
     {
       title: "The business benefits",
@@ -406,7 +406,7 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
       paragraphs: [
         "Most founders spend months and thousands of dollars building products nobody wants. A Zero-to-Demo Sprint puts the test first. We build a working, clickable demo in 48 to 72 hours, using no-code tools, AI code generation and rapid prototyping.",
         "During the sprint we define your core user story, map the main user journey, and build just enough to get useful feedback. You end up with a product people can click through and react to, rather than a pitch deck.",
-        "This approach has helped founders secure pre-seed meetings, test demand before hiring engineers, and change direction early when the data pointed somewhere else. A sprint is scoped and priced as a focused engagement, or included in fractional or strategy work when a prototype helps answer a product question. We agree the scope and intended use before anything is built.",
+        "A sprint suits founders who want evidence before they commit a budget. I scope and price it as a focused engagement, or include it in fractional or strategy work when a prototype helps answer a product question. We agree the scope and the intended use before I build anything.",
         "After the sprint you keep the demo, a product requirements document, and a roadmap for turning the prototype into an MVP you can ship.",
       ],
     },
@@ -414,10 +414,10 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
       title: "AI Product Architecture",
       subtitle: "Designing products with AI running through them.",
       paragraphs: [
-        "The next generation of products will have AI running through them instead of a chatbot bolted onto existing software. AI Product Architecture means designing systems where the model shapes the whole experience rather than one corner of it.",
-        "I help founders work out which user problems actually suit AI, choose the right model architecture from frontier LLMs, fine-tuned open weights or classical machine learning, and design interactions that feel natural rather than mechanical.",
-        "That covers prompt engineering frameworks, retrieval design, agent orchestration and evaluation systems. The aim is a product that answers better the more people use it.",
-        "Whether you are building a creative tool, an analytics platform or an assistant for one industry, the architecture you choose in the first 90 days decides what competitors will struggle to copy for years.",
+        "Most products bolt a chatbot onto existing software. AI product architecture means designing the system so the model shapes the whole experience, not one corner of it.",
+        "I help founders work out which user problems suit AI, choose between frontier LLMs, fine-tuned open weights and classical machine learning, and design interactions that feel natural to use.",
+        "That covers prompt frameworks, retrieval design, agent orchestration and evaluation. The aim is a system you can measure and improve as people use it.",
+        "The architecture you choose in the first weeks decides how much you can change later, whether you are building a creative tool, an analytics platform or an assistant for one industry.",
       ],
     },
   },
@@ -611,7 +611,7 @@ export const faqConfig: {
       },
       {
         question: "What does it cost?",
-        answer: "It depends on scope: a monthly fee for ongoing work, a project fee for focused engagements. The proposal lists what is included.",
+        answer: "It depends on scope: a monthly fee for ongoing work, a project fee for focused engagements. The proposal lists everything it covers.",
       },
     ],
     "full-time": [

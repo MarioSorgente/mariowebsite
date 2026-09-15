@@ -14,7 +14,7 @@ export default function AlumniArchives() {
       <div className="shell">
         <header className="section-head">
           <p className="eyebrow" data-reveal="up">
-            Founder-led ventures
+            Ventures
           </p>
           <h2 className="section-title" data-reveal="up">
             Companies I <em>founded</em>.

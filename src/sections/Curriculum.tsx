@@ -62,7 +62,7 @@ function ServiceOffers() {
         {secondaryCapabilities.label}{' '}
         {secondaryCapabilities.links.map((link, index) => (
           <span key={link.href}>
-            {index > 0 && ' · '}
+            {index > 0 && ', '}
             <Link className="link-underline" to={link.href}>
               {link.label}
             </Link>

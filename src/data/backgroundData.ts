@@ -4,7 +4,7 @@ export type ExperienceChapter = { id: string; number: string; title: string; int
 
 export const metrics = [
   ['120%', 'Revenue growth'], ['1,000+', 'Active users'],
-  ['99.8%', 'Platform uptime'], ['95%', 'Additional market capacity'],
+  ['99.8%', 'Platform uptime'], ['95%', 'More market capacity'],
   ['20%', 'Faster time-to-market'], ['TRL 8', 'Hardware and software maturity'],
 ];
 

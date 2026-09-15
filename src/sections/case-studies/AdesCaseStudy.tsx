@@ -61,7 +61,7 @@ export default function AdesCaseStudy({ readerRef }: Props) {
               >
                 <div>
                   <p className="blog-kicker">Market context</p>
-                  <h3 className="blog-heading">Agentic AI needs the design decisions settled before the runtime gets built.</h3>
+                  <h3 className="blog-heading">Agentic AI needs the design decisions settled before you build the runtime.</h3>
                 </div>
                 <div className="blog-copy">
                   <p>
