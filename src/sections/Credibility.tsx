@@ -60,11 +60,16 @@ export default function Credibility() {
             // Each stop staggers on its own, so a late stop never waits on earlier ones.
             const group = `timeline-${index}`;
             return (
-              <li key={stop.when} className="timeline__stop">
+              <li key={stop.when} className={`timeline__stop${stop.story ? ' timeline__stop--story' : ''}`}>
                 <p className="timeline__when" data-reveal="up" data-reveal-group={group}>
                   {stop.when}
                 </p>
                 <div className="timeline__body">
+                  {stop.story && (
+                    <p className="timeline__story" data-reveal="up" data-reveal-group={group}>
+                      {accent(stop.story, highlights)}
+                    </p>
+                  )}
                   {stop.products && (
                     <div className="timeline__products" data-reveal="up" data-reveal-group={group}>
                       <p>{stop.products.lead}</p>
@@ -78,13 +83,15 @@ export default function Credibility() {
                       </ul>
                     </div>
                   )}
-                  <ul className="timeline__items">
-                    {stop.items.map((item) => (
-                      <li key={item} data-reveal="up" data-reveal-group={group}>
-                        {accent(item, highlights)}
-                      </li>
-                    ))}
-                  </ul>
+                  {stop.items && (
+                    <ul className="timeline__items">
+                      {stop.items.map((item) => (
+                        <li key={item} data-reveal="up" data-reveal-group={group}>
+                          {accent(item, highlights)}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </li>
             );

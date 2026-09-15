@@ -98,8 +98,8 @@ function HomePage() {
         <Blog />
         <AlumniArchives />
         <Recommendations />
-        <About />
         <Faq />
+        <About />
         <Footer />
       </main>
     </div>

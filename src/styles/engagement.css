@@ -272,6 +272,24 @@
   text-wrap: pretty;
 }
 
+/* The opening stops are prose: the display face, a touch larger, set on the
+   same 26px line so the node still meets the first line. */
+.timeline__story {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--text-1);
+  font-family: var(--font-display);
+  font-size: clamp(19px, 1.6vw, 21px);
+  font-style: italic;
+  line-height: 26px;
+  text-wrap: pretty;
+}
+
+/* Before the product years, the node is hollow. */
+.timeline__stop--story::before {
+  background: var(--ink-850);
+}
+
 .timeline__name {
   color: var(--ember-hi);
   font-weight: 500;
@@ -457,6 +475,26 @@
       to {
         border-color: var(--ember-hi);
         background: var(--ember);
+        box-shadow:
+          0 0 0 4px rgba(255, 138, 61, 0.14),
+          0 0 14px var(--ember-glow);
+      }
+    }
+
+    /* The origin stops keep a hollow node: only the ring and glow light. */
+    .timeline__stop.timeline__stop--story::before {
+      animation-name: story-node-hollow;
+    }
+
+    @keyframes story-node-hollow {
+      from {
+        border-color: var(--line-3);
+        box-shadow:
+          0 0 0 4px rgba(255, 138, 61, 0),
+          0 0 14px rgba(255, 138, 61, 0);
+      }
+      to {
+        border-color: var(--ember-hi);
         box-shadow:
           0 0 0 4px rgba(255, 138, 61, 0.14),
           0 0 14px var(--ember-glow);
@@ -795,6 +833,35 @@
 .about__copy {
   display: grid;
   gap: 20px;
+}
+
+.about__roles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about__role {
+  padding: 5px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  color: var(--text-3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Product management leads: filled, brighter and set apart from the rest. */
+.about__role--primary {
+  margin-right: 6px;
+  border-color: rgba(255, 138, 61, 0.55);
+  background: var(--ember-wash);
+  color: var(--ember-hi);
 }
 
 .about__copy .section-title {

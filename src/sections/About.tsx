@@ -7,7 +7,8 @@ import { useEngagement } from '../lib/engagement';
 export default function About() {
   const sectionRef = useReveal<HTMLElement>({ stagger: 90 });
   const { withEngagement } = useEngagement();
-  const { eyebrow, heading, paragraphs, portrait, linkText, linkHref } = aboutConfig;
+  const { eyebrow, heading, roles, paragraphs, portrait, linkText, linkHref } = aboutConfig;
+  const [primaryRole, ...otherRoles] = roles;
 
   return (
     <section id="about" ref={sectionRef} className="section section--seam about">
@@ -29,6 +30,14 @@ export default function About() {
           <h2 className="section-title" data-reveal="up">
             {heading}
           </h2>
+          <ul className="about__roles" data-reveal="up">
+            <li className="about__role about__role--primary">{primaryRole}</li>
+            {otherRoles.map((role) => (
+              <li key={role} className="about__role">
+                {role}
+              </li>
+            ))}
+          </ul>
           {paragraphs.map((paragraph) => (
             <p key={paragraph} className="section-lede" data-reveal="up">
               {paragraph}

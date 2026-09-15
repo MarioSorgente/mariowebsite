@@ -165,9 +165,11 @@ export interface StoryProduct {
 
 export interface StoryStop {
   when: string;
+  /** A short passage in the display face, for the stops that are prose, not milestones. */
+  story?: string;
   /** Rendered before the items, as a lead line and a row of chips. */
   products?: { lead: string; list: StoryProduct[] };
-  items: string[];
+  items?: string[];
 }
 
 export interface RecommendationExcerpt {
@@ -191,6 +193,16 @@ export const credibilityConfig: CredibilityConfig = {
   eyebrow: "Track record",
   heading: "How I got here",
   timeline: [
+    {
+      when: "Roots",
+      story:
+        "I grew up in the suburbs of Naples and Milan, where the priority was paying the bills. A “stable job” was the wildest goal. Dreaming felt expensive. Leaving that reality seemed unthinkable.",
+    },
+    {
+      when: "Early career",
+      story:
+        "I studied Physics, started in a technical role and moved into business within a year. I had no formal business education. I learned through customer conversations and decisions I had to take responsibility for.",
+    },
     {
       when: "5 years ago",
       items: ["Positioned an already-built product in an unfamiliar market."],
@@ -555,9 +567,12 @@ export const researchConfig: ResearchConfig = {
 export const aboutConfig = {
   eyebrow: "About",
   heading: "About Mario",
+  /** The first role leads; the others read as a secondary line. */
+  roles: ["Product Manager", "Artist", "Fitness coach"],
   paragraphs: [
     "I'm Mario Sorgente, a Senior Product Manager with a physics background. My work spans product management at Sympower, AI product development and my own projects.",
     "I take complicated problems apart, make the choices clear and get something useful into people's hands.",
+    "Product is my main work. I'm also an artist and a fitness coach.",
   ],
   portrait: "/images/mario-sorgente.webp",
   linkText: "My background",
