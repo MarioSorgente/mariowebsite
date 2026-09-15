@@ -10,13 +10,10 @@ import SuccessMeasurement from './sections/SuccessMeasurement';
 import CinematicVision from './sections/CinematicVision';
 import AlumniArchives from './sections/AlumniArchives';
 import Recommendations from './sections/Recommendations';
-import About from './sections/About';
 import Faq from './sections/Faq';
 import Footer from './sections/Footer';
 import Blog from './sections/Blog';
 import Marquee from './components/Marquee';
-import Statement from './components/Statement';
-import { statementConfig } from './config';
 import { SITE_URL, usePageMeta } from './hooks/usePageMeta';
 import { EngagementProvider } from './lib/engagement';
 
@@ -32,6 +29,7 @@ const LEGACY_HASHES: Record<string, string> = {
   '#curriculum': '#services',
   '#cinematic': '#process',
   '#footer': '#contact',
+  '#about': '#faq',
 };
 
 /**
@@ -89,18 +87,12 @@ function HomePage() {
         <Credibility />
         <Problems />
         <Curriculum />
-        <Statement
-          text={statementConfig.text}
-          accent={statementConfig.accent}
-          caption={statementConfig.caption}
-        />
         <SuccessMeasurement />
         <CinematicVision />
         <Blog />
         <AlumniArchives />
         <Recommendations />
         <Faq />
-        <About />
         <Footer />
       </main>
     </div>

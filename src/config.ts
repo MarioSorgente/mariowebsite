@@ -37,7 +37,7 @@ export const engagementSelectorConfig: { legend: string; options: ByMode<Engagem
     },
     "full-time": {
       label: "Full-time",
-      helper: "Open to the right remote product role.",
+      helper: "Open to full-time when priorities fully align.",
     },
   },
 };
@@ -66,7 +66,7 @@ export const navigationConfig: NavigationConfig = {
     { label: "Services", fullTimeLabel: "Role scope", href: "#services" },
     { label: "Results", href: "#results" },
     { label: "Case studies", href: "#blog" },
-    { label: "About", href: "#about" },
+    { label: "FAQ", href: "#faq" },
     { label: "Background", href: "/background" },
     { label: "Contact", href: "#contact" },
   ],
@@ -109,7 +109,7 @@ export const heroConfig: HeroConfig = {
       headline: "A clear product direction your team can deliver.",
       body: "I help founders and product teams set priorities, understand customers and ship. Part-time leadership, or a focused engagement when you need a next step.",
       supporting: "Senior product experience, technical depth, hands-on AI prototyping.",
-      availability: "Remote · Fractional preferred",
+      availability: "Remote only · Mostly fractional",
       primaryCta: "Discuss your product",
       secondaryCta: "See my work",
       secondaryHref: "#blog",
@@ -119,7 +119,7 @@ export const heroConfig: HeroConfig = {
       headline: "Product leadership from first question to next release.",
       body: "Strategy, customer discovery and technical depth in one role. I help teams choose what matters and ship with a clear definition of success.",
       supporting: "AI product development, working across engineering and business teams.",
-      availability: "Remote roles · Fractional preferred",
+      availability: "Remote only · Mostly fractional",
       primaryCta: "Discuss a role",
       secondaryCta: "View background",
       secondaryHref: "/background",
@@ -315,7 +315,7 @@ export const problemsConfig: CardSectionConfig = {
 export const roleScopeConfig: CardSectionConfig & { roleFit: string; cta: string } = {
   eyebrow: "Role scope",
   heading: "What I can own in your team",
-  intro: "Senior product roles with clear ownership, remote work and a team that values customer evidence.",
+  intro: "Senior product roles with clear ownership, remote-only work and full alignment on priorities.",
   cards: [
     {
       title: "Product direction",
@@ -345,23 +345,6 @@ export const secondaryCapabilities = {
     { label: "AI prototyping", href: "/capability/zero-to-demo" },
     { label: "AI product architecture", href: "/capability/ai-architecture" },
   ],
-};
-
-// ============================================================
-// Statement (pinned scroll moment)
-// ============================================================
-
-export interface StatementConfig {
-  text: string;
-  accent: string[];
-  caption: string;
-}
-
-export const statementConfig: StatementConfig = {
-  text: "Most products fail because nobody wanted them. The quickest way to find out is to put a working version in front of real users.",
-  accent: ["working", "users"],
-  caption:
-    "Every engagement ends with a clear decision, a plan or a working version the team can put in front of customers.",
 };
 
 // ============================================================
@@ -564,9 +547,9 @@ export const researchConfig: ResearchConfig = {
 // About
 // ============================================================
 
+/** The profile beside the FAQ questions. */
 export const aboutConfig = {
-  eyebrow: "About",
-  heading: "About Mario",
+  name: "Mario Sorgente",
   /** The first role leads; the others read as a secondary line. */
   roles: ["Product Manager", "Artist", "Fitness coach"],
   paragraphs: [
@@ -588,9 +571,25 @@ export interface FaqItem {
   answer: string;
 }
 
-export const faqConfig: { eyebrow: string; heading: string; modes: ByMode<FaqItem[]> } = {
+export const faqConfig: {
+  eyebrow: string;
+  heading: string;
+  /** Shown first in both modes. */
+  shared: FaqItem[];
+  modes: ByMode<FaqItem[]>;
+} = {
   eyebrow: "FAQ",
   heading: "Questions",
+  shared: [
+    {
+      question: "Do you work remotely?",
+      answer: "Yes, remote only. We agree overlap hours, channels and meeting rhythm upfront.",
+    },
+    {
+      question: "Fractional or full-time?",
+      answer: "Mostly fractional. I'm also open to full-time when there's full alignment on priorities.",
+    },
+  ],
   modes: {
     fractional: [
       {
@@ -606,10 +605,6 @@ export const faqConfig: { eyebrow: string; heading: string; modes: ByMode<FaqIte
         answer: "Leadership is ongoing ownership of product work. Advisory helps you decide through research, reviews and recommendations.",
       },
       {
-        question: "Do you work remotely?",
-        answer: "Yes. We agree overlap hours, channels and meeting rhythm upfront.",
-      },
-      {
         question: "Can you build AI prototypes?",
         answer: "Yes, when a prototype helps answer a product question. We agree the scope first, including what production would need.",
       },
@@ -623,10 +618,6 @@ export const faqConfig: { eyebrow: string; heading: string; modes: ByMode<FaqIte
       },
     ],
     "full-time": [
-      {
-        question: "Are you open to full-time roles?",
-        answer: "Yes, for the right remote product role. Fractional is my preference, so scope, team and working model matter.",
-      },
       {
         question: "Which roles fit?",
         answer: "Senior Product Manager, AI Product Manager and Product Lead.",
@@ -716,7 +707,7 @@ export const footerConfig: FooterConfig = {
       links: [
         { label: "Case studies", href: "#blog" },
         { label: "Companies founded", href: "#alumni" },
-        { label: "About", href: "#about" },
+        { label: "FAQ", href: "#faq" },
         { label: "Background", href: "/background" },
       ],
     },

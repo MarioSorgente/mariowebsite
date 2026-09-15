@@ -59,22 +59,6 @@
     font-size: 14.5px;
   }
 
-  /* Statement ------------------------------------------------------------- */
-
-  .statement__text {
-    max-width: none;
-    font-size: clamp(26px, 7vw, 34px);
-    line-height: 1.22;
-  }
-
-  .statement__cap {
-    font-size: 14.5px;
-  }
-
-  .silk-flow {
-    opacity: 0.4;
-  }
-
   /* Process --------------------------------------------------------------- */
 
   .process__split {
