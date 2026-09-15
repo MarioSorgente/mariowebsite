@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Navigation from './sections/Navigation';
 import Hero from './sections/Hero';
 import Credibility from './sections/Credibility';
@@ -128,6 +129,7 @@ export default function App() {
         </Routes>
       </Suspense>
       <div className="grain-overlay" aria-hidden="true" />
+      <Analytics />
     </EngagementProvider>
   );
 }
