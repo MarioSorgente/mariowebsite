@@ -155,13 +155,19 @@ export const marqueeItems: string[] = [
 ];
 
 // ============================================================
-// Credibility (verified experience and two recommendation excerpts)
+// Credibility (Mario's story and two recommendation excerpts)
 // ============================================================
 
-export interface ExperienceFact {
-  role: string;
-  organisation: string;
-  dates: string;
+export interface StoryProduct {
+  name: string;
+  detail: string;
+}
+
+export interface StoryStop {
+  when: string;
+  /** Rendered before the items, as a lead line and a row of chips. */
+  products?: { lead: string; list: StoryProduct[] };
+  items: string[];
 }
 
 export interface RecommendationExcerpt {
@@ -172,20 +178,77 @@ export interface RecommendationExcerpt {
 
 export interface CredibilityConfig {
   eyebrow: string;
-  facts: ExperienceFact[];
+  heading: string;
+  timeline: StoryStop[];
+  today: { when: string; text: string };
+  /** Names picked out in the accent colour wherever they appear in the story. */
+  highlights: string[];
   excerpts: RecommendationExcerpt[];
   linkText: string;
 }
 
-// Every fact below is taken from data/backgroundData.ts.
 export const credibilityConfig: CredibilityConfig = {
   eyebrow: "Track record",
-  facts: [
-    { role: "Senior Product Manager", organisation: "Sympower", dates: "2025 – present" },
-    { role: "Product Manager", organisation: "Sympower", dates: "2023 – 2025" },
-    { role: "Product Manager", organisation: "Optics11", dates: "2020 – 2023" },
-    { role: "Co-founder", organisation: "Binderly", dates: "2025 – 2026" },
+  heading: "How I got here",
+  timeline: [
+    {
+      when: "5 years ago",
+      items: ["Positioned an already-built product in an unfamiliar market."],
+    },
+    {
+      when: "4 years ago",
+      items: [
+        "Expanded the product's software capabilities.",
+        "Coordinated a government project in the nuclear sector.",
+        "Started coaching colleagues on product thinking.",
+      ],
+    },
+    {
+      when: "3 years ago",
+      items: [
+        "Founded yourwAI, helping people find their way through career choices.",
+        "Joined Sympower to manage energy products.",
+      ],
+    },
+    {
+      when: "2 years ago",
+      items: [
+        "Promoted to Senior Product Manager.",
+        "Grew yourwAI to 1,000+ active users.",
+        "Funded my own AI studies.",
+        "Started building a product or experiment every month, like Devdok.",
+      ],
+    },
+    {
+      when: "1 year ago",
+      items: [
+        "Started coaching PM colleagues on AI practices.",
+        "Co-founded Binderly to assess the environmental impact of construction materials.",
+        "Built DataMask to anonymise text before sharing it with AI tools.",
+      ],
+    },
+    {
+      when: "Recently",
+      products: {
+        lead: "Built four products:",
+        list: [
+          { name: "Quantum Motion", detail: "fitness coaching" },
+          { name: "ADES", detail: "AI agent design" },
+          { name: "GoJob", detail: "hospitality hiring" },
+          { name: "Mamma Calories", detail: "meal planning" },
+        ],
+      },
+      items: [
+        "Helped AirShield's founder shape the proposition, brand and fundraising case.",
+        "Helped train and evaluate OpenAI and Anthropic models as a product expert.",
+      ],
+    },
   ],
+  today: {
+    when: "Today",
+    text: "Building Zero2Hero, my product management consultancy for founders and companies.",
+  },
+  highlights: ["yourwAI", "Sympower", "Devdok", "Binderly", "DataMask", "AirShield", "Zero2Hero"],
   excerpts: [
     { recommendationId: "olivier-gillin", paragraph: 3 },
     { recommendationId: "adam-castle", paragraph: 2 },
