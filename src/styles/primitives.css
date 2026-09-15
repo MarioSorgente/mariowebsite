@@ -294,29 +294,3 @@
 .link-underline:hover::after {
   transform: scaleX(1);
 }
-
-/* Status pill with a live dot. -------------------------------------------- */
-
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 7px 16px 7px 12px;
-  border: 1px solid var(--line-2);
-  border-radius: 999px;
-  background: rgba(10, 15, 26, 0.55);
-  backdrop-filter: blur(10px);
-  color: var(--text-2);
-  font-family: var(--font-mono);
-  font-size: var(--step-meta);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.status-pill i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--azure);
-  animation: pulse-ring 2.6s ease-out infinite;
-}

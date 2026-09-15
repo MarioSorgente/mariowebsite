@@ -66,22 +66,6 @@ export default function Hero() {
     const words = copy.headline.split(' ');
     return (
       <>
-        <div className={`hero__status line-mask${mask}`}>
-          <span>
-            <span className="status-pill">
-              <i aria-hidden="true" />
-              {copy.availability}
-            </span>
-          </span>
-        </div>
-
-        <span
-          className={`hero__role line-mask${mask}`}
-          style={{ '--reveal-delay': '80ms' } as React.CSSProperties}
-        >
-          <span>{copy.eyebrow}</span>
-        </span>
-
         <h1 className="hero__title hero__title--sentence">
           {words.map((word, index) => (
             // Headlines repeat words ("a", "your"), so the index is the key. The

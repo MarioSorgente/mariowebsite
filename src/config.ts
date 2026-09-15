@@ -24,6 +24,7 @@ export const siteConfig: SiteConfig = {
 export interface EngagementOption {
   label: string;
   badge?: string;
+  /** Announced when the mode changes; not shown on the page. */
   helper: string;
 }
 
@@ -86,11 +87,9 @@ export interface HeroStat {
 }
 
 export interface HeroModeCopy {
-  eyebrow: string;
   headline: string;
   body: string;
   supporting: string;
-  availability: string;
   primaryCta: string;
   secondaryCta: string;
   /** A `#section` scrolls on the home page; a `/route` navigates. */
@@ -105,21 +104,17 @@ export interface HeroConfig {
 export const heroConfig: HeroConfig = {
   modes: {
     fractional: {
-      eyebrow: "Fractional Product Leadership",
       headline: "A clear product direction your team can deliver.",
       body: "I help founders and product teams set priorities, understand customers and ship. Part-time leadership, or a focused engagement when you need a next step.",
       supporting: "Senior product experience, technical depth, hands-on AI prototyping.",
-      availability: "Remote only · Mostly fractional",
       primaryCta: "Discuss your product",
       secondaryCta: "See my work",
       secondaryHref: "#blog",
     },
     "full-time": {
-      eyebrow: "Senior Product Manager",
       headline: "Product leadership from first question to next release.",
       body: "Strategy, customer discovery and technical depth in one role. I help teams choose what matters and ship with a clear definition of success.",
       supporting: "AI product development, working across engineering and business teams.",
-      availability: "Remote only · Mostly fractional",
       primaryCta: "Discuss a role",
       secondaryCta: "View background",
       secondaryHref: "/background",
@@ -181,6 +176,7 @@ export interface RecommendationExcerpt {
 export interface CredibilityConfig {
   eyebrow: string;
   heading: string;
+  lead: string;
   timeline: StoryStop[];
   today: { when: string; text: string };
   /** Names picked out in the accent colour wherever they appear in the story. */
@@ -191,7 +187,8 @@ export interface CredibilityConfig {
 
 export const credibilityConfig: CredibilityConfig = {
   eyebrow: "Track record",
-  heading: "How I got here",
+  heading: "The last five years",
+  lead: "Six years in product. The roots first, then the recent stretch.",
   timeline: [
     {
       when: "Roots",

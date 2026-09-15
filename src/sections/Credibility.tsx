@@ -35,7 +35,7 @@ function accent(text: string, names: string[]) {
  */
 export default function Credibility() {
   const sectionRef = useReveal<HTMLElement>({ stagger: 90 });
-  const { eyebrow, heading, timeline, today, highlights, excerpts, linkText } = credibilityConfig;
+  const { eyebrow, heading, lead, timeline, today, highlights, excerpts, linkText } = credibilityConfig;
 
   const quotes = excerpts.flatMap(({ recommendationId, paragraph }) => {
     const entry = recommendations.find((item) => item.id === recommendationId);
@@ -53,6 +53,9 @@ export default function Credibility() {
           <h2 id="credibility-title" className="section-title section-title--wide" data-reveal="up">
             {heading}
           </h2>
+          <p className="section-lede" data-reveal="up">
+            {lead}
+          </p>
         </header>
 
         <ol className="timeline">

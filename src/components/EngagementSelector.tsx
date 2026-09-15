@@ -46,8 +46,9 @@ export default function EngagementSelector() {
           </label>
         ))}
       </div>
-      {/* Only this short line is live, never the content it controls. */}
-      <p id={helpId} className="engagement-selector__help" aria-live="polite" aria-atomic="true">
+      {/* Announced on change, but off the page: the modes are self-evident
+          on screen, and the line was crowding the headline. */}
+      <p id={helpId} className="visually-hidden" aria-live="polite" aria-atomic="true">
         {options[mode].helper}
       </p>
     </fieldset>

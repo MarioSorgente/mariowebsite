@@ -23,10 +23,6 @@
     font-size: clamp(32px, 9.2vw, 46px);
   }
 
-  .hero__role {
-    letter-spacing: 0.22em;
-  }
-
   /* Full-width buttons stack cleanly instead of wrapping into orphans. */
   .hero__actions {
     gap: 10px;
