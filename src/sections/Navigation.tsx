@@ -4,6 +4,7 @@ import { ArrowUpRight } from 'lucide-react';
 import Button from '../components/Button';
 import { navigationConfig } from '../config';
 import Logo from '../components/Logo';
+import { useEngagement } from '../lib/engagement';
 import { useActiveSection, useScrollProgress } from '../hooks/useReveal';
 import { scrollToSection } from '../lib/scroll';
 
@@ -19,8 +20,10 @@ export default function Navigation() {
   const location = useLocation();
   const navigate = useNavigate();
   const progressRef = useScrollProgress();
+  const { mode, withEngagement } = useEngagement();
 
-  const { links, ctaText } = navigationConfig;
+  const { links } = navigationConfig;
+  const ctaText = navigationConfig.ctaText[mode];
   const onHome = location.pathname === '/';
 
   // Section highlighting only means anything on the page that owns those
@@ -50,12 +53,13 @@ export default function Navigation() {
     setMenuOpen(false);
 
     if (href.startsWith('/')) {
-      navigate(href);
+      navigate(withEngagement(href));
       return;
     }
     if (!onHome) {
-      // Carry the hash across the route change; App scrolls to it on arrival.
-      navigate(`/${href}`);
+      // Carry the hash (and a full-time mode) across the route change; App
+      // scrolls to the hash on arrival.
+      navigate(withEngagement(`/${href}`));
       return;
     }
     scrollToSection(document.querySelector(href));
@@ -76,13 +80,13 @@ export default function Navigation() {
           style={inSheet ? ({ '--i': index } as React.CSSProperties) : undefined}
           aria-current={isActive ? 'page' : undefined}
         >
-          <span>{link.label}</span>
+          <span>{mode === 'full-time' && link.fullTimeLabel ? link.fullTimeLabel : link.label}</span>
           {inSheet && <ArrowUpRight size={16} aria-hidden="true" />}
         </a>
       );
     });
 
-  const ctaHref = '#footer';
+  const ctaHref = '#contact';
 
   return (
     <nav className={`site-nav${scrolled ? ' is-scrolled' : ''}`}>

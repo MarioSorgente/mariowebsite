@@ -1,43 +1,104 @@
 import { Link } from 'react-router-dom';
 import { ArrowUp, ArrowUpRight } from 'lucide-react';
-import { footerConfig } from '../config';
+import ModePanels from '../components/ModePanels';
+import { contactConfig, footerConfig, type ContactModeCopy } from '../config';
+import { findService } from '../data/services';
 import { LogoStacked } from '../components/Logo';
 import { useReveal } from '../hooks/useReveal';
+import { track } from '../lib/analytics';
+import { BOOKING_URL, buildContactHref, CONTACT_EMAIL } from '../lib/contact';
+import { useEngagement, type EngagementMode } from '../lib/engagement';
+
+const isOfferPage = (href: string) => href.startsWith('/services/') || href.startsWith('/capability/');
 
 export default function Footer() {
   const footerRef = useReveal<HTMLElement>({ stagger: 80, threshold: 0.05 });
-
-  if (!footerConfig.heading && footerConfig.columns.length === 0) return null;
-
-  const [headingHead, ...headingRest] = footerConfig.heading.split(' ');
+  const { serviceId, withEngagement } = useEngagement();
+  const service = findService(serviceId);
 
   const toTop = () =>
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  return (
-    <footer id="footer" ref={footerRef} className="site-footer">
-      <div className="shell">
-        <div className="site-footer__top">
-          <div>
-            <p className="eyebrow" data-reveal="up">
-              {footerConfig.eyebrow}
-            </p>
-            <h2 className="site-footer__heading" data-reveal="up">
-              {headingHead} <em>{headingRest.join(' ')}</em>
-            </h2>
-            <p className="site-footer__blurb" data-reveal="up">
-              {footerConfig.blurb}
-            </p>
-          </div>
+  const renderContact = (panelMode: EngagementMode, copy: ContactModeCopy) => {
+    // Both panels stay mounted, so each builds the intent for its own mode. The
+    // service only ever reaches the fractional enquiry.
+    const serviceTitle = panelMode === 'fractional' ? service?.title ?? '' : '';
+    const group = `contact-${panelMode}`;
+    const onContact = (channel: 'email' | 'booking') =>
+      track('contact_clicked', {
+        mode: panelMode,
+        service_id: panelMode === 'fractional' ? service?.id ?? null : null,
+        location: 'contact',
+        channel,
+      });
 
-          <a href={footerConfig.ctaHref} className="contact-plate" data-reveal="scale">
-            <span className="contact-plate__label">Write to me</span>
+    return (
+      <div className="site-footer__top">
+        <div>
+          <p className="eyebrow" data-reveal="up" data-reveal-group={group}>
+            {contactConfig.eyebrow}
+          </p>
+          <h2 className="site-footer__heading site-footer__heading--contact" data-reveal="up" data-reveal-group={group}>
+            {copy.heading}
+          </h2>
+          <p className="site-footer__blurb" data-reveal="up" data-reveal-group={group}>
+            {copy.body}
+          </p>
+          {(copy.secondaryAction || BOOKING_URL) && (
+            <p className="site-footer__actions" data-reveal="up" data-reveal-group={group}>
+              {BOOKING_URL && panelMode === 'fractional' && (
+                <a
+                  className="link-underline"
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => onContact('booking')}
+                >
+                  {contactConfig.bookingLabel}
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              )}
+              {copy.secondaryAction && (
+                <Link className="link-underline" to={withEngagement(copy.secondaryAction.href)}>
+                  {copy.secondaryAction.label}
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </Link>
+              )}
+            </p>
+          )}
+        </div>
+
+        <div data-reveal="scale" data-reveal-group={group}>
+          <a
+            href={buildContactHref(panelMode, serviceTitle)}
+            className="contact-plate"
+            onClick={() => onContact('email')}
+          >
+            <span className="contact-plate__label">{copy.primaryAction}</span>
             <span className="contact-plate__value">
-              {footerConfig.ctaText}
+              {CONTACT_EMAIL}
               <ArrowUpRight size={22} aria-hidden="true" />
             </span>
+            {serviceTitle && <span className="contact-plate__service">About: {serviceTitle}</span>}
           </a>
+          {/* Plain text as well, for anyone without a mail client set up. */}
+          <p className="site-footer__address">
+            Or write directly to <span>{CONTACT_EMAIL}</span>
+          </p>
         </div>
+      </div>
+    );
+  };
+
+  return (
+    // The id sits on the footer itself: useActiveSection reads offsetTop, which
+    // an element nested inside this positioned footer would report relative to it.
+    <footer id="contact" ref={footerRef} className="site-footer">
+      <div className="shell">
+        <ModePanels
+          fractional={renderContact('fractional', contactConfig.modes.fractional)}
+          fullTime={renderContact('full-time', contactConfig.modes['full-time'])}
+        />
 
         <div className="site-footer__columns">
           {footerConfig.columns.map((column) => (
@@ -47,7 +108,9 @@ export default function Footer() {
                 {column.links.map((link) => (
                   <li key={link.label}>
                     {link.href.startsWith('/') ? (
-                      <Link to={link.href}>
+                      // Offer pages are fractional by definition, so only other
+                      // routes carry a full-time mode along.
+                      <Link to={isOfferPage(link.href) ? link.href : withEngagement(link.href)}>
                         {link.label}
                         <ArrowUpRight size={14} aria-hidden="true" />
                       </Link>

@@ -4,8 +4,10 @@
 This repository contains Mario Sorgente's personal/founder website built as a Vite + React + TypeScript single-page application.
 
 It includes:
-- Home route: `/`
-- Capability detail route: `/capability/:slug`
+- Home route: `/`, with a fractional / full-time engagement selector
+- Service detail route: `/services/:serviceId` (the four paid offers in `src/data/services.ts`)
+- Secondary capability route: `/capability/:slug` (`/capability/founder-coaching` redirects to `/services/focused-product-consulting`)
+- Background route: `/background`
 - Tailwind-styled UI sections (Navigation, Hero, Curriculum, CinematicVision, AlumniArchives, Blog, Footer)
 - A token-driven stylesheet in `src/styles/`, with all colour, type, spacing and easing values defined in `tokens.css`
 - Scroll-reveal animations driven by `src/hooks/useReveal.ts`, which honours `prefers-reduced-motion`
@@ -114,6 +116,20 @@ them, so avoid both on any ancestor of an animated element:
 `src/index.css` loads Tailwind. `src/styles/app.css` is imported after it from `main.tsx`, so
 the site's own rules win over Tailwind's preflight. Design tokens live in `src/styles/tokens.css`;
 change a colour or a type step there and it propagates across every section.
+
+## Engagement mode
+The home page has two views, chosen with a native radio group in the hero. The URL is the
+only store for the choice: `?engagement=full-time` selects full-time, and anything else,
+including no parameter, is fractional. Switching replaces the current history entry, keeps
+other parameters and the hash, and never scrolls or moves focus.
+
+- State lives in `src/lib/engagement.tsx`; use `useEngagement()` rather than reading the URL.
+- Mode-specific copy is keyed by mode in `src/config.ts` and rendered through
+  `components/ModePanels`, which keeps both versions mounted and hides the inactive one.
+- Contact links are built by `buildContactHref` in `src/lib/contact.ts`. Set `BOOKING_URL`
+  there to show a booking link; it stays hidden while it is `null`.
+- `src/lib/analytics.ts` defines the conversion events. No provider is connected, so `track`
+  only logs in development.
 
 ## Environment variables
 No environment variables are currently required by this project.

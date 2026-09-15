@@ -2,6 +2,11 @@
 // Site Configuration
 // ============================================================
 
+import type { EngagementMode } from './lib/engagement';
+
+/** Copy that differs between the fractional and full-time views. */
+export type ByMode<T> = Record<EngagementMode, T>;
+
 export interface SiteConfig {
   language: string;
   brandName: string;
@@ -13,32 +18,62 @@ export const siteConfig: SiteConfig = {
 };
 
 // ============================================================
+// Engagement selector
+// ============================================================
+
+export interface EngagementOption {
+  label: string;
+  badge?: string;
+  helper: string;
+}
+
+export const engagementSelectorConfig: { legend: string; options: ByMode<EngagementOption> } = {
+  legend: "How would you like to work together?",
+  options: {
+    fractional: {
+      label: "Fractional",
+      badge: "Preferred",
+      helper: "Part-time leadership or a focused engagement.",
+    },
+    "full-time": {
+      label: "Full-time",
+      helper: "Open to the right remote product role.",
+    },
+  },
+};
+
+// ============================================================
 // Navigation
 // ============================================================
 
 export interface NavLink {
   label: string;
+  /** Replaces the label in full-time mode. */
+  fullTimeLabel?: string;
   href: string;
 }
 
 export interface NavigationConfig {
   links: NavLink[];
-  ctaText: string;
+  ctaText: ByMode<string>;
 }
 
 export const navigationConfig: NavigationConfig = {
+  // Order must follow the sections on the page: useActiveSection takes the
+  // last entry whose section has passed the scroll line, so an out-of-order
+  // link highlights the wrong item.
   links: [
-    { label: "Services", href: "#curriculum" },
-    { label: "Process", href: "#cinematic" },
-    // Order must follow the sections on the page: useActiveSection takes the
-    // last entry whose section has passed the scroll line, so an out-of-order
-    // link highlights the wrong item.
-    { label: "Case Studies", href: "#blog" },
-    { label: "Companies Founded", href: "#alumni" },
+    { label: "Services", fullTimeLabel: "Role scope", href: "#services" },
+    { label: "Results", href: "#results" },
+    { label: "Case studies", href: "#blog" },
+    { label: "About", href: "#about" },
     { label: "Background", href: "/background" },
-    { label: "Contact", href: "#footer" },
+    { label: "Contact", href: "#contact" },
   ],
-  ctaText: "Get in touch",
+  ctaText: {
+    fractional: "Get in touch",
+    "full-time": "Discuss a role",
+  },
 };
 
 // ============================================================
@@ -50,25 +85,46 @@ export interface HeroStat {
   label: string;
 }
 
+export interface HeroModeCopy {
+  eyebrow: string;
+  headline: string;
+  body: string;
+  supporting: string;
+  availability: string;
+  primaryCta: string;
+  secondaryCta: string;
+  /** A `#section` scrolls on the home page; a `/route` navigates. */
+  secondaryHref: string;
+}
+
 export interface HeroConfig {
-  title: string;
-  role: string;
-  status: string;
-  subtitleLine1: string;
-  subtitleLine2: string;
-  ctaText: string;
-  secondaryCtaText: string;
+  modes: ByMode<HeroModeCopy>;
   stats: HeroStat[];
 }
 
 export const heroConfig: HeroConfig = {
-  title: "Zero2Hero: Product Management",
-  role: "Senior Product Builder",
-  status: "Open to founder engagements",
-  subtitleLine1: "I am Mario: founder, AI product lead and an artist. My background is in physics engineering and business.",
-  subtitleLine2: "I help founders turn ideas into real products. I can build a product demo at zero cost in days.",
-  ctaText: "Explore services",
-  secondaryCtaText: "See case studies",
+  modes: {
+    fractional: {
+      eyebrow: "Fractional Product Leadership",
+      headline: "A clear product direction your team can deliver.",
+      body: "I help founders and product teams set priorities, understand customers and ship. Part-time leadership, or a focused engagement when you need a next step.",
+      supporting: "Senior product experience, technical depth, hands-on AI prototyping.",
+      availability: "Remote · Fractional preferred",
+      primaryCta: "Discuss your product",
+      secondaryCta: "See my work",
+      secondaryHref: "#blog",
+    },
+    "full-time": {
+      eyebrow: "Senior Product Manager",
+      headline: "Product leadership from first question to next release.",
+      body: "Strategy, customer discovery and technical depth in one role. I help teams choose what matters and ship with a clear definition of success.",
+      supporting: "AI product development, working across engineering and business teams.",
+      availability: "Remote roles · Fractional preferred",
+      primaryCta: "Discuss a role",
+      secondaryCta: "View background",
+      secondaryHref: "/background",
+    },
+  },
   stats: [
     { value: "120%", label: "Revenue growth" },
     { value: "1,000+", label: "Active users" },
@@ -89,7 +145,7 @@ export const marqueeItems: string[] = [
   "AI Product Strategy",
   "LLM-Powered Workflows",
   "Agent Design",
-  "Zero-Cost Prototyping",
+  "Rapid AI Prototyping",
   "Discovery & Validation",
   "Product-Market Fit",
   "Platform & SaaS",
@@ -97,6 +153,199 @@ export const marqueeItems: string[] = [
   "Roadmapping",
   "Human-in-the-Loop Systems",
 ];
+
+// ============================================================
+// Credibility (Mario's story and two recommendation excerpts)
+// ============================================================
+
+export interface StoryProduct {
+  name: string;
+  detail: string;
+}
+
+export interface StoryStop {
+  when: string;
+  /** A short passage in the display face, for the stops that are prose, not milestones. */
+  story?: string;
+  /** Rendered before the items, as a lead line and a row of chips. */
+  products?: { lead: string; list: StoryProduct[] };
+  items?: string[];
+}
+
+export interface RecommendationExcerpt {
+  /** An id from data/recommendations.ts. The text is read from there, verbatim. */
+  recommendationId: string;
+  paragraph: number;
+}
+
+export interface CredibilityConfig {
+  eyebrow: string;
+  heading: string;
+  timeline: StoryStop[];
+  today: { when: string; text: string };
+  /** Names picked out in the accent colour wherever they appear in the story. */
+  highlights: string[];
+  excerpts: RecommendationExcerpt[];
+  linkText: string;
+}
+
+export const credibilityConfig: CredibilityConfig = {
+  eyebrow: "Track record",
+  heading: "How I got here",
+  timeline: [
+    {
+      when: "Roots",
+      story:
+        "I grew up in the suburbs of Naples and Milan, where the priority was paying the bills. A “stable job” was the wildest goal. Dreaming felt expensive. Leaving that reality seemed unthinkable.",
+    },
+    {
+      when: "Early career",
+      story:
+        "I studied Physics, started in a technical role and moved into business within a year. I had no formal business education. I learned through customer conversations and decisions I had to take responsibility for.",
+    },
+    {
+      when: "5 years ago",
+      items: ["Positioned an already-built product in an unfamiliar market."],
+    },
+    {
+      when: "4 years ago",
+      items: [
+        "Expanded the product's software capabilities.",
+        "Coordinated a government project in the nuclear sector.",
+        "Started coaching colleagues on product thinking.",
+      ],
+    },
+    {
+      when: "3 years ago",
+      items: [
+        "Founded yourwAI, helping people find their way through career choices.",
+        "Joined Sympower to manage energy products.",
+      ],
+    },
+    {
+      when: "2 years ago",
+      items: [
+        "Promoted to Senior Product Manager.",
+        "Grew yourwAI to 1,000+ active users.",
+        "Funded my own AI studies.",
+        "Started building a product or experiment every month, like Devdok.",
+      ],
+    },
+    {
+      when: "1 year ago",
+      items: [
+        "Started coaching PM colleagues on AI practices.",
+        "Co-founded Binderly to assess the environmental impact of construction materials.",
+        "Built DataMask to anonymise text before sharing it with AI tools.",
+      ],
+    },
+    {
+      when: "Recently",
+      products: {
+        lead: "Built four products:",
+        list: [
+          { name: "Quantum Motion", detail: "fitness coaching" },
+          { name: "ADES", detail: "AI agent design" },
+          { name: "GoJob", detail: "hospitality hiring" },
+          { name: "Mamma Calories", detail: "meal planning" },
+        ],
+      },
+      items: [
+        "Helped AirShield's founder shape the proposition, brand and fundraising case.",
+        "Helped train and evaluate OpenAI and Anthropic models as a product expert.",
+      ],
+    },
+  ],
+  today: {
+    when: "Today",
+    text: "Building Zero2Hero, my product management consultancy for founders and companies.",
+  },
+  highlights: ["yourwAI", "Sympower", "Devdok", "Binderly", "DataMask", "AirShield", "Zero2Hero"],
+  excerpts: [
+    { recommendationId: "olivier-gillin", paragraph: 3 },
+    { recommendationId: "adam-castle", paragraph: 2 },
+  ],
+  linkText: "All recommendations",
+};
+
+// ============================================================
+// Problems
+// ============================================================
+
+export interface TitledCard {
+  title: string;
+  body: string;
+}
+
+export interface CardSectionConfig {
+  eyebrow: string;
+  heading: string;
+  intro?: string;
+  cards: TitledCard[];
+  closing?: string;
+}
+
+export const problemsConfig: CardSectionConfig = {
+  eyebrow: "Where I help",
+  heading: "When product decisions need attention",
+  cards: [
+    {
+      title: "Everything is a priority",
+      body: "The roadmap keeps changing and nobody can say what deserves time.",
+    },
+    {
+      title: "The founder coordinates everything",
+      body: "Decisions, customer questions and follow-ups all land on one person.",
+    },
+    {
+      title: "Customers try it and leave",
+      body: "You need to see where people struggle and which changes are worth testing.",
+    },
+    {
+      title: "AI ideas outpace the plan",
+      body: "Find a useful workflow, test it and decide what is ready for real users.",
+    },
+  ],
+};
+
+// ============================================================
+// Role scope (full-time counterpart of the services section)
+// ============================================================
+
+export const roleScopeConfig: CardSectionConfig & { roleFit: string; cta: string } = {
+  eyebrow: "Role scope",
+  heading: "What I can own in your team",
+  intro: "Senior product roles with clear ownership, remote work and a team that values customer evidence.",
+  cards: [
+    {
+      title: "Product direction",
+      body: "Turn goals and customer needs into priorities and a roadmap the team understands.",
+    },
+    {
+      title: "Discovery and delivery",
+      body: "Define problems, test assumptions and ship improvements with design and engineering.",
+    },
+    {
+      title: "AI product development",
+      body: "Find useful AI applications, prototype them and define how to evaluate quality.",
+    },
+    {
+      title: "Team collaboration",
+      body: "Connect product, engineering and commercial teams through clear ownership.",
+    },
+  ],
+  roleFit: "Relevant roles: Senior Product Manager, AI Product Manager and Product Lead.",
+  cta: "Share a role",
+};
+
+/** Earlier service pages that stay available outside the main offer. */
+export const secondaryCapabilities = {
+  label: "Also available:",
+  links: [
+    { label: "AI prototyping", href: "/capability/zero-to-demo" },
+    { label: "AI product architecture", href: "/capability/ai-architecture" },
+  ],
+};
 
 // ============================================================
 // Statement (pinned scroll moment)
@@ -112,55 +361,41 @@ export const statementConfig: StatementConfig = {
   text: "Most products fail because nobody wanted them. The quickest way to find out is to put a working version in front of real users.",
   accent: ["working", "users"],
   caption:
-    "Every engagement ends with something people outside the team can open and use. What they do with it decides what gets built next.",
+    "Every engagement ends with a clear decision, a plan or a working version the team can put in front of customers.",
 };
 
 // ============================================================
-// Capabilities (Curriculum section)
+// Success measurement
 // ============================================================
 
-export interface CapabilityItem {
-  title: string;
-  slug: string;
-  description: string;
-  image: string;
-  meta: string[];
-}
-
-export interface CapabilitiesConfig {
-  sectionLabel: string;
-  items: CapabilityItem[];
-}
-
-export const capabilitiesConfig: CapabilitiesConfig = {
-  sectionLabel: "What I Offer",
-  items: [
+// Public copy only. Targets belong in an engagement scorecard, never here.
+export const measurementConfig: CardSectionConfig = {
+  eyebrow: "Results",
+  heading: "Agree what success looks like first",
+  intro: "A few measures, a baseline and a review date, tied to customer value and business results.",
+  cards: [
     {
-      title: "Zero-to-Demo Sprints",
-      slug: "zero-to-demo",
-      description: "Build working product demos in 48 to 72 hours at no cost. Test the idea with real users before spending anything on development.",
-      image: "/images/capability-1.webp",
-      meta: ["48-72 hours", "Clickable demo", "Zero cost"],
+      title: "Customers reach value",
+      body: "Do people complete the key action that makes the product useful, and how quickly?",
     },
     {
-      title: "AI Product Architecture",
-      slug: "ai-architecture",
-      description: "Design product workflows where the model does real work across the whole experience, rather than answering questions in a side panel.",
-      image: "/images/capability-2.webp",
-      meta: ["Agent design", "Evaluation", "Retrieval"],
+      title: "Customers stay",
+      body: "Repeat use, cancellations and revenue kept from existing customers.",
     },
     {
-      title: "Founder Coaching",
-      slug: "founder-coaching",
-      description: "Sessions at your pace to scope your MVP, prioritize features and find the fastest route to product-market fit, with hands-on help or coaching depending on what you need.",
-      image: "/images/capability-3.webp",
-      meta: ["MVP scoping", "Prioritisation", "Hands-on"],
+      title: "The business benefits",
+      body: "Paid conversion, revenue from a new offer or time saved in a recurring workflow.",
+    },
+    {
+      title: "The team delivers",
+      body: "Priorities stay clear, decisions happen promptly and agreed work ships as planned.",
     },
   ],
+  closing: "Measures and targets depend on your product and baseline. We set them together at the start.",
 };
 
 // ============================================================
-// Capability Detail (sub-pages)
+// Capability Detail (secondary sub-pages)
 // ============================================================
 
 export interface CapabilityDetailData {
@@ -179,7 +414,7 @@ export interface CapabilityDetailConfig {
 }
 
 export const capabilityDetailConfig: CapabilityDetailConfig = {
-  sectionLabel: "Service",
+  sectionLabel: "Capability",
   backLinkText: "Back to home",
   prevLabel: "Previous",
   nextLabel: "Next",
@@ -191,7 +426,7 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
       paragraphs: [
         "Most founders spend months and thousands of dollars building products nobody wants. A Zero-to-Demo Sprint puts the test first. We build a working, clickable demo in 48 to 72 hours, using no-code tools, AI code generation and rapid prototyping.",
         "During the sprint we define your core user story, map the main user journey, and build just enough to get useful feedback. You end up with a product people can click through and react to, rather than a pitch deck.",
-        "This approach has helped founders secure pre-seed meetings, test demand before hiring engineers, and change direction early when the data pointed somewhere else. The sprint costs nothing. I give my time to founders who are serious about building something people will use.",
+        "This approach has helped founders secure pre-seed meetings, test demand before hiring engineers, and change direction early when the data pointed somewhere else. A sprint is scoped and priced as a focused engagement, or included in fractional or strategy work when a prototype helps answer a product question. We agree the scope and intended use before anything is built.",
         "After the sprint you keep the demo, a product requirements document, and a roadmap for turning the prototype into an MVP you can ship.",
       ],
     },
@@ -205,21 +440,11 @@ export const capabilityDetailConfig: CapabilityDetailConfig = {
         "Whether you are building a creative tool, an analytics platform or an assistant for one industry, the architecture you choose in the first 90 days decides what competitors will struggle to copy for years.",
       ],
     },
-    "founder-coaching": {
-      title: "Founder Coaching",
-      subtitle: "Hands-on product strategy for early-stage founders.",
-      paragraphs: [
-        "Building a product as a founder is lonely. You make expensive decisions about scope, timing and positioning with thin data and constant pressure. Founder Coaching gives you someone to test those decisions against, and hands-on help when you need it.",
-        "We meet online at your pace to review progress, settle prioritisation conflicts and sharpen how you explain the product. I have founded four companies and led product at AI scaleups, and I have already made many of these mistakes myself.",
-        "Coaching covers MVP scoping, user research, the metrics worth tracking, and hiring for product and engineering. When it helps, I work directly on the design and the prototype with you.",
-        "This suits founders who want to move quickly and still know the reason behind each decision. How we work together changes as your stage and problems change.",
-      ],
-    },
   },
 };
 
 // ============================================================
-// Architecture (CinematicVision section)
+// Process (CinematicVision section)
 // ============================================================
 
 export interface ProcessStep {
@@ -228,39 +453,60 @@ export interface ProcessStep {
   description: string;
 }
 
-export interface ArchitectureConfig {
-  sectionLabel: string;
-  title: string;
-  description: string;
+export interface ProcessModeCopy {
+  heading: string;
   steps: ProcessStep[];
 }
 
-export const architectureConfig: ArchitectureConfig = {
+export const processConfig: { sectionLabel: string; modes: ByMode<ProcessModeCopy> } = {
   sectionLabel: "Process",
-  title: "From a rough idea to a plan the team can build from.",
-  description: "We define your MVP, structure the product, and work out the shortest route to a build, whether you want hands-on help or coaching. I came to product from physics engineering, so the work starts by taking the problem apart methodically. Then it moves quickly, because nothing counts as settled until someone outside the team has used what we made.",
-  steps: [
-    {
-      index: "01",
-      title: "Define",
-      description: "We pick the one user problem worth solving first, and write down what the product has to prove.",
+  modes: {
+    fractional: {
+      heading: "How we get started",
+      steps: [
+        {
+          index: "01",
+          title: "Understand",
+          description: "The product, the team and the decision or outcome that needs attention.",
+        },
+        {
+          index: "02",
+          title: "Agree scope",
+          description: "Responsibilities, capacity, deliverables and the measures we review.",
+        },
+        {
+          index: "03",
+          title: "Work together",
+          description: "I join the work, make decisions visible and move priorities forward.",
+        },
+        {
+          index: "04",
+          title: "Review",
+          description: "Check progress, update the plan and shape the next phase.",
+        },
+      ],
     },
-    {
-      index: "02",
-      title: "Structure",
-      description: "We map the scope, the architecture and the main user journey, so nothing gets built by accident.",
+    "full-time": {
+      heading: "How I start a new role",
+      steps: [
+        {
+          index: "01",
+          title: "Learn",
+          description: "Customers, business goals, existing evidence and how decisions get made.",
+        },
+        {
+          index: "02",
+          title: "Align",
+          description: "The product area, decision rights and first measures of success.",
+        },
+        {
+          index: "03",
+          title: "Deliver",
+          description: "Work the top opportunities, evaluate results and adjust with the team.",
+        },
+      ],
     },
-    {
-      index: "03",
-      title: "Execute",
-      description: "We build a working version in days, using AI code generation and rapid prototyping.",
-    },
-    {
-      index: "04",
-      title: "Learn",
-      description: "Real users try it, tell us what breaks, and we rewrite the roadmap around what they say.",
-    },
-  ],
+  },
 };
 
 // ============================================================
@@ -315,6 +561,118 @@ export const researchConfig: ResearchConfig = {
 };
 
 // ============================================================
+// About
+// ============================================================
+
+export const aboutConfig = {
+  eyebrow: "About",
+  heading: "About Mario",
+  /** The first role leads; the others read as a secondary line. */
+  roles: ["Product Manager", "Artist", "Fitness coach"],
+  paragraphs: [
+    "I'm Mario Sorgente, a Senior Product Manager with a physics background. I've managed energy products at Sympower, built AI products and started my own projects.",
+    "I take complicated problems apart, make the choices clear and get something useful into people's hands.",
+    "Product is my main work. I'm also an artist and a fitness coach.",
+  ],
+  portrait: "/images/mario-sorgente.webp",
+  linkText: "My background",
+  linkHref: "/background",
+};
+
+// ============================================================
+// FAQ
+// ============================================================
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export const faqConfig: { eyebrow: string; heading: string; modes: ByMode<FaqItem[]> } = {
+  eyebrow: "FAQ",
+  heading: "Questions",
+  modes: {
+    fractional: [
+      {
+        question: "What does fractional mean?",
+        answer: "I work with your team for part of the week and own a defined product scope. We agree which decisions I own and what progress to expect.",
+      },
+      {
+        question: "How much time do you commit?",
+        answer: "One or two days a week, starting with three to six months. Focused consulting has a smaller, defined scope.",
+      },
+      {
+        question: "Leadership or advisory?",
+        answer: "Leadership is ongoing ownership of product work. Advisory helps you decide through research, reviews and recommendations.",
+      },
+      {
+        question: "Do you work remotely?",
+        answer: "Yes. We agree overlap hours, channels and meeting rhythm upfront.",
+      },
+      {
+        question: "Can you build AI prototypes?",
+        answer: "Yes, when a prototype helps answer a product question. We agree the scope first, including what production would need.",
+      },
+      {
+        question: "How do you define success?",
+        answer: "An agreed outcome, a baseline and a review date. For short work, success can be a resolved decision and a clear plan.",
+      },
+      {
+        question: "What does it cost?",
+        answer: "It depends on scope: a monthly fee for ongoing work, a project fee for focused engagements. The proposal lists what is included.",
+      },
+    ],
+    "full-time": [
+      {
+        question: "Are you open to full-time roles?",
+        answer: "Yes, for the right remote product role. Fractional is my preference, so scope, team and working model matter.",
+      },
+      {
+        question: "Which roles fit?",
+        answer: "Senior Product Manager, AI Product Manager and Product Lead.",
+      },
+      {
+        question: "Are you open to B2B contracts?",
+        answer: "Yes, B2B or employment. The right structure depends on the role.",
+      },
+      {
+        question: "What should an enquiry include?",
+        answer: "Company, role description, remote setup, location requirements and compensation range.",
+      },
+    ],
+  },
+};
+
+// ============================================================
+// Contact
+// ============================================================
+
+export interface ContactModeCopy {
+  heading: string;
+  body: string;
+  primaryAction: string;
+  secondaryAction?: { label: string; href: string };
+}
+
+export const contactConfig: { eyebrow: string; bookingLabel: string; modes: ByMode<ContactModeCopy> } = {
+  eyebrow: "Contact",
+  bookingLabel: "Book an intro call",
+  modes: {
+    fractional: {
+      heading: "Where does your product need attention?",
+      body: "Share the challenge, the team and the support you have in mind.",
+      primaryAction: "Email about your product",
+    },
+    "full-time": {
+      heading: "Have a product role in mind?",
+      body: "Send the role, the team context and the working arrangement.",
+      primaryAction: "Email about a role",
+      secondaryAction: { label: "View background", href: "/background" },
+    },
+  },
+};
+
+// ============================================================
 // Footer
 // ============================================================
 
@@ -335,37 +693,30 @@ export interface FooterBottomLink {
 }
 
 export interface FooterConfig {
-  eyebrow: string;
-  heading: string;
-  blurb: string;
-  ctaText: string;
-  ctaHref: string;
   columns: FooterLinkColumn[];
   copyright: string;
   bottomLinks: FooterBottomLink[];
 }
 
 export const footerConfig: FooterConfig = {
-  eyebrow: "Start a conversation",
-  heading: "Let's build the first version.",
-  blurb:
-    "Tell me about the idea you keep coming back to. If it holds up, we can put a working version in front of real users this week.",
-  ctaText: "mario.sorgente@gmail.com",
-  ctaHref: "mailto:mario.sorgente@gmail.com",
   columns: [
     {
       title: "Services",
       links: [
-        { label: "Zero-to-Demo Sprints", href: "/capability/zero-to-demo" },
-        { label: "AI Product Architecture", href: "/capability/ai-architecture" },
-        { label: "Founder Coaching", href: "/capability/founder-coaching" },
+        { label: "Fractional Product Leadership", href: "/services/fractional-product-leadership" },
+        { label: "Product Strategy & Advisory", href: "/services/product-strategy" },
+        { label: "Focused Product Consulting", href: "/services/focused-product-consulting" },
+        { label: "Product Operations & Team Coaching", href: "/services/product-operations" },
+        { label: "AI prototyping", href: "/capability/zero-to-demo" },
+        { label: "AI product architecture", href: "/capability/ai-architecture" },
       ],
     },
     {
       title: "Explore",
       links: [
-        { label: "Case Studies", href: "#blog" },
-        { label: "Companies Founded", href: "#alumni" },
+        { label: "Case studies", href: "#blog" },
+        { label: "Companies founded", href: "#alumni" },
+        { label: "About", href: "#about" },
         { label: "Background", href: "/background" },
       ],
     },

@@ -34,6 +34,12 @@ h6 {
   text-wrap: balance;
 }
 
+/* Section rules set display on their own classes, which would otherwise beat
+   the user-agent rule and show content the markup marks as hidden. */
+[hidden] {
+  display: none !important;
+}
+
 ::selection {
   background: var(--ember);
   color: var(--ink-950);
