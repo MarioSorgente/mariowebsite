@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/capability/founder-coaching",
+      "destination": "/services/focused-product-consulting",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

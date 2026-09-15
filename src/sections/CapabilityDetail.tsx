@@ -61,7 +61,7 @@ export default function CapabilityDetail() {
           ))}
 
           <div data-reveal="up">
-            <Button href="/#footer" icon={<ArrowUpRight size={16} />}>
+            <Button href="/#contact" icon={<ArrowUpRight size={16} />}>
               Start a conversation
             </Button>
           </div>

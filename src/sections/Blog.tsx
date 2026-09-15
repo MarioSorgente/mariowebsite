@@ -4,6 +4,8 @@ import { caseStudies, type CaseStudy, type CaseStudySlug } from '../data/caseStu
 import { useReveal } from '../hooks/useReveal';
 import { trackSpotlight } from '../lib/pointer';
 import CaseModal from '../components/CaseModal';
+import { track } from '../lib/analytics';
+import { useEngagement } from '../lib/engagement';
 
 interface CaseStudyProps {
   readerRef: RefObject<HTMLElement | null>;
@@ -52,6 +54,7 @@ export default function Blog() {
   const articleRef = useRef<HTMLElement>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const sectionRef = useReveal<HTMLElement>({ stagger: 80 });
+  const { mode } = useEngagement();
 
   // The window handles Escape and focus itself; here we only restore focus to
   // the card that opened it.
@@ -69,6 +72,7 @@ export default function Blog() {
     }
     triggerRef.current = trigger;
     setSelected(slug);
+    track('case_study_opened', { case_study_id: slug, mode });
   };
 
   const SelectedCaseStudy = selected ? caseStudyRegistry[selected] : null;
