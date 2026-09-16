@@ -188,7 +188,7 @@ export interface CredibilityConfig {
 export const credibilityConfig: CredibilityConfig = {
   eyebrow: "Track record",
   heading: "The last five years",
-  lead: "7+ years in product.",
+  lead: "I have been in product for more than 7 years. Here are the last five.",
   timeline: [
     {
       when: "Roots",
