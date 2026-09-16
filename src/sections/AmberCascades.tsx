@@ -229,9 +229,17 @@ export default function AmberCascades() {
     };
     document.addEventListener('visibilitychange', onVisibility);
 
-    start();
+    // The hero text paints first: running the animation during the opening
+    // frames delays the words people came for. Idle time is soon enough.
+    let idleHandle = 0;
+    const canIdle = 'requestIdleCallback' in window;
+    idleHandle = canIdle
+      ? window.requestIdleCallback(() => start(), { timeout: 1200 })
+      : window.setTimeout(start, 200);
 
     return () => {
+      if (canIdle) window.cancelIdleCallback(idleHandle);
+      else window.clearTimeout(idleHandle);
       stop();
       observer.disconnect();
       seen.disconnect();
