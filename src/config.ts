@@ -639,18 +639,18 @@ export const faqConfig: {
         question:
           "Of Binderly, yourwAI, ADES, Devdok and all the products in your portfolio, which did you code yourself and what parts of the stack did you own?",
         answer: [
-          "Every one of them, by myself, end to end. The single exception is yourwAI, where I hired a software engineer, because the models were not good enough to build on at the time. Every product since is my own code, written with AI coding tools.",
-          "That means the whole stack, not a slice of it. OpenAI for the model layer. Supabase and Firebase for data and auth, with Google Cloud Console handling OAuth. GitHub and Vercel for delivery. Hostinger and WordPress where a marketing site was the right answer. Codex and Claude Code for the building.",
-          "No agency, no co-founder, no inherited codebase. Across the portfolio that is roughly 60,000 lines in production and about 900 commits, every one of them mine.",
+          "Every one of them, end to end. The single exception is yourwAI, where I hired a software engineer, because the models were not good enough to build on at the time. Every product since is my own code, written with AI coding tools.",
+          "That means the whole stack. OpenAI for the model layer. Supabase and Firebase for data and auth, with Google Cloud Console handling OAuth. GitHub and Vercel for delivery. Hostinger and WordPress where a marketing site was the right answer. Codex and Claude Code for the building.",
+          "Across the portfolio that is roughly 60,000 lines in production and about 900 commits.",
         ],
       },
       {
         question:
-          "How often do you use Claude Code, Codex or Cursor, and have you shipped pull requests into live products?",
+          "How often do you use Claude Code, Codex or Cursor and have you shipped pull requests into live products?",
         answer: [
           "Daily when I am building something, several times a week otherwise. Codex and Claude Code for most of it, Cursor when I want to stay in the editor.",
           "The work is hands-on. I work in the repository, read and change code, debug, review diffs and run deployments.",
-          "I ship to production on every product I own, Binderly and ADES included: around 150 merged pull requests and three releases a week at peak. At Sympower I was the PM rather than a committer on the core platform, working alongside the engineering team instead of in their repository.",
+          "I ship to production on every product I own. At Sympower I was the PM rather than a committer on the core platform, leading the engineering teams.",
         ],
       },
       {
@@ -664,8 +664,8 @@ export const faqConfig: {
       {
         question: "How hands-on are you with SQL, data analysis and reading experiment results?",
         answer: [
-          "Hands-on. I work in the data model rather than waiting on a dashboard: segmentation, funnels, cohorts and aggregations, and enough digging into user behaviour to know what the numbers are actually describing. On yourwAI I ran the analytics myself across 1,000+ active users and 25 tracked events.",
-          "On experiments I read past the headline conversion rate: sample size, segment differences, downstream behaviour and whether the result supports the hypothesis at all. I have called more than one winning variant as noise, because a 6% lift on 300 sessions a side is a coin flip, not a result.",
+          "Hands-on. I work in the data model rather than waiting on a dashboard: segmentation, funnels, cohorts and aggregations and enough digging into user behaviour to know what the numbers are actually describing. On yourwAI I ran the analytics myself across 1,000+ active users and 25 tracked events.",
+          "On experiments I read past the headline conversion rate: sample size, segment differences, downstream behaviour and whether the result supports the hypothesis at all.",
         ],
       },
       {
