@@ -949,6 +949,31 @@
   font-size: 16px;
   font-weight: 300;
   line-height: 1.75;
+  text-wrap: pretty;
+}
+
+/* Longer answers run to several paragraphs: space them, pad once at the end. */
+.faq__item p + p {
+  padding-top: 16px;
+}
+
+.faq__item p:not(:last-child) {
+  padding-bottom: 0;
+}
+
+/* A second, labelled run of questions under the first list. */
+.faq__group {
+  margin-top: clamp(36px, 4vw, 52px);
+}
+
+.faq__group-label {
+  margin: 0 0 clamp(16px, 2vw, 22px);
+  color: var(--text-1);
+  font-family: var(--font-mono);
+  font-size: var(--step-meta);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
 }
 
 /* Contact (top of the footer) -------------------------------------------- */

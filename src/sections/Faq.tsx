@@ -15,7 +15,9 @@ function FaqItems({ items }: { items: FaqItem[] }) {
             <span>{item.question}</span>
             <Plus size={18} aria-hidden="true" />
           </summary>
-          <p>{item.answer}</p>
+          {(Array.isArray(item.answer) ? item.answer : [item.answer]).map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </details>
       ))}
     </>
@@ -30,7 +32,7 @@ function FaqItems({ items }: { items: FaqItem[] }) {
 export default function Faq() {
   const sectionRef = useReveal<HTMLElement>({ stagger: 80 });
   const { withEngagement } = useEngagement();
-  const { eyebrow, heading, shared, modes } = faqConfig;
+  const { eyebrow, heading, shared, modes, customers } = faqConfig;
   const { name, roles, paragraphs, portrait, linkText, linkHref } = aboutConfig;
   const [primaryRole, ...otherRoles] = roles;
 
@@ -81,12 +83,21 @@ export default function Faq() {
           </div>
         </div>
 
-        <div className="faq__list" data-reveal="up">
-          <FaqItems items={shared} />
-          <ModePanels
-            fractional={<FaqItems items={modes.fractional} />}
-            fullTime={<FaqItems items={modes['full-time']} />}
-          />
+        <div>
+          <div className="faq__list" data-reveal="up">
+            <FaqItems items={shared} />
+            <ModePanels
+              fractional={<FaqItems items={modes.fractional} />}
+              fullTime={<FaqItems items={modes['full-time']} />}
+            />
+          </div>
+
+          <div className="faq__group" data-reveal="up">
+            <h3 className="faq__group-label">{customers.label}</h3>
+            <div className="faq__list">
+              <FaqItems items={customers.items} />
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -565,7 +565,8 @@ export const aboutConfig = {
 
 export interface FaqItem {
   question: string;
-  answer: string;
+  /** One string for a single paragraph, an array when the answer needs more. */
+  answer: string | string[];
 }
 
 export const faqConfig: {
@@ -574,6 +575,8 @@ export const faqConfig: {
   /** Shown first in both modes. */
   shared: FaqItem[];
   modes: ByMode<FaqItem[]>;
+  /** The longer answers clients ask for, under their own label below the rest. */
+  customers: { label: string; items: FaqItem[] };
 } = {
   eyebrow: "FAQ",
   heading: "Questions",
@@ -626,6 +629,59 @@ export const faqConfig: {
       {
         question: "What should an enquiry include?",
         answer: "Company, role description, remote setup, location requirements and compensation range.",
+      },
+    ],
+  },
+  customers: {
+    label: "Questions from my customers",
+    items: [
+      {
+        question:
+          "Of Binderly, yourwAI, ADES and Devdok, which did you code yourself and what parts of the stack did you own?",
+        answer: [
+          "I built all of them end to end. The one exception is yourwAI, where I hired a software engineer, because the models were not good enough to build on at the time. Everything since I have written myself with AI coding tools.",
+          "That means the whole stack, not a slice of it. OpenAI for the model layer. Supabase and Firebase for data and auth, with Google Cloud Console handling OAuth. GitHub and Vercel for delivery. Hostinger and WordPress where a marketing site was the right answer. Codex and Claude Code for the building.",
+          "No agency, no inherited codebase, no handover: roughly 40,000 lines in production across four products and about 600 commits, all of them mine.",
+        ],
+      },
+      {
+        question:
+          "How often do you use Claude Code, Codex or Cursor, and have you shipped pull requests into live products?",
+        answer: [
+          "Daily when I am building something, several times a week otherwise. Codex and Claude Code for most of it, Cursor when I want to stay in the editor.",
+          "The work is hands-on. I work in the repository, read and change code, debug, review diffs and run deployments.",
+          "I ship to production on every product I own, Binderly and ADES included: around 150 merged pull requests and three releases a week at peak. At Sympower I was the PM rather than a committer on the core platform, working alongside the engineering team instead of in their repository.",
+        ],
+      },
+      {
+        question: "What is the fastest you have taken an idea to a prototype and real user feedback?",
+        answer: [
+          "Devdok, over a weekend. Idea on Friday, deployed on Sunday, first real users on Monday: about 48 hours to something live and 72 to the first feedback.",
+          "That was before coding agents, so the process was manual. I used ChatGPT to work out the architecture and generate files one by one, pasted them into GitHub, debugged the errors and redeployed. I built every part of it: the AI document-generation workflow, authentication, feedback capture and the deployment.",
+          "With Claude Code and Codex the same build now takes a day or less. The time goes into hardening the database, not into getting it working.",
+        ],
+      },
+      {
+        question: "How hands-on are you with SQL, data analysis and reading experiment results?",
+        answer: [
+          "Hands-on. I work in the data model rather than waiting on a dashboard: segmentation, funnels, cohorts and aggregations, and enough digging into user behaviour to know what the numbers are actually describing. On yourwAI I ran the analytics myself across 1,000+ active users and 25 tracked events.",
+          "On experiments I read past the headline conversion rate: sample size, segment differences, downstream behaviour and whether the result supports the hypothesis at all. I have called more than one winning variant as noise, because a 6% lift on 300 sessions a side is a coin flip, not a result.",
+        ],
+      },
+      {
+        question: "When has the data contradicted your view and changed the product?",
+        answer: [
+          "ADES, recently. After the first version I built an evaluation set of 15 representative cases with graders for the core workflows. The headline scores looked healthy: 4.7/5 on workflow clarity, 4.6/5 on evaluation quality.",
+          "The failure cases said otherwise. Structured outputs came back incomplete in roughly one run in five, and specific risk scenarios were handled too thinly to trust.",
+          "So I stopped polishing the UI around an apparently good model. I tightened the output contracts, reworked parts of the prompting and validation logic and added safeguards on the risk paths. Complete structured outputs went from about 80% to 98%.",
+        ],
+      },
+      {
+        question: "How much have you owned B2C activation, retention, conversion and pricing?",
+        answer: [
+          "A lot, mostly through yourwAI. I owned the funnel end to end: proposition, acquisition, onboarding, activation and the core matching experience, plus pricing, the business model, analytics and the feedback loop.",
+          "I iterated with behavioural data, direct user feedback and A/B tests, around 20 experiments across onboarding and activation. Onboarding completion moved from 41% to 63%, and the product reached 1,000+ active users and 170+ positive reviews.",
+        ],
       },
     ],
   },
