@@ -637,11 +637,11 @@ export const faqConfig: {
     items: [
       {
         question:
-          "Of Binderly, yourwAI, ADES and Devdok, which did you code yourself and what parts of the stack did you own?",
+          "Of Binderly, yourwAI, ADES, Devdok and all the products in your portfolio, which did you code yourself and what parts of the stack did you own?",
         answer: [
-          "I built all of them end to end. The one exception is yourwAI, where I hired a software engineer, because the models were not good enough to build on at the time. Everything since I have written myself with AI coding tools.",
+          "Every one of them, by myself, end to end. The single exception is yourwAI, where I hired a software engineer, because the models were not good enough to build on at the time. Every product since is my own code, written with AI coding tools.",
           "That means the whole stack, not a slice of it. OpenAI for the model layer. Supabase and Firebase for data and auth, with Google Cloud Console handling OAuth. GitHub and Vercel for delivery. Hostinger and WordPress where a marketing site was the right answer. Codex and Claude Code for the building.",
-          "No agency, no inherited codebase, no handover: roughly 40,000 lines in production across four products and about 600 commits, all of them mine.",
+          "No agency, no co-founder, no inherited codebase. Across the portfolio that is roughly 60,000 lines in production and about 900 commits, every one of them mine.",
         ],
       },
       {
